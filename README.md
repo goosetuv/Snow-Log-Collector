@@ -7,7 +7,7 @@ Collecting Logs is boring, don't do it manually. Free Windows Tool for pulling l
 ---
 
 ## Screenshot
-<a href="http://github.com/goosetuv/snow-log-collector"><img src="/images/screenshot-2.0.PNG" title="Snow Log Collector" alt="Snow Log Collector Screenshot"></a>
+<a href="http://github.com/goosetuv/snow-log-collector"><img src="/images/slc_mainscreen.png" title="Snow Log Collector" alt="Snow Log Collector Screenshot"></a>
 
 ## Installation
 
