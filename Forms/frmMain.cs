@@ -15,7 +15,9 @@ namespace SLC
         #region Fields
         public string SqlConnection;
         private bool SqlConnectionStatus;
-        int limit = 5;
+        readonly int limit = 5;
+
+        public string SlmServerPath; // this gets populated during LoadSettings()
         #endregion
 
         #region Constructor
@@ -23,11 +25,12 @@ namespace SLC
         {
             InitializeComponent();
             LoadSettings();
+            LoadSettingsFieldAppender();
             AuthenticationMethod();
         }
         #endregion
 
-        #region Snow License Manager Tab
+        #region Tab: Snow License Manager
         private void btnDUJ_Click(object sender, EventArgs e)
         {
             try
@@ -57,40 +60,14 @@ namespace SLC
         {
            try
             {
-                string slmAppLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Snow License Manager\\Web\\Logs\\Application\\";
-                string slmErrorLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Snow License Manager\\Web\\Logs\\Error\\";
-                string slmSecurityLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Snow License Manager\\Web\\Logs\\Security\\";
-                string slmAPILogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Snow License Manager\\Web\\Logs\\WebApi\\";
                 string webLogsDirectory = txtGeneralSaveDirectory.Text + "\\WebLogs\\";
-                // create directory
-                if (Directory.Exists(webLogsDirectory) == false)
-                {
-                    Directory.CreateDirectory(webLogsDirectory);
-                }
 
-                // app logs
-                foreach (var i in Directory.GetFiles(slmAppLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
-                {
-                    File.Copy(i.FullName, webLogsDirectory + "Application-" + i.Name);
-                }
+                LicenseManager.WebDirectoryCreator(webLogsDirectory);
 
-                // error logs
-                foreach (var i in Directory.GetFiles(slmErrorLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
-                {
-                    File.Copy(i.FullName, webLogsDirectory + "Error-" + i.Name);
-                }
-
-                // security logs
-                foreach (var i in Directory.GetFiles(slmSecurityLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
-                {
-                    File.Copy(i.FullName, webLogsDirectory + "Security-" + i.Name);
-                }
-
-                // api logs
-                foreach (var i in Directory.GetFiles(slmAPILogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
-                {
-                    File.Copy(i.FullName, webLogsDirectory + "WebAPI-" + i.Name);
-                }
+                Global.LogFileCopier(SlmServerPath + LicenseManager.Application, limit, webLogsDirectory + LicenseManager.SLCApplication + "\\");
+                Global.LogFileCopier(SlmServerPath + LicenseManager.Error, limit, webLogsDirectory + LicenseManager.SLCError + "\\");
+                Global.LogFileCopier(SlmServerPath + LicenseManager.Security, limit, webLogsDirectory + LicenseManager.SLCSecurity + "\\");
+                Global.LogFileCopier(SlmServerPath + LicenseManager.WebAPI, limit, webLogsDirectory + LicenseManager.SLCWebAPI + "\\");
 
                 tsLblCollectorStatusValue.Text = "Web Logs Copied";
 
@@ -104,108 +81,33 @@ namespace SLC
         private void btnSLMServicesLogs_Click(object sender, EventArgs e)
         {
             try
-            {
-                string slmEventStoreServiceLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Logs\\EventStoreService\\";
-                string slmImportToolLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Logs\\ImportTool\\ImportTool_\\";
-                string slmInventoryServiceLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Logs\\InventoryService\\";
-                string slmNotificationServiceLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Logs\\NotificationDelivery\\";
-                string slmOffice365Logs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Logs\\Office365Service\\";
-                string slmReportExportLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Logs\\ReportExport\\";
-                string slmComplianceLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Logs\\Compliance\\";
-                string slmLicensingServiceLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Logs\\LicensingService\\";
-                string slmLicensingLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Logs\\Licensing\\";
-
-
-
+            { 
                 string servicesLogsDirectory = txtGeneralSaveDirectory.Text + "\\ServicesLogs\\";
 
-                // create directory
-                if (Directory.Exists(servicesLogsDirectory) == false)
-                {
-                    Directory.CreateDirectory(servicesLogsDirectory);
-                }
+                #region File Copying
 
-                // Event Store Logs
-                if (Directory.Exists(slmEventStoreServiceLogs))
-                {
-                    foreach (var i in Directory.GetFiles(slmEventStoreServiceLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
-                    {
-                        File.Copy(i.FullName, servicesLogsDirectory + "EventStoreService-" + i.Name);
-                    }
-                }
+                LicenseManager.ServicesDirectoryCreator(servicesLogsDirectory);
 
-                //Import Tool Logs
-                if(Directory.Exists(slmImportToolLogs))
-                {
-                    foreach (var i in Directory.GetFiles(slmImportToolLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
-                    {
-                        File.Copy(i.FullName, servicesLogsDirectory + "ImportTool-" + i.Name);
-                    }
-                }
+                Global.LogFileCopier(SlmServerPath + LicenseManager.EventStore, limit, servicesLogsDirectory + LicenseManager.SLCEventStore + "\\");
+                Global.LogFileCopier(SlmServerPath + LicenseManager.SlmImport, limit, servicesLogsDirectory + LicenseManager.SLCImportTool + "\\");
+                Global.LogFileCopier(SlmServerPath + LicenseManager.InventoryService, limit, servicesLogsDirectory + LicenseManager.SLCInventoryAPI + "\\");
+                Global.LogFileCopier(SlmServerPath + LicenseManager.NotificationDelivery, limit, servicesLogsDirectory + LicenseManager.SLCNotification + "\\");
+                Global.LogFileCopier(SlmServerPath + LicenseManager.Office365, limit, servicesLogsDirectory + LicenseManager.SLCOffice365 + "\\");
+                Global.LogFileCopier(SlmServerPath + LicenseManager.ReportExport, limit, servicesLogsDirectory + LicenseManager.SLCReportExport + "\\");
+                Global.LogFileCopier(SlmServerPath + LicenseManager.Compliance, limit, servicesLogsDirectory + LicenseManager.SLCCompliance + "\\");
+                Global.LogFileCopier(SlmServerPath + LicenseManager.LicensingService, limit, servicesLogsDirectory + LicenseManager.SLCLicensingService + "\\");
+                Global.LogFileCopier(SlmServerPath + LicenseManager.Licensing, limit, servicesLogsDirectory + LicenseManager.SLCLicensing + "\\");
+                Global.LogFileCopier(SlmServerPath + LicenseManager.AdobeCC, limit, servicesLogsDirectory + LicenseManager.SLCAdobeCC + "\\");
+                Global.LogFileCopier(SlmServerPath + LicenseManager.DataAccess, limit, servicesLogsDirectory + LicenseManager.SLCDataAccess + "\\");
+                Global.LogFileCopier(SlmServerPath + LicenseManager.EventWarehouse, limit, servicesLogsDirectory + LicenseManager.SLCEventWarehouse + "\\");
+                Global.LogFileCopier(SlmServerPath + LicenseManager.GenericSaaS, limit, servicesLogsDirectory + LicenseManager.SLCGenericSaaS + "\\");
+                Global.LogFileCopier(SlmServerPath + LicenseManager.MaintenanceService, limit, servicesLogsDirectory + LicenseManager.SLCMaintenance + "\\");
+                Global.LogFileCopier(SlmServerPath + LicenseManager.OracleManagement, limit, servicesLogsDirectory + LicenseManager.SLCOMO + "\\");
+                Global.LogFileCopier(SlmServerPath + LicenseManager.SlmImport, limit, servicesLogsDirectory + LicenseManager.SLCSlmImport + "\\");
+                Global.LogFileCopier(SlmServerPath + LicenseManager.SoftwareEnterpriseAgreement, limit, servicesLogsDirectory + LicenseManager.SLCSEAS + "\\");
+                Global.LogFileCopier(SlmServerPath + LicenseManager.Virtualization, limit, servicesLogsDirectory + LicenseManager.SLCVirtualization + "\\");
 
-                // Inventory Service Logs
-
-                if(Directory.Exists(slmInventoryServiceLogs))
-                {
-                    foreach (var i in Directory.GetFiles(slmInventoryServiceLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
-                    {
-                        File.Copy(i.FullName, servicesLogsDirectory + "InventoryService-" + i.Name);
-                    }
-                }
-
-                // Notification Delivery 
-                if(Directory.Exists(slmNotificationServiceLogs))
-                {
-                    foreach (var i in Directory.GetFiles(slmNotificationServiceLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
-                    {
-                        File.Copy(i.FullName, servicesLogsDirectory + "NotificationService-" + i.Name);
-                    }
-                }
-
-                // Office 365
-                if(Directory.Exists(slmOffice365Logs))
-                {
-                    foreach (var i in Directory.GetFiles(slmOffice365Logs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
-                    {
-                        File.Copy(i.FullName, servicesLogsDirectory + "Office365Service-" + i.Name);
-                    }
-                }
-
-                // Report Export
-                if(Directory.Exists(slmReportExportLogs))
-                {
-                    foreach (var i in Directory.GetFiles(slmReportExportLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
-                    {
-                        File.Copy(i.FullName, servicesLogsDirectory + "ReportExportService-" + i.Name);
-                    }
-                }
-
-                // Compliance [SLM 7]
-                if(Directory.Exists(slmComplianceLogs))
-                {
-                    foreach (var i in Directory.GetFiles(slmComplianceLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
-                    {
-                        File.Copy(i.FullName, servicesLogsDirectory + "ComplianceService-" + i.Name);
-                    }
-                }
-
-                // Licensing Service [SLM 8, 9]
-                if (Directory.Exists(slmLicensingServiceLogs))
-                {
-                    foreach (var i in Directory.GetFiles(slmLicensingServiceLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
-                    {
-                        File.Copy(i.FullName, servicesLogsDirectory + "LicensingService-" + i.Name);
-                    }
-                }
-
-                // Licensing
-                if(Directory.Exists(slmLicensingLogs))
-                {
-                    foreach (var i in Directory.GetFiles(slmLicensingLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
-                    {
-                        File.Copy(i.FullName, servicesLogsDirectory + "Licensing-" + i.Name);
-                    }
-                }
+                #endregion
 
                 tsLblCollectorStatusValue.Text = "Services Logs Copied";
 
@@ -216,9 +118,20 @@ namespace SLC
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnSLMServicesLogsCustom_Click(object sender, EventArgs e)
+        {
+            using (Forms.frmSLMCustomizeGet f = new Forms.frmSLMCustomizeGet())
+            {
+                f.ServicesLogDirectory = txtGeneralSaveDirectory.Text + "\\ServicesLogs\\";
+                f.SlmServerPath = SlmServerPath;
+                f.limit = limit;
+                f.ShowDialog();
+            }
+        }
         #endregion
 
-        #region Settings Tab
+        #region Tab: Settings
         private void btnSettingsSave_Click(object sender, EventArgs e)
         {
             try
@@ -310,6 +223,20 @@ namespace SLC
         {
             AuthenticationMethod();
         }
+
+        private void btnGeneralSaveDirectory_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbg = new FolderBrowserDialog
+            {
+                ShowNewFolderButton = true
+            };
+
+            DialogResult result = fbg.ShowDialog();
+            if(result == DialogResult.OK)
+            {
+                txtGeneralSaveDirectory.Text = fbg.SelectedPath;
+            }
+        }
         #endregion
 
         #region Functions
@@ -392,6 +319,11 @@ namespace SLC
             {
                 MessageBox.Show(ex.Message, "Uncaught Exception", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+
+        void LoadSettingsFieldAppender()
+        {
+            SlmServerPath = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text;
         }
         #endregion
     }
