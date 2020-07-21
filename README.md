@@ -18,7 +18,7 @@ Download the latest release and run!
 - Support for Snow License Manager 7.x, 8.x and 9.x
 - Support for Snow Inventory Server 3.x, 5.x and 6.x
 
-**please note that the Snow License Manager 7 and Snow Inventory Server 3 support is only partial as these applications are end-of-life and end-of-support.**
+**Please note that the Snow License Manager 7 and Snow Inventory Server 3 support is only partial as these applications are end-of-life and end-of-support.  Although it works, no additional updates will be added for these two versions.**
 
 
 ## Usage
