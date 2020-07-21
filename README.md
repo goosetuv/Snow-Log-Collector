@@ -15,6 +15,10 @@ Download the latest release and run!
 
 ## Features
 
+// TODO
+
+## Supported Products
+
 - Support for Snow License Manager 7.x, 8.x and 9.x
 - Support for Snow Inventory Server 3.x, 5.x and 6.x
 
