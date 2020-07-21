@@ -15,6 +15,7 @@ namespace SLC
         #region Fields
         public string SqlConnection;
         private bool SqlConnectionStatus;
+        int limit = 5;
         #endregion
 
         #region Constructor
@@ -40,50 +41,180 @@ namespace SLC
                         DataTable dt;
                         dt = Laim.MSSqlServer.ExecuteReadDataTable(SqlConnection, (string)entry.Value);
 
-                        DataExporter("DUJLog" + DateTime.Now.ToString("ddMMyyyy"), "DUJ", dt, OfficeOpenXml.Table.TableStyles.None, (string)entry.Key);
+                        DataExporter("DataUpdateJob-" + DateTime.Now.ToString("ddMMyyyy"), txtGeneralSaveDirectory.Text, "DUJ", dt, OfficeOpenXml.Table.TableStyles.None, (string)entry.Key);
                     }
                 }
                 tsLblCollectorStatusValue.Text = "DUJ Logs Exported";
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
                 tsLblCollectorStatusValue.Text = "Failed, Check Logs";
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void btnWebLogs_Click(object sender, EventArgs e)
         {
-            int limit = 5;
-            string slmAppLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Snow License Manager\\Web\\Logs\\Application\\";
-            string slmErrorLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Snow License Manager\\Web\\Logs\\Error\\";
-            string slmSecurityLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Snow License Manager\\Web\\Logs\\Security\\";
-            string slmAPILogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Snow License Manager\\Web\\Logs\\WebApi\\";
-
-            // app logs
-            foreach (var i in Directory.GetFiles(slmAppLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
+           try
             {
-                File.Copy(i.FullName, txtGeneralSaveDirectory.Text + "Application-" + i.Name);
-            }
+                string slmAppLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Snow License Manager\\Web\\Logs\\Application\\";
+                string slmErrorLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Snow License Manager\\Web\\Logs\\Error\\";
+                string slmSecurityLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Snow License Manager\\Web\\Logs\\Security\\";
+                string slmAPILogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Snow License Manager\\Web\\Logs\\WebApi\\";
+                string webLogsDirectory = txtGeneralSaveDirectory.Text + "\\WebLogs\\";
+                // create directory
+                if (Directory.Exists(webLogsDirectory) == false)
+                {
+                    Directory.CreateDirectory(webLogsDirectory);
+                }
 
-            // error logs
-            foreach (var i in Directory.GetFiles(slmErrorLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
+                // app logs
+                foreach (var i in Directory.GetFiles(slmAppLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
+                {
+                    File.Copy(i.FullName, webLogsDirectory + "Application-" + i.Name);
+                }
+
+                // error logs
+                foreach (var i in Directory.GetFiles(slmErrorLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
+                {
+                    File.Copy(i.FullName, webLogsDirectory + "Error-" + i.Name);
+                }
+
+                // security logs
+                foreach (var i in Directory.GetFiles(slmSecurityLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
+                {
+                    File.Copy(i.FullName, webLogsDirectory + "Security-" + i.Name);
+                }
+
+                // api logs
+                foreach (var i in Directory.GetFiles(slmAPILogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
+                {
+                    File.Copy(i.FullName, webLogsDirectory + "WebAPI-" + i.Name);
+                }
+
+                tsLblCollectorStatusValue.Text = "Web Logs Copied";
+
+            } catch (Exception ex)
             {
-                File.Copy(i.FullName, txtGeneralSaveDirectory.Text + "Error-" + i.Name);
+                tsLblCollectorStatusValue.Text = "Failed, Check Logs";
+                MessageBox.Show(ex.Message);
             }
+        }
 
-            // security logs
-            foreach (var i in Directory.GetFiles(slmSecurityLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
+        private void btnSLMServicesLogs_Click(object sender, EventArgs e)
+        {
+            try
             {
-                File.Copy(i.FullName, txtGeneralSaveDirectory.Text + "Security-" + i.Name);
-            }
+                string slmEventStoreServiceLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Logs\\EventStoreService\\";
+                string slmImportToolLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Logs\\ImportTool\\ImportTool_\\";
+                string slmInventoryServiceLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Logs\\InventoryService\\";
+                string slmNotificationServiceLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Logs\\NotificationDelivery\\";
+                string slmOffice365Logs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Logs\\Office365Service\\";
+                string slmReportExportLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Logs\\ReportExport\\";
+                string slmComplianceLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Logs\\Compliance\\";
+                string slmLicensingServiceLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Logs\\LicensingService\\";
+                string slmLicensingLogs = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text + "$\\Program Files\\Snow Software\\Logs\\Licensing\\";
 
-            // api logs
-            foreach (var i in Directory.GetFiles(slmAPILogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
+
+
+                string servicesLogsDirectory = txtGeneralSaveDirectory.Text + "\\ServicesLogs\\";
+
+                // create directory
+                if (Directory.Exists(servicesLogsDirectory) == false)
+                {
+                    Directory.CreateDirectory(servicesLogsDirectory);
+                }
+
+                // Event Store Logs
+                if (Directory.Exists(slmEventStoreServiceLogs))
+                {
+                    foreach (var i in Directory.GetFiles(slmEventStoreServiceLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
+                    {
+                        File.Copy(i.FullName, servicesLogsDirectory + "EventStoreService-" + i.Name);
+                    }
+                }
+
+                //Import Tool Logs
+                if(Directory.Exists(slmImportToolLogs))
+                {
+                    foreach (var i in Directory.GetFiles(slmImportToolLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
+                    {
+                        File.Copy(i.FullName, servicesLogsDirectory + "ImportTool-" + i.Name);
+                    }
+                }
+
+                // Inventory Service Logs
+
+                if(Directory.Exists(slmInventoryServiceLogs))
+                {
+                    foreach (var i in Directory.GetFiles(slmInventoryServiceLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
+                    {
+                        File.Copy(i.FullName, servicesLogsDirectory + "InventoryService-" + i.Name);
+                    }
+                }
+
+                // Notification Delivery 
+                if(Directory.Exists(slmNotificationServiceLogs))
+                {
+                    foreach (var i in Directory.GetFiles(slmNotificationServiceLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
+                    {
+                        File.Copy(i.FullName, servicesLogsDirectory + "NotificationService-" + i.Name);
+                    }
+                }
+
+                // Office 365
+                if(Directory.Exists(slmOffice365Logs))
+                {
+                    foreach (var i in Directory.GetFiles(slmOffice365Logs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
+                    {
+                        File.Copy(i.FullName, servicesLogsDirectory + "Office365Service-" + i.Name);
+                    }
+                }
+
+                // Report Export
+                if(Directory.Exists(slmReportExportLogs))
+                {
+                    foreach (var i in Directory.GetFiles(slmReportExportLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
+                    {
+                        File.Copy(i.FullName, servicesLogsDirectory + "ReportExportService-" + i.Name);
+                    }
+                }
+
+                // Compliance [SLM 7]
+                if(Directory.Exists(slmComplianceLogs))
+                {
+                    foreach (var i in Directory.GetFiles(slmComplianceLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
+                    {
+                        File.Copy(i.FullName, servicesLogsDirectory + "ComplianceService-" + i.Name);
+                    }
+                }
+
+                // Licensing Service [SLM 8, 9]
+                if (Directory.Exists(slmLicensingServiceLogs))
+                {
+                    foreach (var i in Directory.GetFiles(slmLicensingServiceLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
+                    {
+                        File.Copy(i.FullName, servicesLogsDirectory + "LicensingService-" + i.Name);
+                    }
+                }
+
+                // Licensing
+                if(Directory.Exists(slmLicensingLogs))
+                {
+                    foreach (var i in Directory.GetFiles(slmLicensingLogs).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).Take(limit).ToArray())
+                    {
+                        File.Copy(i.FullName, servicesLogsDirectory + "Licensing-" + i.Name);
+                    }
+                }
+
+                tsLblCollectorStatusValue.Text = "Services Logs Copied";
+
+            }
+            catch (Exception ex)
             {
-                File.Copy(i.FullName, txtGeneralSaveDirectory.Text + "WebAPI-" + i.Name);
+                tsLblCollectorStatusValue.Text = "Failed, Check Logs";
+                MessageBox.Show(ex.Message);
             }
-
         }
         #endregion
 
@@ -133,7 +264,13 @@ namespace SLC
                 }
                 else
                 {
-                    MessageBox.Show("One or more required entries are empty.", "Save Settings", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                   if(SqlConnectionStatus == false)
+                    {
+                        MessageBox.Show("Please test your SQL Connection.", "Save Settings", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    } else
+                    {
+                        MessageBox.Show("One or more required entries are empty.", "Save Settings", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
                 }
 
             }
@@ -176,11 +313,11 @@ namespace SLC
         #endregion
 
         #region Functions
-        void DataExporter(string FileName, string DataType, DataTable dt, OfficeOpenXml.Table.TableStyles ReportingTableDesign, string SheetName = "Report")
+        void DataExporter(string FileName, string Path, string DataType, DataTable dt, OfficeOpenXml.Table.TableStyles ReportingTableDesign, string SheetName = "Report")
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
-            using (var ep = new ExcelPackage(new FileInfo("C:\\temp\\" + FileName + ".xlsx")))
+            using (var ep = new ExcelPackage(new FileInfo(Path + "\\" + FileName + ".xlsx")))
             {
                 ExcelWorksheet ew = ep.Workbook.Worksheets.Add(SheetName);
                 ew.Cells["A1"].LoadFromDataTable(dt, true, ReportingTableDesign);
@@ -188,8 +325,8 @@ namespace SLC
                 ep.Workbook.Properties.Application = Application.ProductName;
                 ep.Workbook.Properties.Author = Environment.UserName;
                 ep.Workbook.Properties.Title = DataType + " Export";
-                ep.Workbook.Properties.Company = "Goosetuv Solutions";
-                ep.Workbook.Properties.Comments = "https://laim.scot";
+                ep.Workbook.Properties.Company = "Goosetuv";
+                ep.Workbook.Properties.Comments = "https://github.com/goosetuv";
                 ep.Save();
             }
         }
@@ -247,6 +384,9 @@ namespace SLC
                     {
                         cbSqlServerWindowsAuth.Checked = true;
                     }
+                } else
+                {
+                    tabControlMain.SelectedIndex = 2;
                 }
             } catch (Exception ex)
             {

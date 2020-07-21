@@ -31,57 +31,62 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabSLM = new System.Windows.Forms.TabPage();
+            this.gbSLMWebLogs = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnWebLogs = new System.Windows.Forms.Button();
             this.gbDUJ = new System.Windows.Forms.GroupBox();
             this.lblDUJNotice = new System.Windows.Forms.Label();
             this.btnDUJ = new System.Windows.Forms.Button();
             this.tabINV = new System.Windows.Forms.TabPage();
+            this.tabSettings = new System.Windows.Forms.TabPage();
+            this.gbGeneralPreferences = new System.Windows.Forms.GroupBox();
+            this.lblReportingTableDesign = new System.Windows.Forms.Label();
+            this.cblReportingTableDesign = new System.Windows.Forms.ComboBox();
+            this.txtGeneralSaveDirectory = new System.Windows.Forms.TextBox();
+            this.lblGeneralSaveDirectory = new System.Windows.Forms.Label();
+            this.btnSettingsSave = new System.Windows.Forms.Button();
+            this.gbSnowApplications = new System.Windows.Forms.GroupBox();
+            this.txtINVDrive = new System.Windows.Forms.TextBox();
+            this.lblINVDrive = new System.Windows.Forms.Label();
+            this.txtINVServer = new System.Windows.Forms.TextBox();
+            this.lblINVServer = new System.Windows.Forms.Label();
+            this.txtSLMDrive = new System.Windows.Forms.TextBox();
+            this.lblSLMDrive = new System.Windows.Forms.Label();
+            this.txtSLMServer = new System.Windows.Forms.TextBox();
+            this.lblSLMServer = new System.Windows.Forms.Label();
+            this.dbSqlServer = new System.Windows.Forms.GroupBox();
+            this.lblSqlServerParameters = new System.Windows.Forms.Label();
+            this.txtSqlServerParameters = new System.Windows.Forms.TextBox();
+            this.btnSqlServerTest = new System.Windows.Forms.Button();
+            this.cbSqlServerWindowsAuth = new System.Windows.Forms.CheckBox();
+            this.lblSqlServerPassword = new System.Windows.Forms.Label();
+            this.txtSqlServerPassword = new System.Windows.Forms.TextBox();
+            this.lblSqlServerUsername = new System.Windows.Forms.Label();
+            this.txtSqlServerUsername = new System.Windows.Forms.TextBox();
+            this.txtSqlServerName = new System.Windows.Forms.TextBox();
+            this.lblSqlServerName = new System.Windows.Forms.Label();
             this.tabAbout = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.toolStripMain = new System.Windows.Forms.ToolStrip();
             this.tsLblCollectorStatus = new System.Windows.Forms.ToolStripLabel();
             this.tsLblCollectorStatusValue = new System.Windows.Forms.ToolStripLabel();
-            this.tabSettings = new System.Windows.Forms.TabPage();
-            this.dbSqlServer = new System.Windows.Forms.GroupBox();
-            this.gbSnowApplications = new System.Windows.Forms.GroupBox();
-            this.lblSLMServer = new System.Windows.Forms.Label();
-            this.txtSLMServer = new System.Windows.Forms.TextBox();
-            this.txtSLMDrive = new System.Windows.Forms.TextBox();
-            this.lblSLMDrive = new System.Windows.Forms.Label();
-            this.txtINVServer = new System.Windows.Forms.TextBox();
-            this.lblINVServer = new System.Windows.Forms.Label();
-            this.txtINVDrive = new System.Windows.Forms.TextBox();
-            this.lblINVDrive = new System.Windows.Forms.Label();
-            this.lblSqlServerName = new System.Windows.Forms.Label();
-            this.txtSqlServerName = new System.Windows.Forms.TextBox();
-            this.txtSqlServerUsername = new System.Windows.Forms.TextBox();
-            this.lblSqlServerUsername = new System.Windows.Forms.Label();
-            this.txtSqlServerPassword = new System.Windows.Forms.TextBox();
-            this.lblSqlServerPassword = new System.Windows.Forms.Label();
-            this.cbSqlServerWindowsAuth = new System.Windows.Forms.CheckBox();
-            this.btnSqlServerTest = new System.Windows.Forms.Button();
-            this.txtSqlServerParameters = new System.Windows.Forms.TextBox();
-            this.lblSqlServerParameters = new System.Windows.Forms.Label();
-            this.btnSettingsSave = new System.Windows.Forms.Button();
-            this.gbGeneralPreferences = new System.Windows.Forms.GroupBox();
-            this.txtGeneralSaveDirectory = new System.Windows.Forms.TextBox();
-            this.lblGeneralSaveDirectory = new System.Windows.Forms.Label();
-            this.cblReportingTableDesign = new System.Windows.Forms.ComboBox();
-            this.lblReportingTableDesign = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnWebLogs = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.gbSLMServices = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnSLMServicesLogs = new System.Windows.Forms.Button();
             this.tabControlMain.SuspendLayout();
             this.tabSLM.SuspendLayout();
+            this.gbSLMWebLogs.SuspendLayout();
             this.gbDUJ.SuspendLayout();
+            this.tabSettings.SuspendLayout();
+            this.gbGeneralPreferences.SuspendLayout();
+            this.gbSnowApplications.SuspendLayout();
+            this.dbSqlServer.SuspendLayout();
             this.tabAbout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.toolStripMain.SuspendLayout();
-            this.tabSettings.SuspendLayout();
-            this.dbSqlServer.SuspendLayout();
-            this.gbSnowApplications.SuspendLayout();
-            this.gbGeneralPreferences.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.gbSLMServices.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -100,7 +105,8 @@
             // 
             // tabSLM
             // 
-            this.tabSLM.Controls.Add(this.groupBox1);
+            this.tabSLM.Controls.Add(this.gbSLMServices);
+            this.tabSLM.Controls.Add(this.gbSLMWebLogs);
             this.tabSLM.Controls.Add(this.gbDUJ);
             this.tabSLM.Location = new System.Drawing.Point(4, 22);
             this.tabSLM.Name = "tabSLM";
@@ -109,6 +115,38 @@
             this.tabSLM.TabIndex = 0;
             this.tabSLM.Text = "Snow License Manager";
             this.tabSLM.UseVisualStyleBackColor = true;
+            // 
+            // gbSLMWebLogs
+            // 
+            this.gbSLMWebLogs.Controls.Add(this.label1);
+            this.gbSLMWebLogs.Controls.Add(this.btnWebLogs);
+            this.gbSLMWebLogs.Location = new System.Drawing.Point(285, 10);
+            this.gbSLMWebLogs.Name = "gbSLMWebLogs";
+            this.gbSLMWebLogs.Size = new System.Drawing.Size(200, 100);
+            this.gbSLMWebLogs.TabIndex = 2;
+            this.gbSLMWebLogs.TabStop = false;
+            this.gbSLMWebLogs.Text = "Web Logs";
+            // 
+            // label1
+            // 
+            this.label1.AutoEllipsis = true;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.Location = new System.Drawing.Point(10, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(180, 42);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Compatiable with Snow License Manager 7.x, 8.x and 9.x.";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnWebLogs
+            // 
+            this.btnWebLogs.Location = new System.Drawing.Point(115, 65);
+            this.btnWebLogs.Name = "btnWebLogs";
+            this.btnWebLogs.Size = new System.Drawing.Size(75, 23);
+            this.btnWebLogs.TabIndex = 0;
+            this.btnWebLogs.Text = "GET";
+            this.btnWebLogs.UseVisualStyleBackColor = true;
+            this.btnWebLogs.Click += new System.EventHandler(this.btnWebLogs_Click);
             // 
             // gbDUJ
             // 
@@ -152,54 +190,6 @@
             this.tabINV.Text = "Snow Inventory";
             this.tabINV.UseVisualStyleBackColor = true;
             // 
-            // tabAbout
-            // 
-            this.tabAbout.Controls.Add(this.textBox1);
-            this.tabAbout.Location = new System.Drawing.Point(4, 22);
-            this.tabAbout.Name = "tabAbout";
-            this.tabAbout.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAbout.Size = new System.Drawing.Size(497, 249);
-            this.tabAbout.TabIndex = 2;
-            this.tabAbout.Text = "About";
-            this.tabAbout.UseVisualStyleBackColor = true;
-            // 
-            // pictureBoxLogo
-            // 
-            this.pictureBoxLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxLogo.Image = global::SLC.Properties.Resources.slc_logo1;
-            this.pictureBoxLogo.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(505, 120);
-            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxLogo.TabIndex = 1;
-            this.pictureBoxLogo.TabStop = false;
-            // 
-            // toolStripMain
-            // 
-            this.toolStripMain.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.toolStripMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsLblCollectorStatus,
-            this.tsLblCollectorStatusValue});
-            this.toolStripMain.Location = new System.Drawing.Point(0, 398);
-            this.toolStripMain.Name = "toolStripMain";
-            this.toolStripMain.Size = new System.Drawing.Size(505, 25);
-            this.toolStripMain.TabIndex = 2;
-            this.toolStripMain.Text = "toolStrip1";
-            // 
-            // tsLblCollectorStatus
-            // 
-            this.tsLblCollectorStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsLblCollectorStatus.Name = "tsLblCollectorStatus";
-            this.tsLblCollectorStatus.Size = new System.Drawing.Size(98, 22);
-            this.tsLblCollectorStatus.Text = "Collector Status:";
-            // 
-            // tsLblCollectorStatusValue
-            // 
-            this.tsLblCollectorStatusValue.Name = "tsLblCollectorStatusValue";
-            this.tsLblCollectorStatusValue.Size = new System.Drawing.Size(57, 22);
-            this.tsLblCollectorStatusValue.Text = "Waiting...";
-            // 
             // tabSettings
             // 
             this.tabSettings.AutoScroll = true;
@@ -215,202 +205,6 @@
             this.tabSettings.Text = "Settings";
             this.tabSettings.UseVisualStyleBackColor = true;
             // 
-            // dbSqlServer
-            // 
-            this.dbSqlServer.Controls.Add(this.lblSqlServerParameters);
-            this.dbSqlServer.Controls.Add(this.txtSqlServerParameters);
-            this.dbSqlServer.Controls.Add(this.btnSqlServerTest);
-            this.dbSqlServer.Controls.Add(this.cbSqlServerWindowsAuth);
-            this.dbSqlServer.Controls.Add(this.lblSqlServerPassword);
-            this.dbSqlServer.Controls.Add(this.txtSqlServerPassword);
-            this.dbSqlServer.Controls.Add(this.lblSqlServerUsername);
-            this.dbSqlServer.Controls.Add(this.txtSqlServerUsername);
-            this.dbSqlServer.Controls.Add(this.txtSqlServerName);
-            this.dbSqlServer.Controls.Add(this.lblSqlServerName);
-            this.dbSqlServer.Location = new System.Drawing.Point(10, 10);
-            this.dbSqlServer.Name = "dbSqlServer";
-            this.dbSqlServer.Size = new System.Drawing.Size(460, 157);
-            this.dbSqlServer.TabIndex = 0;
-            this.dbSqlServer.TabStop = false;
-            this.dbSqlServer.Text = "SQL Server";
-            // 
-            // gbSnowApplications
-            // 
-            this.gbSnowApplications.Controls.Add(this.txtINVDrive);
-            this.gbSnowApplications.Controls.Add(this.lblINVDrive);
-            this.gbSnowApplications.Controls.Add(this.txtINVServer);
-            this.gbSnowApplications.Controls.Add(this.lblINVServer);
-            this.gbSnowApplications.Controls.Add(this.txtSLMDrive);
-            this.gbSnowApplications.Controls.Add(this.lblSLMDrive);
-            this.gbSnowApplications.Controls.Add(this.txtSLMServer);
-            this.gbSnowApplications.Controls.Add(this.lblSLMServer);
-            this.gbSnowApplications.Location = new System.Drawing.Point(10, 173);
-            this.gbSnowApplications.Name = "gbSnowApplications";
-            this.gbSnowApplications.Size = new System.Drawing.Size(460, 132);
-            this.gbSnowApplications.TabIndex = 1;
-            this.gbSnowApplications.TabStop = false;
-            this.gbSnowApplications.Text = "Snow Software Applications";
-            // 
-            // lblSLMServer
-            // 
-            this.lblSLMServer.AutoSize = true;
-            this.lblSLMServer.Location = new System.Drawing.Point(10, 20);
-            this.lblSLMServer.Name = "lblSLMServer";
-            this.lblSLMServer.Size = new System.Drawing.Size(156, 13);
-            this.lblSLMServer.TabIndex = 0;
-            this.lblSLMServer.Text = "Snow License Manager Server:";
-            // 
-            // txtSLMServer
-            // 
-            this.txtSLMServer.Location = new System.Drawing.Point(172, 17);
-            this.txtSLMServer.Name = "txtSLMServer";
-            this.txtSLMServer.Size = new System.Drawing.Size(275, 20);
-            this.txtSLMServer.TabIndex = 1;
-            // 
-            // txtSLMDrive
-            // 
-            this.txtSLMDrive.Location = new System.Drawing.Point(172, 43);
-            this.txtSLMDrive.Name = "txtSLMDrive";
-            this.txtSLMDrive.Size = new System.Drawing.Size(275, 20);
-            this.txtSLMDrive.TabIndex = 3;
-            // 
-            // lblSLMDrive
-            // 
-            this.lblSLMDrive.AutoSize = true;
-            this.lblSLMDrive.Location = new System.Drawing.Point(16, 46);
-            this.lblSLMDrive.Name = "lblSLMDrive";
-            this.lblSLMDrive.Size = new System.Drawing.Size(150, 13);
-            this.lblSLMDrive.TabIndex = 2;
-            this.lblSLMDrive.Text = "Snow License Manager Drive:";
-            // 
-            // txtINVServer
-            // 
-            this.txtINVServer.Location = new System.Drawing.Point(172, 69);
-            this.txtINVServer.Name = "txtINVServer";
-            this.txtINVServer.Size = new System.Drawing.Size(275, 20);
-            this.txtINVServer.TabIndex = 5;
-            // 
-            // lblINVServer
-            // 
-            this.lblINVServer.AutoSize = true;
-            this.lblINVServer.Location = new System.Drawing.Point(48, 72);
-            this.lblINVServer.Name = "lblINVServer";
-            this.lblINVServer.Size = new System.Drawing.Size(118, 13);
-            this.lblINVServer.TabIndex = 4;
-            this.lblINVServer.Text = "Snow Inventory Server:";
-            // 
-            // txtINVDrive
-            // 
-            this.txtINVDrive.Location = new System.Drawing.Point(172, 95);
-            this.txtINVDrive.Name = "txtINVDrive";
-            this.txtINVDrive.Size = new System.Drawing.Size(275, 20);
-            this.txtINVDrive.TabIndex = 7;
-            // 
-            // lblINVDrive
-            // 
-            this.lblINVDrive.AutoSize = true;
-            this.lblINVDrive.Location = new System.Drawing.Point(54, 98);
-            this.lblINVDrive.Name = "lblINVDrive";
-            this.lblINVDrive.Size = new System.Drawing.Size(112, 13);
-            this.lblINVDrive.TabIndex = 6;
-            this.lblINVDrive.Text = "Snow Inventory Drive:";
-            // 
-            // lblSqlServerName
-            // 
-            this.lblSqlServerName.AutoSize = true;
-            this.lblSqlServerName.Location = new System.Drawing.Point(70, 20);
-            this.lblSqlServerName.Name = "lblSqlServerName";
-            this.lblSqlServerName.Size = new System.Drawing.Size(96, 13);
-            this.lblSqlServerName.TabIndex = 1;
-            this.lblSqlServerName.Text = "SQL Server Name:";
-            // 
-            // txtSqlServerName
-            // 
-            this.txtSqlServerName.Location = new System.Drawing.Point(172, 17);
-            this.txtSqlServerName.Name = "txtSqlServerName";
-            this.txtSqlServerName.Size = new System.Drawing.Size(275, 20);
-            this.txtSqlServerName.TabIndex = 8;
-            // 
-            // txtSqlServerUsername
-            // 
-            this.txtSqlServerUsername.Location = new System.Drawing.Point(172, 43);
-            this.txtSqlServerUsername.Name = "txtSqlServerUsername";
-            this.txtSqlServerUsername.Size = new System.Drawing.Size(275, 20);
-            this.txtSqlServerUsername.TabIndex = 9;
-            // 
-            // lblSqlServerUsername
-            // 
-            this.lblSqlServerUsername.AutoSize = true;
-            this.lblSqlServerUsername.Location = new System.Drawing.Point(50, 46);
-            this.lblSqlServerUsername.Name = "lblSqlServerUsername";
-            this.lblSqlServerUsername.Size = new System.Drawing.Size(116, 13);
-            this.lblSqlServerUsername.TabIndex = 10;
-            this.lblSqlServerUsername.Text = "SQL Server Username:";
-            // 
-            // txtSqlServerPassword
-            // 
-            this.txtSqlServerPassword.Location = new System.Drawing.Point(172, 69);
-            this.txtSqlServerPassword.Name = "txtSqlServerPassword";
-            this.txtSqlServerPassword.PasswordChar = '*';
-            this.txtSqlServerPassword.Size = new System.Drawing.Size(275, 20);
-            this.txtSqlServerPassword.TabIndex = 11;
-            // 
-            // lblSqlServerPassword
-            // 
-            this.lblSqlServerPassword.AutoSize = true;
-            this.lblSqlServerPassword.Location = new System.Drawing.Point(52, 72);
-            this.lblSqlServerPassword.Name = "lblSqlServerPassword";
-            this.lblSqlServerPassword.Size = new System.Drawing.Size(114, 13);
-            this.lblSqlServerPassword.TabIndex = 12;
-            this.lblSqlServerPassword.Text = "SQL Server Password:";
-            // 
-            // cbSqlServerWindowsAuth
-            // 
-            this.cbSqlServerWindowsAuth.AutoSize = true;
-            this.cbSqlServerWindowsAuth.Location = new System.Drawing.Point(172, 125);
-            this.cbSqlServerWindowsAuth.Name = "cbSqlServerWindowsAuth";
-            this.cbSqlServerWindowsAuth.Size = new System.Drawing.Size(141, 17);
-            this.cbSqlServerWindowsAuth.TabIndex = 13;
-            this.cbSqlServerWindowsAuth.Text = "Windows Authentication";
-            this.cbSqlServerWindowsAuth.UseVisualStyleBackColor = true;
-            this.cbSqlServerWindowsAuth.CheckedChanged += new System.EventHandler(this.cbSqlServerWindowsAuth_CheckedChanged);
-            // 
-            // btnSqlServerTest
-            // 
-            this.btnSqlServerTest.Location = new System.Drawing.Point(372, 121);
-            this.btnSqlServerTest.Name = "btnSqlServerTest";
-            this.btnSqlServerTest.Size = new System.Drawing.Size(75, 23);
-            this.btnSqlServerTest.TabIndex = 14;
-            this.btnSqlServerTest.Text = "Test";
-            this.btnSqlServerTest.UseVisualStyleBackColor = true;
-            this.btnSqlServerTest.Click += new System.EventHandler(this.btnSqlServerTest_Click);
-            // 
-            // txtSqlServerParameters
-            // 
-            this.txtSqlServerParameters.Location = new System.Drawing.Point(172, 95);
-            this.txtSqlServerParameters.Name = "txtSqlServerParameters";
-            this.txtSqlServerParameters.Size = new System.Drawing.Size(275, 20);
-            this.txtSqlServerParameters.TabIndex = 15;
-            // 
-            // lblSqlServerParameters
-            // 
-            this.lblSqlServerParameters.AutoSize = true;
-            this.lblSqlServerParameters.Location = new System.Drawing.Point(54, 98);
-            this.lblSqlServerParameters.Name = "lblSqlServerParameters";
-            this.lblSqlServerParameters.Size = new System.Drawing.Size(112, 13);
-            this.lblSqlServerParameters.TabIndex = 16;
-            this.lblSqlServerParameters.Text = "Additional Parameters:";
-            // 
-            // btnSettingsSave
-            // 
-            this.btnSettingsSave.Location = new System.Drawing.Point(382, 396);
-            this.btnSettingsSave.Name = "btnSettingsSave";
-            this.btnSettingsSave.Size = new System.Drawing.Size(88, 23);
-            this.btnSettingsSave.TabIndex = 2;
-            this.btnSettingsSave.Text = "Save Settings";
-            this.btnSettingsSave.UseVisualStyleBackColor = true;
-            this.btnSettingsSave.Click += new System.EventHandler(this.btnSettingsSave_Click);
-            // 
             // gbGeneralPreferences
             // 
             this.gbGeneralPreferences.Controls.Add(this.lblReportingTableDesign);
@@ -424,21 +218,14 @@
             this.gbGeneralPreferences.TabStop = false;
             this.gbGeneralPreferences.Text = "General Preferences";
             // 
-            // txtGeneralSaveDirectory
+            // lblReportingTableDesign
             // 
-            this.txtGeneralSaveDirectory.Location = new System.Drawing.Point(172, 17);
-            this.txtGeneralSaveDirectory.Name = "txtGeneralSaveDirectory";
-            this.txtGeneralSaveDirectory.Size = new System.Drawing.Size(275, 20);
-            this.txtGeneralSaveDirectory.TabIndex = 1;
-            // 
-            // lblGeneralSaveDirectory
-            // 
-            this.lblGeneralSaveDirectory.AutoSize = true;
-            this.lblGeneralSaveDirectory.Location = new System.Drawing.Point(86, 20);
-            this.lblGeneralSaveDirectory.Name = "lblGeneralSaveDirectory";
-            this.lblGeneralSaveDirectory.Size = new System.Drawing.Size(80, 13);
-            this.lblGeneralSaveDirectory.TabIndex = 0;
-            this.lblGeneralSaveDirectory.Text = "Save Directory:";
+            this.lblReportingTableDesign.AutoSize = true;
+            this.lblReportingTableDesign.Location = new System.Drawing.Point(60, 46);
+            this.lblReportingTableDesign.Name = "lblReportingTableDesign";
+            this.lblReportingTableDesign.Size = new System.Drawing.Size(106, 13);
+            this.lblReportingTableDesign.TabIndex = 4;
+            this.lblReportingTableDesign.Text = "Export Table Design:";
             // 
             // cblReportingTableDesign
             // 
@@ -512,46 +299,228 @@
             this.cblReportingTableDesign.Size = new System.Drawing.Size(275, 21);
             this.cblReportingTableDesign.TabIndex = 3;
             // 
-            // lblReportingTableDesign
+            // txtGeneralSaveDirectory
             // 
-            this.lblReportingTableDesign.AutoSize = true;
-            this.lblReportingTableDesign.Location = new System.Drawing.Point(60, 46);
-            this.lblReportingTableDesign.Name = "lblReportingTableDesign";
-            this.lblReportingTableDesign.Size = new System.Drawing.Size(106, 13);
-            this.lblReportingTableDesign.TabIndex = 4;
-            this.lblReportingTableDesign.Text = "Export Table Design:";
+            this.txtGeneralSaveDirectory.Location = new System.Drawing.Point(172, 17);
+            this.txtGeneralSaveDirectory.Name = "txtGeneralSaveDirectory";
+            this.txtGeneralSaveDirectory.Size = new System.Drawing.Size(275, 20);
+            this.txtGeneralSaveDirectory.TabIndex = 1;
             // 
-            // groupBox1
+            // lblGeneralSaveDirectory
             // 
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btnWebLogs);
-            this.groupBox1.Location = new System.Drawing.Point(285, 10);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 100);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Web Logs";
+            this.lblGeneralSaveDirectory.AutoSize = true;
+            this.lblGeneralSaveDirectory.Location = new System.Drawing.Point(86, 20);
+            this.lblGeneralSaveDirectory.Name = "lblGeneralSaveDirectory";
+            this.lblGeneralSaveDirectory.Size = new System.Drawing.Size(80, 13);
+            this.lblGeneralSaveDirectory.TabIndex = 0;
+            this.lblGeneralSaveDirectory.Text = "Save Directory:";
             // 
-            // label1
+            // btnSettingsSave
             // 
-            this.label1.AutoEllipsis = true;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(10, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(180, 42);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Compatiable with Snow License Manager 7.x, 8.x and 9.x.";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnSettingsSave.Location = new System.Drawing.Point(382, 396);
+            this.btnSettingsSave.Name = "btnSettingsSave";
+            this.btnSettingsSave.Size = new System.Drawing.Size(88, 23);
+            this.btnSettingsSave.TabIndex = 2;
+            this.btnSettingsSave.Text = "Save Settings";
+            this.btnSettingsSave.UseVisualStyleBackColor = true;
+            this.btnSettingsSave.Click += new System.EventHandler(this.btnSettingsSave_Click);
             // 
-            // btnWebLogs
+            // gbSnowApplications
             // 
-            this.btnWebLogs.Location = new System.Drawing.Point(115, 65);
-            this.btnWebLogs.Name = "btnWebLogs";
-            this.btnWebLogs.Size = new System.Drawing.Size(75, 23);
-            this.btnWebLogs.TabIndex = 0;
-            this.btnWebLogs.Text = "GET";
-            this.btnWebLogs.UseVisualStyleBackColor = true;
-            this.btnWebLogs.Click += new System.EventHandler(this.btnWebLogs_Click);
+            this.gbSnowApplications.Controls.Add(this.txtINVDrive);
+            this.gbSnowApplications.Controls.Add(this.lblINVDrive);
+            this.gbSnowApplications.Controls.Add(this.txtINVServer);
+            this.gbSnowApplications.Controls.Add(this.lblINVServer);
+            this.gbSnowApplications.Controls.Add(this.txtSLMDrive);
+            this.gbSnowApplications.Controls.Add(this.lblSLMDrive);
+            this.gbSnowApplications.Controls.Add(this.txtSLMServer);
+            this.gbSnowApplications.Controls.Add(this.lblSLMServer);
+            this.gbSnowApplications.Location = new System.Drawing.Point(10, 173);
+            this.gbSnowApplications.Name = "gbSnowApplications";
+            this.gbSnowApplications.Size = new System.Drawing.Size(460, 132);
+            this.gbSnowApplications.TabIndex = 1;
+            this.gbSnowApplications.TabStop = false;
+            this.gbSnowApplications.Text = "Snow Software Applications";
+            // 
+            // txtINVDrive
+            // 
+            this.txtINVDrive.Location = new System.Drawing.Point(172, 95);
+            this.txtINVDrive.Name = "txtINVDrive";
+            this.txtINVDrive.Size = new System.Drawing.Size(275, 20);
+            this.txtINVDrive.TabIndex = 7;
+            // 
+            // lblINVDrive
+            // 
+            this.lblINVDrive.AutoSize = true;
+            this.lblINVDrive.Location = new System.Drawing.Point(54, 98);
+            this.lblINVDrive.Name = "lblINVDrive";
+            this.lblINVDrive.Size = new System.Drawing.Size(112, 13);
+            this.lblINVDrive.TabIndex = 6;
+            this.lblINVDrive.Text = "Snow Inventory Drive:";
+            // 
+            // txtINVServer
+            // 
+            this.txtINVServer.Location = new System.Drawing.Point(172, 69);
+            this.txtINVServer.Name = "txtINVServer";
+            this.txtINVServer.Size = new System.Drawing.Size(275, 20);
+            this.txtINVServer.TabIndex = 5;
+            // 
+            // lblINVServer
+            // 
+            this.lblINVServer.AutoSize = true;
+            this.lblINVServer.Location = new System.Drawing.Point(48, 72);
+            this.lblINVServer.Name = "lblINVServer";
+            this.lblINVServer.Size = new System.Drawing.Size(118, 13);
+            this.lblINVServer.TabIndex = 4;
+            this.lblINVServer.Text = "Snow Inventory Server:";
+            // 
+            // txtSLMDrive
+            // 
+            this.txtSLMDrive.Location = new System.Drawing.Point(172, 43);
+            this.txtSLMDrive.Name = "txtSLMDrive";
+            this.txtSLMDrive.Size = new System.Drawing.Size(275, 20);
+            this.txtSLMDrive.TabIndex = 3;
+            // 
+            // lblSLMDrive
+            // 
+            this.lblSLMDrive.AutoSize = true;
+            this.lblSLMDrive.Location = new System.Drawing.Point(16, 46);
+            this.lblSLMDrive.Name = "lblSLMDrive";
+            this.lblSLMDrive.Size = new System.Drawing.Size(150, 13);
+            this.lblSLMDrive.TabIndex = 2;
+            this.lblSLMDrive.Text = "Snow License Manager Drive:";
+            // 
+            // txtSLMServer
+            // 
+            this.txtSLMServer.Location = new System.Drawing.Point(172, 17);
+            this.txtSLMServer.Name = "txtSLMServer";
+            this.txtSLMServer.Size = new System.Drawing.Size(275, 20);
+            this.txtSLMServer.TabIndex = 1;
+            // 
+            // lblSLMServer
+            // 
+            this.lblSLMServer.AutoSize = true;
+            this.lblSLMServer.Location = new System.Drawing.Point(10, 20);
+            this.lblSLMServer.Name = "lblSLMServer";
+            this.lblSLMServer.Size = new System.Drawing.Size(156, 13);
+            this.lblSLMServer.TabIndex = 0;
+            this.lblSLMServer.Text = "Snow License Manager Server:";
+            // 
+            // dbSqlServer
+            // 
+            this.dbSqlServer.Controls.Add(this.lblSqlServerParameters);
+            this.dbSqlServer.Controls.Add(this.txtSqlServerParameters);
+            this.dbSqlServer.Controls.Add(this.btnSqlServerTest);
+            this.dbSqlServer.Controls.Add(this.cbSqlServerWindowsAuth);
+            this.dbSqlServer.Controls.Add(this.lblSqlServerPassword);
+            this.dbSqlServer.Controls.Add(this.txtSqlServerPassword);
+            this.dbSqlServer.Controls.Add(this.lblSqlServerUsername);
+            this.dbSqlServer.Controls.Add(this.txtSqlServerUsername);
+            this.dbSqlServer.Controls.Add(this.txtSqlServerName);
+            this.dbSqlServer.Controls.Add(this.lblSqlServerName);
+            this.dbSqlServer.Location = new System.Drawing.Point(10, 10);
+            this.dbSqlServer.Name = "dbSqlServer";
+            this.dbSqlServer.Size = new System.Drawing.Size(460, 157);
+            this.dbSqlServer.TabIndex = 0;
+            this.dbSqlServer.TabStop = false;
+            this.dbSqlServer.Text = "SQL Server";
+            // 
+            // lblSqlServerParameters
+            // 
+            this.lblSqlServerParameters.AutoSize = true;
+            this.lblSqlServerParameters.Location = new System.Drawing.Point(54, 98);
+            this.lblSqlServerParameters.Name = "lblSqlServerParameters";
+            this.lblSqlServerParameters.Size = new System.Drawing.Size(112, 13);
+            this.lblSqlServerParameters.TabIndex = 16;
+            this.lblSqlServerParameters.Text = "Additional Parameters:";
+            // 
+            // txtSqlServerParameters
+            // 
+            this.txtSqlServerParameters.Location = new System.Drawing.Point(172, 95);
+            this.txtSqlServerParameters.Name = "txtSqlServerParameters";
+            this.txtSqlServerParameters.Size = new System.Drawing.Size(275, 20);
+            this.txtSqlServerParameters.TabIndex = 15;
+            // 
+            // btnSqlServerTest
+            // 
+            this.btnSqlServerTest.Location = new System.Drawing.Point(372, 121);
+            this.btnSqlServerTest.Name = "btnSqlServerTest";
+            this.btnSqlServerTest.Size = new System.Drawing.Size(75, 23);
+            this.btnSqlServerTest.TabIndex = 14;
+            this.btnSqlServerTest.Text = "Test";
+            this.btnSqlServerTest.UseVisualStyleBackColor = true;
+            this.btnSqlServerTest.Click += new System.EventHandler(this.btnSqlServerTest_Click);
+            // 
+            // cbSqlServerWindowsAuth
+            // 
+            this.cbSqlServerWindowsAuth.AutoSize = true;
+            this.cbSqlServerWindowsAuth.Location = new System.Drawing.Point(172, 125);
+            this.cbSqlServerWindowsAuth.Name = "cbSqlServerWindowsAuth";
+            this.cbSqlServerWindowsAuth.Size = new System.Drawing.Size(141, 17);
+            this.cbSqlServerWindowsAuth.TabIndex = 13;
+            this.cbSqlServerWindowsAuth.Text = "Windows Authentication";
+            this.cbSqlServerWindowsAuth.UseVisualStyleBackColor = true;
+            this.cbSqlServerWindowsAuth.CheckedChanged += new System.EventHandler(this.cbSqlServerWindowsAuth_CheckedChanged);
+            // 
+            // lblSqlServerPassword
+            // 
+            this.lblSqlServerPassword.AutoSize = true;
+            this.lblSqlServerPassword.Location = new System.Drawing.Point(52, 72);
+            this.lblSqlServerPassword.Name = "lblSqlServerPassword";
+            this.lblSqlServerPassword.Size = new System.Drawing.Size(114, 13);
+            this.lblSqlServerPassword.TabIndex = 12;
+            this.lblSqlServerPassword.Text = "SQL Server Password:";
+            // 
+            // txtSqlServerPassword
+            // 
+            this.txtSqlServerPassword.Location = new System.Drawing.Point(172, 69);
+            this.txtSqlServerPassword.Name = "txtSqlServerPassword";
+            this.txtSqlServerPassword.PasswordChar = '*';
+            this.txtSqlServerPassword.Size = new System.Drawing.Size(275, 20);
+            this.txtSqlServerPassword.TabIndex = 11;
+            // 
+            // lblSqlServerUsername
+            // 
+            this.lblSqlServerUsername.AutoSize = true;
+            this.lblSqlServerUsername.Location = new System.Drawing.Point(50, 46);
+            this.lblSqlServerUsername.Name = "lblSqlServerUsername";
+            this.lblSqlServerUsername.Size = new System.Drawing.Size(116, 13);
+            this.lblSqlServerUsername.TabIndex = 10;
+            this.lblSqlServerUsername.Text = "SQL Server Username:";
+            // 
+            // txtSqlServerUsername
+            // 
+            this.txtSqlServerUsername.Location = new System.Drawing.Point(172, 43);
+            this.txtSqlServerUsername.Name = "txtSqlServerUsername";
+            this.txtSqlServerUsername.Size = new System.Drawing.Size(275, 20);
+            this.txtSqlServerUsername.TabIndex = 9;
+            // 
+            // txtSqlServerName
+            // 
+            this.txtSqlServerName.Location = new System.Drawing.Point(172, 17);
+            this.txtSqlServerName.Name = "txtSqlServerName";
+            this.txtSqlServerName.Size = new System.Drawing.Size(275, 20);
+            this.txtSqlServerName.TabIndex = 8;
+            // 
+            // lblSqlServerName
+            // 
+            this.lblSqlServerName.AutoSize = true;
+            this.lblSqlServerName.Location = new System.Drawing.Point(70, 20);
+            this.lblSqlServerName.Name = "lblSqlServerName";
+            this.lblSqlServerName.Size = new System.Drawing.Size(96, 13);
+            this.lblSqlServerName.TabIndex = 1;
+            this.lblSqlServerName.Text = "SQL Server Name:";
+            // 
+            // tabAbout
+            // 
+            this.tabAbout.Controls.Add(this.textBox1);
+            this.tabAbout.Location = new System.Drawing.Point(4, 22);
+            this.tabAbout.Name = "tabAbout";
+            this.tabAbout.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAbout.Size = new System.Drawing.Size(497, 249);
+            this.tabAbout.TabIndex = 2;
+            this.tabAbout.Text = "About";
+            this.tabAbout.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
@@ -566,12 +535,92 @@
     "wInventorylogsandconfigurations-v2";
             this.textBox1.WordWrap = false;
             // 
+            // pictureBoxLogo
+            // 
+            this.pictureBoxLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxLogo.Image = global::SLC.Properties.Resources.slc_logo1;
+            this.pictureBoxLogo.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxLogo.Name = "pictureBoxLogo";
+            this.pictureBoxLogo.Size = new System.Drawing.Size(505, 120);
+            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxLogo.TabIndex = 1;
+            this.pictureBoxLogo.TabStop = false;
+            // 
+            // toolStripMain
+            // 
+            this.toolStripMain.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.toolStripMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsLblCollectorStatus,
+            this.tsLblCollectorStatusValue});
+            this.toolStripMain.Location = new System.Drawing.Point(0, 398);
+            this.toolStripMain.Name = "toolStripMain";
+            this.toolStripMain.Size = new System.Drawing.Size(505, 25);
+            this.toolStripMain.TabIndex = 2;
+            this.toolStripMain.Text = "toolStrip1";
+            // 
+            // tsLblCollectorStatus
+            // 
+            this.tsLblCollectorStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsLblCollectorStatus.Name = "tsLblCollectorStatus";
+            this.tsLblCollectorStatus.Size = new System.Drawing.Size(98, 22);
+            this.tsLblCollectorStatus.Text = "Collector Status:";
+            // 
+            // tsLblCollectorStatusValue
+            // 
+            this.tsLblCollectorStatusValue.Name = "tsLblCollectorStatusValue";
+            this.tsLblCollectorStatusValue.Size = new System.Drawing.Size(57, 22);
+            this.tsLblCollectorStatusValue.Text = "Waiting...";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(456, 87);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(29, 13);
+            this.linkLabel1.TabIndex = 3;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Help";
+            // 
+            // gbSLMServices
+            // 
+            this.gbSLMServices.Controls.Add(this.label2);
+            this.gbSLMServices.Controls.Add(this.btnSLMServicesLogs);
+            this.gbSLMServices.Location = new System.Drawing.Point(10, 135);
+            this.gbSLMServices.Name = "gbSLMServices";
+            this.gbSLMServices.Size = new System.Drawing.Size(200, 100);
+            this.gbSLMServices.TabIndex = 3;
+            this.gbSLMServices.TabStop = false;
+            this.gbSLMServices.Text = "License Manager Services Logs";
+            // 
+            // label2
+            // 
+            this.label2.AutoEllipsis = true;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.Location = new System.Drawing.Point(10, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(180, 42);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Compatiable with Snow License Manager 7.x, 8.x and 9.x.";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnSLMServicesLogs
+            // 
+            this.btnSLMServicesLogs.Location = new System.Drawing.Point(115, 65);
+            this.btnSLMServicesLogs.Name = "btnSLMServicesLogs";
+            this.btnSLMServicesLogs.Size = new System.Drawing.Size(75, 23);
+            this.btnSLMServicesLogs.TabIndex = 0;
+            this.btnSLMServicesLogs.Text = "GET";
+            this.btnSLMServicesLogs.UseVisualStyleBackColor = true;
+            this.btnSLMServicesLogs.Click += new System.EventHandler(this.btnSLMServicesLogs_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(505, 423);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.toolStripMain);
             this.Controls.Add(this.pictureBoxLogo);
             this.Controls.Add(this.tabControlMain);
@@ -583,20 +632,21 @@
             this.Text = "Snow Log Collector";
             this.tabControlMain.ResumeLayout(false);
             this.tabSLM.ResumeLayout(false);
+            this.gbSLMWebLogs.ResumeLayout(false);
             this.gbDUJ.ResumeLayout(false);
+            this.tabSettings.ResumeLayout(false);
+            this.gbGeneralPreferences.ResumeLayout(false);
+            this.gbGeneralPreferences.PerformLayout();
+            this.gbSnowApplications.ResumeLayout(false);
+            this.gbSnowApplications.PerformLayout();
+            this.dbSqlServer.ResumeLayout(false);
+            this.dbSqlServer.PerformLayout();
             this.tabAbout.ResumeLayout(false);
             this.tabAbout.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.toolStripMain.ResumeLayout(false);
             this.toolStripMain.PerformLayout();
-            this.tabSettings.ResumeLayout(false);
-            this.dbSqlServer.ResumeLayout(false);
-            this.dbSqlServer.PerformLayout();
-            this.gbSnowApplications.ResumeLayout(false);
-            this.gbSnowApplications.PerformLayout();
-            this.gbGeneralPreferences.ResumeLayout(false);
-            this.gbGeneralPreferences.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
+            this.gbSLMServices.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -642,10 +692,14 @@
         private System.Windows.Forms.Label lblGeneralSaveDirectory;
         private System.Windows.Forms.Label lblReportingTableDesign;
         private System.Windows.Forms.ComboBox cblReportingTableDesign;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbSLMWebLogs;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnWebLogs;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.GroupBox gbSLMServices;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnSLMServicesLogs;
     }
 }
 
