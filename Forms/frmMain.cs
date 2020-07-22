@@ -4,7 +4,7 @@ using System.Collections;
 using System.Data;
 using System.Globalization;
 using System.IO;
-using System.Linq;
+using Microsoft.VisualBasic;
 using System.Resources;
 using System.Windows.Forms;
 
@@ -18,6 +18,7 @@ namespace SLC
         readonly int limit = 5;
 
         public string SlmServerPath; // this gets populated during LoadSettings()
+        public string LocalDestiniation;
         #endregion
 
         #region Constructor
@@ -44,7 +45,8 @@ namespace SLC
                         DataTable dt;
                         dt = Laim.MSSqlServer.ExecuteReadDataTable(SqlConnection, (string)entry.Value);
 
-                        DataExporter("DataUpdateJob-" + DateTime.Now.ToString("ddMMyyyy"), txtGeneralSaveDirectory.Text, "DUJ", dt, OfficeOpenXml.Table.TableStyles.None, (string)entry.Key);
+                        DataExporter("DataUpdateJob-" + DateTime.Now.ToString("ddMMyyyy"), LocalDestiniation, "DUJ", dt, OfficeOpenXml.Table.TableStyles.None, (string)entry.Key);
+                        dt.Dispose();
                     }
                 }
                 tsLblCollectorStatusValue.Text = "DUJ Logs Exported";
@@ -60,7 +62,7 @@ namespace SLC
         {
            try
             {
-                string webLogsDirectory = txtGeneralSaveDirectory.Text + "\\WebLogs\\";
+                string webLogsDirectory = LocalDestiniation + "\\WebLogs\\";
 
                 LicenseManager.WebDirectoryCreator(webLogsDirectory);
 
@@ -82,7 +84,7 @@ namespace SLC
         {
             try
             { 
-                string servicesLogsDirectory = txtGeneralSaveDirectory.Text + "\\ServicesLogs\\";
+                string servicesLogsDirectory = LocalDestiniation + "\\ServicesLogs\\";
 
                 #region File Copying
 
@@ -106,6 +108,7 @@ namespace SLC
                 Global.LogFileCopier(SlmServerPath + LicenseManager.SlmImport, limit, servicesLogsDirectory + LicenseManager.SLCSlmImport + "\\");
                 Global.LogFileCopier(SlmServerPath + LicenseManager.SoftwareEnterpriseAgreement, limit, servicesLogsDirectory + LicenseManager.SLCSEAS + "\\");
                 Global.LogFileCopier(SlmServerPath + LicenseManager.Virtualization, limit, servicesLogsDirectory + LicenseManager.SLCVirtualization + "\\");
+                Global.LogFileCopier(SlmServerPath + LicenseManager.UpdateService, limit, servicesLogsDirectory + LicenseManager.SLCUpdateService + "\\");
 
                 #endregion
 
@@ -123,9 +126,20 @@ namespace SLC
         {
             using (Forms.frmSLMCustomizeGet f = new Forms.frmSLMCustomizeGet())
             {
-                f.ServicesLogDirectory = txtGeneralSaveDirectory.Text + "\\ServicesLogs\\";
+                f.ServicesLogDirectory = LocalDestiniation + "\\ServicesLogs\\";
                 f.SlmServerPath = SlmServerPath;
                 f.limit = limit;
+                f.ShowDialog();
+            }
+        }
+        #endregion
+
+        #region Tab: Snow Inventory
+        private void btnInventoryAgentGet_Click(object sender, EventArgs e)
+        {
+            using (Forms.frmInventoryAgent f = new Forms.frmInventoryAgent())
+            {
+                f.Destination = LocalDestiniation;
                 f.ShowDialog();
             }
         }
@@ -324,7 +338,14 @@ namespace SLC
         void LoadSettingsFieldAppender()
         {
             SlmServerPath = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text;
+            LocalDestiniation = txtGeneralSaveDirectory.Text;
         }
         #endregion
+
+        private void linkHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/goosetuv/snow-log-collector/wiki");
+        }
+
     }
 }

@@ -35,6 +35,7 @@ namespace SLC
         public static string SlmImport = MasterLogPath + "SlmImport\\";
         public static string SoftwareEnterpriseAgreement = MasterLogPath + "SoftwareEnterpriseAgreementService\\";
         public static string Virtualization = MasterLogPath + "VirtualizationService\\";
+        public static string UpdateService = MasterLogPath + "UpdateService\\";
         #endregion
 
         #region SLC: Directory Names
@@ -65,10 +66,10 @@ namespace SLC
         public static string SLCSlmImport = "SlmImport";
         public static string SLCSEAS = "SoftwareEnterpriseAgreementService";
         public static string SLCVirtualization = "VirtualizationService";
+        public static string SLCUpdateService = "UpdateService";
 
         #endregion
         #endregion
-
 
         #region Functions
         public static void WebDirectoryCreator(string WebLogDirectory)
@@ -106,6 +107,7 @@ namespace SLC
                 Directory.CreateDirectory(ServiceLogDirectory + SLCSlmImport);
                 Directory.CreateDirectory(ServiceLogDirectory + SLCSEAS);
                 Directory.CreateDirectory(ServiceLogDirectory + SLCVirtualization);
+                Directory.CreateDirectory(ServiceLogDirectory + SLCUpdateService);
 
             }
         }

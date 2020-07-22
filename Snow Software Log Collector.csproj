@@ -65,10 +65,12 @@
     <Reference Include="Laim.Utility">
       <HintPath>..\..\..\_Librays\Laim.Utility\v1.5-64b\Laim.Utility.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Security" />
     <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Xml.Linq" />
@@ -83,6 +85,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Global.cs" />
+    <Compile Include="Classes\Inventory.cs" />
+    <Compile Include="Classes\NetworkShareAccesser.cs" />
+    <Compile Include="Forms\frmInventoryAgent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmInventoryAgent.Designer.cs">
+      <DependentUpon>frmInventoryAgent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmSLMCustomizeGet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +108,9 @@
     <Compile Include="Classes\LicenseManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\frmInventoryAgent.resx">
+      <DependentUpon>frmInventoryAgent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSLMCustomizeGet.resx">
       <DependentUpon>frmSLMCustomizeGet.cs</DependentUpon>
     </EmbeddedResource>

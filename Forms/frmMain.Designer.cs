@@ -42,6 +42,12 @@
             this.lblDUJNotice = new System.Windows.Forms.Label();
             this.btnDUJ = new System.Windows.Forms.Button();
             this.tabINV = new System.Windows.Forms.TabPage();
+            this.gbSnowInventoryAgent = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnInventoryAgentGet = new System.Windows.Forms.Button();
+            this.gbSnowInventory = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnSnowInventoryGet = new System.Windows.Forms.Button();
             this.tabSettings = new System.Windows.Forms.TabPage();
             this.gbGeneralPreferences = new System.Windows.Forms.GroupBox();
             this.btnGeneralSaveDirectory = new System.Windows.Forms.Button();
@@ -75,12 +81,15 @@
             this.toolStripMain = new System.Windows.Forms.ToolStrip();
             this.tsLblCollectorStatus = new System.Windows.Forms.ToolStripLabel();
             this.tsLblCollectorStatusValue = new System.Windows.Forms.ToolStripLabel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.linkHelp = new System.Windows.Forms.LinkLabel();
             this.tabControlMain.SuspendLayout();
             this.tabSLM.SuspendLayout();
             this.gbSLMServices.SuspendLayout();
             this.gbSLMWebLogs.SuspendLayout();
             this.gbDUJ.SuspendLayout();
+            this.tabINV.SuspendLayout();
+            this.gbSnowInventoryAgent.SuspendLayout();
+            this.gbSnowInventory.SuspendLayout();
             this.tabSettings.SuspendLayout();
             this.gbGeneralPreferences.SuspendLayout();
             this.gbSnowApplications.SuspendLayout();
@@ -146,7 +155,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(180, 42);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Compatiable with Snow License Manager 7.x, 8.x and 9.x.";
+            this.label2.Text = "Compatiable with Snow License Manager 8.x and 9.x.";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnSLMServicesLogs
@@ -178,7 +187,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(180, 42);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Compatiable with Snow License Manager 7.x, 8.x and 9.x.";
+            this.label1.Text = "Compatiable with Snow License Manager 8.x and 9.x.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnWebLogs
@@ -210,7 +219,7 @@
             this.lblDUJNotice.Name = "lblDUJNotice";
             this.lblDUJNotice.Size = new System.Drawing.Size(180, 42);
             this.lblDUJNotice.TabIndex = 1;
-            this.lblDUJNotice.Text = "Compatiable with Snow License Manager 7.x, 8.x and 9.x.";
+            this.lblDUJNotice.Text = "Compatiable with Snow License Manager 8.x and 9.x.";
             this.lblDUJNotice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnDUJ
@@ -225,6 +234,8 @@
             // 
             // tabINV
             // 
+            this.tabINV.Controls.Add(this.gbSnowInventoryAgent);
+            this.tabINV.Controls.Add(this.gbSnowInventory);
             this.tabINV.Location = new System.Drawing.Point(4, 22);
             this.tabINV.Name = "tabINV";
             this.tabINV.Padding = new System.Windows.Forms.Padding(3);
@@ -232,6 +243,70 @@
             this.tabINV.TabIndex = 1;
             this.tabINV.Text = "Snow Inventory";
             this.tabINV.UseVisualStyleBackColor = true;
+            // 
+            // gbSnowInventoryAgent
+            // 
+            this.gbSnowInventoryAgent.Controls.Add(this.label4);
+            this.gbSnowInventoryAgent.Controls.Add(this.btnInventoryAgentGet);
+            this.gbSnowInventoryAgent.Location = new System.Drawing.Point(252, 10);
+            this.gbSnowInventoryAgent.Name = "gbSnowInventoryAgent";
+            this.gbSnowInventoryAgent.Size = new System.Drawing.Size(200, 100);
+            this.gbSnowInventoryAgent.TabIndex = 2;
+            this.gbSnowInventoryAgent.TabStop = false;
+            this.gbSnowInventoryAgent.Text = "Snow Inventory Agent (Alpha)";
+            // 
+            // label4
+            // 
+            this.label4.AutoEllipsis = true;
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label4.Location = new System.Drawing.Point(10, 20);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(180, 42);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Compatiable with Snow Inventory Agent 5.x and 6.x.";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnInventoryAgentGet
+            // 
+            this.btnInventoryAgentGet.Location = new System.Drawing.Point(115, 65);
+            this.btnInventoryAgentGet.Name = "btnInventoryAgentGet";
+            this.btnInventoryAgentGet.Size = new System.Drawing.Size(75, 23);
+            this.btnInventoryAgentGet.TabIndex = 0;
+            this.btnInventoryAgentGet.Text = "Get";
+            this.btnInventoryAgentGet.UseVisualStyleBackColor = true;
+            this.btnInventoryAgentGet.Click += new System.EventHandler(this.btnInventoryAgentGet_Click);
+            // 
+            // gbSnowInventory
+            // 
+            this.gbSnowInventory.Controls.Add(this.label3);
+            this.gbSnowInventory.Controls.Add(this.btnSnowInventoryGet);
+            this.gbSnowInventory.Location = new System.Drawing.Point(10, 10);
+            this.gbSnowInventory.Name = "gbSnowInventory";
+            this.gbSnowInventory.Size = new System.Drawing.Size(200, 100);
+            this.gbSnowInventory.TabIndex = 1;
+            this.gbSnowInventory.TabStop = false;
+            this.gbSnowInventory.Text = "Snow Inventory Server";
+            // 
+            // label3
+            // 
+            this.label3.AutoEllipsis = true;
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label3.Location = new System.Drawing.Point(10, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(180, 42);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Compatiable with Snow Inventory Server 5.x and 6.x.";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnSnowInventoryGet
+            // 
+            this.btnSnowInventoryGet.Enabled = false;
+            this.btnSnowInventoryGet.Location = new System.Drawing.Point(115, 65);
+            this.btnSnowInventoryGet.Name = "btnSnowInventoryGet";
+            this.btnSnowInventoryGet.Size = new System.Drawing.Size(75, 23);
+            this.btnSnowInventoryGet.TabIndex = 0;
+            this.btnSnowInventoryGet.Text = "Get";
+            this.btnSnowInventoryGet.UseVisualStyleBackColor = true;
             // 
             // tabSettings
             // 
@@ -612,15 +687,16 @@
             this.tsLblCollectorStatusValue.Size = new System.Drawing.Size(57, 22);
             this.tsLblCollectorStatusValue.Text = "Waiting...";
             // 
-            // linkLabel1
+            // linkHelp
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(413, 87);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(29, 13);
-            this.linkLabel1.TabIndex = 3;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Help";
+            this.linkHelp.AutoSize = true;
+            this.linkHelp.Location = new System.Drawing.Point(413, 87);
+            this.linkHelp.Name = "linkHelp";
+            this.linkHelp.Size = new System.Drawing.Size(29, 13);
+            this.linkHelp.TabIndex = 3;
+            this.linkHelp.TabStop = true;
+            this.linkHelp.Text = "Help";
+            this.linkHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkHelp_LinkClicked);
             // 
             // frmMain
             // 
@@ -628,7 +704,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(472, 423);
-            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.linkHelp);
             this.Controls.Add(this.toolStripMain);
             this.Controls.Add(this.pictureBoxLogo);
             this.Controls.Add(this.tabControlMain);
@@ -643,6 +719,9 @@
             this.gbSLMServices.ResumeLayout(false);
             this.gbSLMWebLogs.ResumeLayout(false);
             this.gbDUJ.ResumeLayout(false);
+            this.tabINV.ResumeLayout(false);
+            this.gbSnowInventoryAgent.ResumeLayout(false);
+            this.gbSnowInventory.ResumeLayout(false);
             this.tabSettings.ResumeLayout(false);
             this.gbGeneralPreferences.ResumeLayout(false);
             this.gbGeneralPreferences.PerformLayout();
@@ -701,12 +780,18 @@
         private System.Windows.Forms.GroupBox gbSLMWebLogs;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnWebLogs;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel linkHelp;
         private System.Windows.Forms.GroupBox gbSLMServices;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSLMServicesLogs;
         private System.Windows.Forms.Button btnSLMServicesLogsCustom;
         private System.Windows.Forms.Button btnGeneralSaveDirectory;
+        private System.Windows.Forms.GroupBox gbSnowInventory;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnSnowInventoryGet;
+        private System.Windows.Forms.GroupBox gbSnowInventoryAgent;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnInventoryAgentGet;
     }
 }
 

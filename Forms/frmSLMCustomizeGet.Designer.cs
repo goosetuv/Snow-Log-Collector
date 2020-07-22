@@ -48,6 +48,7 @@
             this.btnGetLogs = new System.Windows.Forms.Button();
             this.cbComplianceService = new System.Windows.Forms.CheckBox();
             this.btnClearAll = new System.Windows.Forms.Button();
+            this.cbUpdateService = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // cbAdobeCC
@@ -251,12 +252,23 @@
             this.btnClearAll.UseVisualStyleBackColor = true;
             this.btnClearAll.Click += new System.EventHandler(this.btnClearAll_Click);
             // 
+            // cbUpdateService
+            // 
+            this.cbUpdateService.AutoSize = true;
+            this.cbUpdateService.Location = new System.Drawing.Point(169, 196);
+            this.cbUpdateService.Name = "cbUpdateService";
+            this.cbUpdateService.Size = new System.Drawing.Size(100, 17);
+            this.cbUpdateService.TabIndex = 21;
+            this.cbUpdateService.Text = "Update Service";
+            this.cbUpdateService.UseVisualStyleBackColor = true;
+            // 
             // frmSLMCustomizeGet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(342, 279);
+            this.Controls.Add(this.cbUpdateService);
             this.Controls.Add(this.btnClearAll);
             this.Controls.Add(this.cbComplianceService);
             this.Controls.Add(this.btnGetLogs);
@@ -308,5 +320,6 @@
         private System.Windows.Forms.Button btnGetLogs;
         private System.Windows.Forms.CheckBox cbComplianceService;
         private System.Windows.Forms.Button btnClearAll;
+        private System.Windows.Forms.CheckBox cbUpdateService;
     }
 }
