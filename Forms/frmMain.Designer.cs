@@ -77,13 +77,17 @@
             this.txtSqlServerName = new System.Windows.Forms.TextBox();
             this.lblSqlServerName = new System.Windows.Forms.Label();
             this.tabAbout = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtLibraryInformation = new System.Windows.Forms.TextBox();
+            this.lbLibraries = new System.Windows.Forms.ListBox();
+            this.lblAppCopyright = new System.Windows.Forms.Label();
+            this.lblAppVersion = new System.Windows.Forms.Label();
+            this.lblAppName = new System.Windows.Forms.Label();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.toolStripMain = new System.Windows.Forms.ToolStrip();
             this.tsLblCollectorStatus = new System.Windows.Forms.ToolStripLabel();
             this.tsLblCollectorStatusValue = new System.Windows.Forms.ToolStripLabel();
             this.linkHelp = new System.Windows.Forms.LinkLabel();
-            this.lblAppName = new System.Windows.Forms.Label();
-            this.lblAppVersion = new System.Windows.Forms.Label();
             this.tabControlMain.SuspendLayout();
             this.tabSLM.SuspendLayout();
             this.gbSLMServices.SuspendLayout();
@@ -199,7 +203,7 @@
             this.btnWebLogs.Name = "btnWebLogs";
             this.btnWebLogs.Size = new System.Drawing.Size(75, 23);
             this.btnWebLogs.TabIndex = 0;
-            this.btnWebLogs.Text = "Get All";
+            this.btnWebLogs.Text = "Get";
             this.btnWebLogs.UseVisualStyleBackColor = true;
             this.btnWebLogs.Click += new System.EventHandler(this.btnWebLogs_Click);
             // 
@@ -646,6 +650,11 @@
             // 
             // tabAbout
             // 
+            this.tabAbout.Controls.Add(this.linkHelp);
+            this.tabAbout.Controls.Add(this.label1);
+            this.tabAbout.Controls.Add(this.txtLibraryInformation);
+            this.tabAbout.Controls.Add(this.lbLibraries);
+            this.tabAbout.Controls.Add(this.lblAppCopyright);
             this.tabAbout.Controls.Add(this.lblAppVersion);
             this.tabAbout.Controls.Add(this.lblAppName);
             this.tabAbout.Location = new System.Drawing.Point(4, 22);
@@ -656,15 +665,80 @@
             this.tabAbout.Text = "About";
             this.tabAbout.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F);
+            this.label1.Location = new System.Drawing.Point(20, 195);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(425, 42);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Warning: This computer program is protected by copyright law and international \r\n" +
+    "treaties.  Unauthorized reproduction or distribution of this program, may result" +
+    " \r\nin civil or criminal penalties.";
+            // 
+            // txtLibraryInformation
+            // 
+            this.txtLibraryInformation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtLibraryInformation.Location = new System.Drawing.Point(23, 132);
+            this.txtLibraryInformation.Multiline = true;
+            this.txtLibraryInformation.Name = "txtLibraryInformation";
+            this.txtLibraryInformation.ReadOnly = true;
+            this.txtLibraryInformation.Size = new System.Drawing.Size(415, 50);
+            this.txtLibraryInformation.TabIndex = 4;
+            // 
+            // lbLibraries
+            // 
+            this.lbLibraries.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbLibraries.FormattingEnabled = true;
+            this.lbLibraries.Items.AddRange(new object[] {
+            "EPPlus — 5.2",
+            "Laim.Utility — 1.5"});
+            this.lbLibraries.Location = new System.Drawing.Point(23, 85);
+            this.lbLibraries.Name = "lbLibraries";
+            this.lbLibraries.Size = new System.Drawing.Size(415, 41);
+            this.lbLibraries.Sorted = true;
+            this.lbLibraries.TabIndex = 3;
+            this.lbLibraries.SelectedIndexChanged += new System.EventHandler(this.lbLibraries_SelectedIndexChanged);
+            // 
+            // lblAppCopyright
+            // 
+            this.lblAppCopyright.AutoSize = true;
+            this.lblAppCopyright.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F);
+            this.lblAppCopyright.Location = new System.Drawing.Point(20, 60);
+            this.lblAppCopyright.Name = "lblAppCopyright";
+            this.lblAppCopyright.Size = new System.Drawing.Size(58, 14);
+            this.lblAppCopyright.TabIndex = 2;
+            this.lblAppCopyright.Text = "Copyright";
+            // 
+            // lblAppVersion
+            // 
+            this.lblAppVersion.AutoSize = true;
+            this.lblAppVersion.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F);
+            this.lblAppVersion.Location = new System.Drawing.Point(20, 40);
+            this.lblAppVersion.Name = "lblAppVersion";
+            this.lblAppVersion.Size = new System.Drawing.Size(61, 14);
+            this.lblAppVersion.TabIndex = 1;
+            this.lblAppVersion.Text = "Version {0}";
+            // 
+            // lblAppName
+            // 
+            this.lblAppName.AutoSize = true;
+            this.lblAppName.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAppName.Location = new System.Drawing.Point(20, 20);
+            this.lblAppName.Name = "lblAppName";
+            this.lblAppName.Size = new System.Drawing.Size(107, 14);
+            this.lblAppName.TabIndex = 0;
+            this.lblAppName.Text = "Snow Log Collector";
+            // 
             // pictureBoxLogo
             // 
-            this.pictureBoxLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxLogo.Image = global::SLC.Properties.Resources.slc_logo1;
             this.pictureBoxLogo.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(472, 120);
+            this.pictureBoxLogo.Size = new System.Drawing.Size(472, 114);
             this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxLogo.TabIndex = 1;
+            this.pictureBoxLogo.TabIndex = 4;
             this.pictureBoxLogo.TabStop = false;
             // 
             // toolStripMain
@@ -690,13 +764,13 @@
             // tsLblCollectorStatusValue
             // 
             this.tsLblCollectorStatusValue.Name = "tsLblCollectorStatusValue";
-            this.tsLblCollectorStatusValue.Size = new System.Drawing.Size(57, 22);
-            this.tsLblCollectorStatusValue.Text = "Waiting...";
+            this.tsLblCollectorStatusValue.Size = new System.Drawing.Size(60, 22);
+            this.tsLblCollectorStatusValue.Text = "Waiting....";
             // 
             // linkHelp
             // 
             this.linkHelp.AutoSize = true;
-            this.linkHelp.Location = new System.Drawing.Point(413, 87);
+            this.linkHelp.Location = new System.Drawing.Point(409, 20);
             this.linkHelp.Name = "linkHelp";
             this.linkHelp.Size = new System.Drawing.Size(29, 13);
             this.linkHelp.TabIndex = 3;
@@ -704,31 +778,12 @@
             this.linkHelp.Text = "Help";
             this.linkHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkHelp_LinkClicked);
             // 
-            // lblAppName
-            // 
-            this.lblAppName.AutoSize = true;
-            this.lblAppName.Location = new System.Drawing.Point(20, 20);
-            this.lblAppName.Name = "lblAppName";
-            this.lblAppName.Size = new System.Drawing.Size(99, 13);
-            this.lblAppName.TabIndex = 0;
-            this.lblAppName.Text = "Snow Log Collector";
-            // 
-            // lblAppVersion
-            // 
-            this.lblAppVersion.AutoSize = true;
-            this.lblAppVersion.Location = new System.Drawing.Point(20, 40);
-            this.lblAppVersion.Name = "lblAppVersion";
-            this.lblAppVersion.Size = new System.Drawing.Size(87, 13);
-            this.lblAppVersion.TabIndex = 1;
-            this.lblAppVersion.Text = "Version 1.0.8374";
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(472, 423);
-            this.Controls.Add(this.linkHelp);
             this.Controls.Add(this.toolStripMain);
             this.Controls.Add(this.pictureBoxLogo);
             this.Controls.Add(this.tabControlMain);
@@ -738,6 +793,7 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Snow Log Collector";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.tabControlMain.ResumeLayout(false);
             this.tabSLM.ResumeLayout(false);
             this.gbSLMServices.ResumeLayout(false);
@@ -820,6 +876,10 @@
         private System.Windows.Forms.Button btnInventoryAgentGet;
         private System.Windows.Forms.Label lblAppName;
         private System.Windows.Forms.Label lblAppVersion;
+        private System.Windows.Forms.Label lblAppCopyright;
+        private System.Windows.Forms.ListBox lbLibraries;
+        private System.Windows.Forms.TextBox txtLibraryInformation;
+        private System.Windows.Forms.Label label1;
     }
 }
 

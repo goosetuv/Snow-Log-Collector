@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Snow Software Log Collector")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyDescription("Log Collector for Snow Software Products")]
+[assembly: AssemblyConfiguration("retail")]
 [assembly: AssemblyCompany("Laim McKenzie")]
 [assembly: AssemblyProduct("Snow Software Log Collector")]
-[assembly: AssemblyCopyright("Copyright © Laim McKenzie. 2020")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("© 2020 Laim McKenzie.")]
+[assembly: AssemblyTrademark("Laim McKenzie")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
@@ -32,5 +32,6 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0")]
-[assembly: AssemblyFileVersion("1.0")]
+[assembly: AssemblyVersion("1.0.7509.205")]
+[assembly: AssemblyFileVersion("1.0.7509.205")]
+[assembly: AssemblyInformationalVersion("1.0.24")]

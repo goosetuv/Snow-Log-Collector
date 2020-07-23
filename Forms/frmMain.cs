@@ -7,6 +7,7 @@ using System.IO;
 using Microsoft.VisualBasic;
 using System.Resources;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace SLC
 {
@@ -363,11 +364,54 @@ namespace SLC
             InvServerPath = @"\\" + txtINVServer.Text + @"\" + txtINVDrive.Text;
             LocalDestiniation = txtGeneralSaveDirectory.Text;
         }
+
+        private string GetCopyright()
+        {
+            Assembly asm = Assembly.GetExecutingAssembly();
+            object[] obj = asm.GetCustomAttributes(false);
+            foreach (object o in obj)
+            {
+                if (o.GetType() ==
+                    typeof(System.Reflection.AssemblyCopyrightAttribute))
+                {
+                    AssemblyCopyrightAttribute aca =
+            (AssemblyCopyrightAttribute)o;
+                    return aca.Copyright;
+                }
+            }
+            return string.Empty;
+        }
+
+        private string GetVersion()
+        {
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            System.Diagnostics.FileVersionInfo fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
+            return fvi.FileVersion;
+        }
         #endregion
 
         private void linkHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/goosetuv/snow-log-collector/wiki");
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            lblAppVersion.Text = string.Format("Version {0}", GetVersion());
+            lblAppCopyright.Text = GetCopyright();
+        }
+
+        private void lbLibraries_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (lbLibraries.SelectedItem.ToString())
+            {
+                case "EPPlus — 5.2":
+                    txtLibraryInformation.Text = "EPPlus is a .NET library that reads and writes Excel 2007/2010/2013 files using the Open Office Xml format (xlsx).";
+                    break;
+                case "Laim.Utility — 1.5":
+                    txtLibraryInformation.Text = "Closed-source utility used for most of my applications with pre-existing code modules.";
+                    break;
+            }
         }
     }
 }

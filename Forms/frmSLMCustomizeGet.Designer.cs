@@ -290,8 +290,10 @@
             this.Controls.Add(this.cbEventStore);
             this.Controls.Add(this.cbDataAccess);
             this.Controls.Add(this.cbAdobeCC);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmSLMCustomizeGet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "License Manager Service Logs";
