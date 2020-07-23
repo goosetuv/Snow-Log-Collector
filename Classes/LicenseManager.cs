@@ -7,35 +7,35 @@ namespace SLC
     {
         #region Fields
         #region SLM: Web Logs
-        public static string Application = "$\\Program Files\\Snow Software\\Snow License Manager\\Web\\Logs\\Application\\";
-        public static string Error = "$\\Program Files\\Snow Software\\Snow License Manager\\Web\\Logs\\Error\\";
-        public static string WebAPI = "$\\Program Files\\Snow Software\\Snow License Manager\\Web\\Logs\\WebApi\\";
-        public static string Security = "$\\Program Files\\Snow Software\\Snow License Manager\\Web\\Logs\\Security\\";
+        public static string Application = @"$\Program Files\Snow Software\Snow License Manager\Web\Logs\Application\";
+        public static string Error = @"$\Program Files\Snow Software\Snow License Manager\Web\Logs\Error\";
+        public static string WebAPI = @"$\Program Files\Snow Software\Snow License Manager\Web\Logs\WebApi\";
+        public static string Security = @"$\Program Files\Snow Software\Snow License Manager\Web\Logs\Security\";
         #endregion
 
         #region SLM: Services Logs
         // These are the UNP Paths to the Snow Software Logs specifically.
-        public static string MasterLogPath = "$\\Program Files\\Snow Software\\Logs\\";
+        public static string MasterLogPath = @"$\Program Files\Snow Software\Logs\";
 
-        public static string AdobeCC = MasterLogPath + "AdobeCC\\";
-        public static string EventStore = MasterLogPath + "EventStoreService\\";
-        public static string ImportTool = MasterLogPath + "ImportTool\\ImportTool_\\";
-        public static string InventoryService = MasterLogPath + "InventoryService\\";
-        public static string NotificationDelivery = MasterLogPath + "NotificationDelivery\\";
-        public static string Office365 = MasterLogPath + "Office365Service\\";
-        public static string ReportExport = MasterLogPath + "ReportExport\\";
-        public static string Compliance = MasterLogPath + "Compliance\\";
-        public static string LicensingService = MasterLogPath + "LicensingService\\";
-        public static string Licensing = MasterLogPath + "Licensing\\";
-        public static string DataAccess = MasterLogPath + "DataAccessService\\";
-        public static string EventWarehouse = MasterLogPath + "EventWarehouse\\";
-        public static string GenericSaaS = MasterLogPath + "GenericSaaS\\";
-        public static string MaintenanceService = MasterLogPath + "Maintenance\\";
-        public static string OracleManagement = MasterLogPath + "OracleManagementOption\\";
-        public static string SlmImport = MasterLogPath + "SlmImport\\";
-        public static string SoftwareEnterpriseAgreement = MasterLogPath + "SoftwareEnterpriseAgreementService\\";
-        public static string Virtualization = MasterLogPath + "VirtualizationService\\";
-        public static string UpdateService = MasterLogPath + "UpdateService\\";
+        public static string AdobeCC = MasterLogPath + @"AdobeCC\";
+        public static string EventStore = MasterLogPath + @"EventStoreService\";
+        public static string ImportTool = MasterLogPath + @"ImportTool\ImportTool_\";
+        public static string InventoryService = MasterLogPath + @"InventoryService\";
+        public static string NotificationDelivery = MasterLogPath + @"NotificationDelivery\";
+        public static string Office365 = MasterLogPath + @"Office365Service\";
+        public static string ReportExport = MasterLogPath + @"ReportExport\";
+        public static string Compliance = MasterLogPath + @"Compliance\";
+        public static string LicensingService = MasterLogPath + @"LicensingService\";
+        public static string Licensing = MasterLogPath + @"Licensing\";
+        public static string DataAccess = MasterLogPath + @"DataAccessService\";
+        public static string EventWarehouse = MasterLogPath + @"EventWarehouse\";
+        public static string GenericSaaS = MasterLogPath + @"GenericSaaS\";
+        public static string MaintenanceService = MasterLogPath + @"Maintenance\";
+        public static string OracleManagement = MasterLogPath + @"OracleManagementOption\";
+        public static string SlmImport = MasterLogPath + @"SlmImport\";
+        public static string SoftwareEnterpriseAgreement = MasterLogPath + @"SoftwareEnterpriseAgreementService\";
+        public static string Virtualization = MasterLogPath + @"VirtualizationService\";
+        public static string UpdateService = MasterLogPath + @"UpdateService\";
         #endregion
 
         #region SLC: Directory Names
@@ -48,25 +48,25 @@ namespace SLC
         public static string SLCError = "Error";
         public static string SLCWebAPI = "WebAPI";
 
-        public static string SLCAdobeCC = "AdobeCC";
-        public static string SLCEventStore = "EventStoreService";
+        public static string SLCAdobeCC = "Adobe Creative Cloud";
+        public static string SLCEventStore = "Event Store";
         public static string SLCImportTool = "ImportTool";
-        public static string SLCInventoryAPI = "InventoryAPIService";
-        public static string SLCNotification = "NotificationDelivery";
-        public static string SLCOffice365 = "Office365Service";
-        public static string SLCReportExport = "ReportExport";
-        public static string SLCCompliance = "ComplianceService";
-        public static string SLCLicensingService = "LicensingService";
+        public static string SLCInventoryAPI = "InventoryAPI";
+        public static string SLCNotification = "Notification Delivery";
+        public static string SLCOffice365 = "Office 365";
+        public static string SLCReportExport = "Report Export";
+        public static string SLCCompliance = "Compliance";
+        public static string SLCLicensingService = "Licensing Service";
         public static string SLCLicensing = "Licensing";
-        public static string SLCDataAccess = "DataAccessService";
-        public static string SLCEventWarehouse = "EventWarehouse";
-        public static string SLCGenericSaaS = "GenericSaaS";
+        public static string SLCDataAccess = "Data Access Service";
+        public static string SLCEventWarehouse = "Event Warehouse";
+        public static string SLCGenericSaaS = "Generic SaaS";
         public static string SLCMaintenance = "Maintenance";
-        public static string SLCOMO = "OracleManagementOption";
-        public static string SLCSlmImport = "SlmImport";
-        public static string SLCSEAS = "SoftwareEnterpriseAgreementService";
-        public static string SLCVirtualization = "VirtualizationService";
-        public static string SLCUpdateService = "UpdateService";
+        public static string SLCOMO = "Oracle Management Option";
+        public static string SLCSlmImport = "Slm Import";
+        public static string SLCSEAS = "Software Enterprise Agreement Service";
+        public static string SLCVirtualization = "Virtualization";
+        public static string SLCUpdateService = "Update Service";
 
         #endregion
         #endregion
@@ -77,10 +77,10 @@ namespace SLC
             if(Directory.Exists(WebLogDirectory) == false)
             {
                 Directory.CreateDirectory(WebLogDirectory);
-                Directory.CreateDirectory(WebLogDirectory + "Application\\");
-                Directory.CreateDirectory(WebLogDirectory + "Error\\");
-                Directory.CreateDirectory(WebLogDirectory + "Security\\");
-                Directory.CreateDirectory(WebLogDirectory + "WebAPI\\");
+                Directory.CreateDirectory(WebLogDirectory + SLCApplication);
+                Directory.CreateDirectory(WebLogDirectory + SLCError);
+                Directory.CreateDirectory(WebLogDirectory + SLCSecurity);
+                Directory.CreateDirectory(WebLogDirectory + SLCWebAPI);
             }
         }
 

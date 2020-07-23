@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSLMCustomizeGet));
             this.cbAdobeCC = new System.Windows.Forms.CheckBox();
             this.cbDataAccess = new System.Windows.Forms.CheckBox();
             this.cbEventStore = new System.Windows.Forms.CheckBox();
@@ -290,6 +291,7 @@
             this.Controls.Add(this.cbDataAccess);
             this.Controls.Add(this.cbAdobeCC);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmSLMCustomizeGet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "License Manager Service Logs";

@@ -18,7 +18,8 @@ namespace SLC
         readonly int limit = 5;
 
         public string SlmServerPath; // this gets populated during LoadSettings()
-        public string LocalDestiniation;
+        public string InvServerPath; // this gets populated during LoadSettings()
+        public string LocalDestiniation; // this gets populated during LoadSettings()
         #endregion
 
         #region Constructor
@@ -36,6 +37,13 @@ namespace SLC
         {
             try
             {
+                string dujDirectory = LocalDestiniation + @"\Snow License Manager\";
+
+                if(Directory.Exists(dujDirectory) == false)
+                {
+                    Directory.CreateDirectory(dujDirectory);
+                }
+
                 ResourceSet resourceSet = Properties.Resources.ResourceManager.GetResourceSet(CultureInfo.CurrentUICulture, true, true);
 
                 foreach (DictionaryEntry entry in resourceSet)
@@ -45,7 +53,7 @@ namespace SLC
                         DataTable dt;
                         dt = Laim.MSSqlServer.ExecuteReadDataTable(SqlConnection, (string)entry.Value);
 
-                        DataExporter("DataUpdateJob-" + DateTime.Now.ToString("ddMMyyyy"), LocalDestiniation, "DUJ", dt, OfficeOpenXml.Table.TableStyles.None, (string)entry.Key);
+                        DataExporter("DataUpdateJob-" + DateTime.Now.ToString("ddMMyyyy"), dujDirectory, "DUJ", dt, OfficeOpenXml.Table.TableStyles.None, (string)entry.Key);
                         dt.Dispose();
                     }
                 }
@@ -54,7 +62,7 @@ namespace SLC
             catch (Exception ex)
             {
                 tsLblCollectorStatusValue.Text = "Failed, Check Logs";
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -62,7 +70,7 @@ namespace SLC
         {
            try
             {
-                string webLogsDirectory = LocalDestiniation + "\\WebLogs\\";
+                string webLogsDirectory = LocalDestiniation + @"\Snow License Manager\Web\";
 
                 LicenseManager.WebDirectoryCreator(webLogsDirectory);
 
@@ -84,7 +92,7 @@ namespace SLC
         {
             try
             { 
-                string servicesLogsDirectory = LocalDestiniation + "\\ServicesLogs\\";
+                string servicesLogsDirectory = LocalDestiniation + @"\Snow License Manager\Services\";
 
                 #region File Copying
 
@@ -126,7 +134,7 @@ namespace SLC
         {
             using (Forms.frmSLMCustomizeGet f = new Forms.frmSLMCustomizeGet())
             {
-                f.ServicesLogDirectory = LocalDestiniation + "\\ServicesLogs\\";
+                f.ServicesLogDirectory = LocalDestiniation + @"\Snow License Manager\Services\";
                 f.SlmServerPath = SlmServerPath;
                 f.limit = limit;
                 f.ShowDialog();
@@ -141,6 +149,19 @@ namespace SLC
             {
                 f.Destination = LocalDestiniation;
                 f.ShowDialog();
+            }
+        }
+
+        private void btnSnowInventoryGet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Inventory.InventoryDirectoryCreator(LocalDestiniation + @"\Snow Inventory Server\");
+                tsLblCollectorStatusValue.Text = "Inventory Logs Copied";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Uncaught Exception", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
         #endregion
@@ -186,7 +207,8 @@ namespace SLC
 
                     if (File.Exists("app.config"))
                     {
-                        MessageBox.Show("Configuration Saved", "Configuration", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Configuration saved, the application will now restart.", "Configuration", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Application.Restart();
                     }
                 }
                 else
@@ -248,7 +270,7 @@ namespace SLC
             DialogResult result = fbg.ShowDialog();
             if(result == DialogResult.OK)
             {
-                txtGeneralSaveDirectory.Text = fbg.SelectedPath;
+                txtGeneralSaveDirectory.Text = fbg.SelectedPath + @"\";
             }
         }
         #endregion
@@ -337,7 +359,8 @@ namespace SLC
 
         void LoadSettingsFieldAppender()
         {
-            SlmServerPath = "\\\\" + txtSLMServer.Text + "\\" + txtSLMDrive.Text;
+            SlmServerPath = @"\\" + txtSLMServer.Text + @"\" + txtSLMDrive.Text;
+            InvServerPath = @"\\" + txtINVServer.Text + @"\" + txtINVDrive.Text;
             LocalDestiniation = txtGeneralSaveDirectory.Text;
         }
         #endregion
@@ -346,6 +369,5 @@ namespace SLC
         {
             System.Diagnostics.Process.Start("https://github.com/goosetuv/snow-log-collector/wiki");
         }
-
     }
 }

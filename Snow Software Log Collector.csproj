@@ -63,7 +63,7 @@
       <HintPath>packages\EPPlus.5.2.0\lib\net45\EPPlus.dll</HintPath>
     </Reference>
     <Reference Include="Laim.Utility">
-      <HintPath>..\..\..\_Librays\Laim.Utility\v1.5-64b\Laim.Utility.dll</HintPath>
+      <HintPath>..\..\_Librays\Laim.Utility\v1.5-64b\Laim.Utility.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="PresentationCore" />

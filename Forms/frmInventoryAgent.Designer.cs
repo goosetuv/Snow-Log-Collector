@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInventoryAgent));
             this.lblDeviceName = new System.Windows.Forms.Label();
             this.txtDeviceName = new System.Windows.Forms.TextBox();
             this.gbDeviceInformation = new System.Windows.Forms.GroupBox();
@@ -46,6 +47,8 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.lblPlsWait = new System.Windows.Forms.Label();
+            this.lblAgentService = new System.Windows.Forms.Label();
+            this.lblAgentServiceValue = new System.Windows.Forms.Label();
             this.gbDeviceInformation.SuspendLayout();
             this.gbLoginInformation.SuspendLayout();
             this.SuspendLayout();
@@ -69,6 +72,8 @@
             // 
             // gbDeviceInformation
             // 
+            this.gbDeviceInformation.Controls.Add(this.lblAgentServiceValue);
+            this.gbDeviceInformation.Controls.Add(this.lblAgentService);
             this.gbDeviceInformation.Controls.Add(this.lblPackCountValue);
             this.gbDeviceInformation.Controls.Add(this.lblPackCount);
             this.gbDeviceInformation.Controls.Add(this.lblDeviceLogCountValue);
@@ -77,7 +82,7 @@
             this.gbDeviceInformation.Controls.Add(this.lblDeviceStatus);
             this.gbDeviceInformation.Location = new System.Drawing.Point(20, 50);
             this.gbDeviceInformation.Name = "gbDeviceInformation";
-            this.gbDeviceInformation.Size = new System.Drawing.Size(300, 86);
+            this.gbDeviceInformation.Size = new System.Drawing.Size(300, 103);
             this.gbDeviceInformation.TabIndex = 2;
             this.gbDeviceInformation.TabStop = false;
             this.gbDeviceInformation.Text = "Information";
@@ -87,10 +92,9 @@
             this.lblPackCountValue.AutoSize = true;
             this.lblPackCountValue.Location = new System.Drawing.Point(130, 60);
             this.lblPackCountValue.Name = "lblPackCountValue";
-            this.lblPackCountValue.Size = new System.Drawing.Size(16, 13);
+            this.lblPackCountValue.Size = new System.Drawing.Size(13, 13);
             this.lblPackCountValue.TabIndex = 5;
-            this.lblPackCountValue.Text = "...";
-            this.lblPackCountValue.Visible = false;
+            this.lblPackCountValue.Text = "0";
             // 
             // lblPackCount
             // 
@@ -101,17 +105,15 @@
             this.lblPackCount.Size = new System.Drawing.Size(98, 14);
             this.lblPackCount.TabIndex = 4;
             this.lblPackCount.Text = "Snowpack Count:";
-            this.lblPackCount.Visible = false;
             // 
             // lblDeviceLogCountValue
             // 
             this.lblDeviceLogCountValue.AutoSize = true;
             this.lblDeviceLogCountValue.Location = new System.Drawing.Point(130, 40);
             this.lblDeviceLogCountValue.Name = "lblDeviceLogCountValue";
-            this.lblDeviceLogCountValue.Size = new System.Drawing.Size(16, 13);
+            this.lblDeviceLogCountValue.Size = new System.Drawing.Size(13, 13);
             this.lblDeviceLogCountValue.TabIndex = 3;
-            this.lblDeviceLogCountValue.Text = "...";
-            this.lblDeviceLogCountValue.Visible = false;
+            this.lblDeviceLogCountValue.Text = "0";
             // 
             // lblDeviceLogCount
             // 
@@ -122,16 +124,15 @@
             this.lblDeviceLogCount.Size = new System.Drawing.Size(65, 14);
             this.lblDeviceLogCount.TabIndex = 2;
             this.lblDeviceLogCount.Text = "Log Count:";
-            this.lblDeviceLogCount.Visible = false;
             // 
             // lblDeviceStatusValue
             // 
             this.lblDeviceStatusValue.AutoSize = true;
             this.lblDeviceStatusValue.Location = new System.Drawing.Point(130, 20);
             this.lblDeviceStatusValue.Name = "lblDeviceStatusValue";
-            this.lblDeviceStatusValue.Size = new System.Drawing.Size(16, 13);
+            this.lblDeviceStatusValue.Size = new System.Drawing.Size(52, 13);
             this.lblDeviceStatusValue.TabIndex = 1;
-            this.lblDeviceStatusValue.Text = "...";
+            this.lblDeviceStatusValue.Text = "Waiting...";
             // 
             // lblDeviceStatus
             // 
@@ -145,7 +146,7 @@
             // 
             // btnGetInfo
             // 
-            this.btnGetInfo.Location = new System.Drawing.Point(20, 248);
+            this.btnGetInfo.Location = new System.Drawing.Point(20, 265);
             this.btnGetInfo.Name = "btnGetInfo";
             this.btnGetInfo.Size = new System.Drawing.Size(95, 23);
             this.btnGetInfo.TabIndex = 3;
@@ -156,7 +157,7 @@
             // btnGetData
             // 
             this.btnGetData.Enabled = false;
-            this.btnGetData.Location = new System.Drawing.Point(225, 248);
+            this.btnGetData.Location = new System.Drawing.Point(225, 265);
             this.btnGetData.Name = "btnGetData";
             this.btnGetData.Size = new System.Drawing.Size(95, 23);
             this.btnGetData.TabIndex = 4;
@@ -171,7 +172,7 @@
             this.gbLoginInformation.Controls.Add(this.lblUsername);
             this.gbLoginInformation.Controls.Add(this.txtPassword);
             this.gbLoginInformation.Controls.Add(this.txtUsername);
-            this.gbLoginInformation.Location = new System.Drawing.Point(20, 142);
+            this.gbLoginInformation.Location = new System.Drawing.Point(20, 159);
             this.gbLoginInformation.Name = "gbLoginInformation";
             this.gbLoginInformation.Size = new System.Drawing.Size(300, 100);
             this.gbLoginInformation.TabIndex = 6;
@@ -226,18 +227,38 @@
             // lblPlsWait
             // 
             this.lblPlsWait.AutoSize = true;
-            this.lblPlsWait.Location = new System.Drawing.Point(134, 253);
+            this.lblPlsWait.Location = new System.Drawing.Point(129, 270);
             this.lblPlsWait.Name = "lblPlsWait";
             this.lblPlsWait.Size = new System.Drawing.Size(73, 13);
             this.lblPlsWait.TabIndex = 7;
             this.lblPlsWait.Text = "Please Wait...";
             this.lblPlsWait.Visible = false;
             // 
+            // lblAgentService
+            // 
+            this.lblAgentService.AutoSize = true;
+            this.lblAgentService.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAgentService.Location = new System.Drawing.Point(36, 80);
+            this.lblAgentService.Name = "lblAgentService";
+            this.lblAgentService.Size = new System.Drawing.Size(81, 14);
+            this.lblAgentService.TabIndex = 6;
+            this.lblAgentService.Text = "Agent Service:";
+            // 
+            // lblAgentServiceValue
+            // 
+            this.lblAgentServiceValue.AutoSize = true;
+            this.lblAgentServiceValue.Location = new System.Drawing.Point(130, 80);
+            this.lblAgentServiceValue.Name = "lblAgentServiceValue";
+            this.lblAgentServiceValue.Size = new System.Drawing.Size(16, 13);
+            this.lblAgentServiceValue.TabIndex = 7;
+            this.lblAgentServiceValue.Text = "...";
+            // 
             // frmInventoryAgent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 283);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(341, 300);
             this.Controls.Add(this.lblPlsWait);
             this.Controls.Add(this.gbLoginInformation);
             this.Controls.Add(this.btnGetData);
@@ -245,11 +266,12 @@
             this.Controls.Add(this.gbDeviceInformation);
             this.Controls.Add(this.txtDeviceName);
             this.Controls.Add(this.lblDeviceName);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmInventoryAgent";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Inventory Agent (Alpha)";
-            this.Load += new System.EventHandler(this.frmInventoryAgent_Load);
+            this.Text = "Inventory Agent";
             this.gbDeviceInformation.ResumeLayout(false);
             this.gbDeviceInformation.PerformLayout();
             this.gbLoginInformation.ResumeLayout(false);
@@ -279,5 +301,7 @@
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.CheckBox cbUseCredentials;
         private System.Windows.Forms.Label lblPlsWait;
+        private System.Windows.Forms.Label lblAgentService;
+        private System.Windows.Forms.Label lblAgentServiceValue;
     }
 }
