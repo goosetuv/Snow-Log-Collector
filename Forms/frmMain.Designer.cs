@@ -77,6 +77,7 @@
             this.txtSqlServerName = new System.Windows.Forms.TextBox();
             this.lblSqlServerName = new System.Windows.Forms.Label();
             this.tabAbout = new System.Windows.Forms.TabPage();
+            this.linkHelp = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtLibraryInformation = new System.Windows.Forms.TextBox();
             this.lbLibraries = new System.Windows.Forms.ListBox();
@@ -87,7 +88,7 @@
             this.toolStripMain = new System.Windows.Forms.ToolStrip();
             this.tsLblCollectorStatus = new System.Windows.Forms.ToolStripLabel();
             this.tsLblCollectorStatusValue = new System.Windows.Forms.ToolStripLabel();
-            this.linkHelp = new System.Windows.Forms.LinkLabel();
+            this.lblDebug = new System.Windows.Forms.Label();
             this.tabControlMain.SuspendLayout();
             this.tabSLM.SuspendLayout();
             this.gbSLMServices.SuspendLayout();
@@ -665,6 +666,17 @@
             this.tabAbout.Text = "About";
             this.tabAbout.UseVisualStyleBackColor = true;
             // 
+            // linkHelp
+            // 
+            this.linkHelp.AutoSize = true;
+            this.linkHelp.Location = new System.Drawing.Point(409, 20);
+            this.linkHelp.Name = "linkHelp";
+            this.linkHelp.Size = new System.Drawing.Size(29, 13);
+            this.linkHelp.TabIndex = 3;
+            this.linkHelp.TabStop = true;
+            this.linkHelp.Text = "Help";
+            this.linkHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkHelp_LinkClicked);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -767,16 +779,17 @@
             this.tsLblCollectorStatusValue.Size = new System.Drawing.Size(60, 22);
             this.tsLblCollectorStatusValue.Text = "Waiting....";
             // 
-            // linkHelp
+            // lblDebug
             // 
-            this.linkHelp.AutoSize = true;
-            this.linkHelp.Location = new System.Drawing.Point(409, 20);
-            this.linkHelp.Name = "linkHelp";
-            this.linkHelp.Size = new System.Drawing.Size(29, 13);
-            this.linkHelp.TabIndex = 3;
-            this.linkHelp.TabStop = true;
-            this.linkHelp.Text = "Help";
-            this.linkHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkHelp_LinkClicked);
+            this.lblDebug.AutoSize = true;
+            this.lblDebug.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDebug.ForeColor = System.Drawing.Color.Red;
+            this.lblDebug.Location = new System.Drawing.Point(7, 9);
+            this.lblDebug.Name = "lblDebug";
+            this.lblDebug.Size = new System.Drawing.Size(87, 16);
+            this.lblDebug.TabIndex = 5;
+            this.lblDebug.Text = "DEBUG BUILD";
+            this.lblDebug.Visible = false;
             // 
             // frmMain
             // 
@@ -784,6 +797,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(472, 423);
+            this.Controls.Add(this.lblDebug);
             this.Controls.Add(this.toolStripMain);
             this.Controls.Add(this.pictureBoxLogo);
             this.Controls.Add(this.tabControlMain);
@@ -880,6 +894,7 @@
         private System.Windows.Forms.ListBox lbLibraries;
         private System.Windows.Forms.TextBox txtLibraryInformation;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblDebug;
     }
 }
 

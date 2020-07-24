@@ -399,6 +399,12 @@ namespace SLC
         {
             lblAppVersion.Text = string.Format("Version {0}", GetVersion());
             lblAppCopyright.Text = GetCopyright();
+
+            #if DEBUG
+
+            lblDebug.Visible = true;
+
+            #endif
         }
 
         private void lbLibraries_SelectedIndexChanged(object sender, EventArgs e)
