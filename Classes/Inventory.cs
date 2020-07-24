@@ -45,7 +45,7 @@ namespace SLC
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Uncaught Exception", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message, "Uncaught Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 

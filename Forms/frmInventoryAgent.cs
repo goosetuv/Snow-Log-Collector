@@ -73,29 +73,36 @@ namespace SLC.Forms
 
         private void btnGetData_Click(object sender, EventArgs e)
         {
-            if(InventoryAgentPath.Length > 0)
+            try
             {
-                // create inventory agent directory 
-                LocalPath = Destination + @"\Snow Inventory Agent\" + txtDeviceName.Text + @"\";
-                if (Directory.Exists(LocalPath) == false)
+                if (InventoryAgentPath.Length > 0)
                 {
-                    Directory.CreateDirectory(LocalPath);
-                }
+                    // create inventory agent directory 
+                    LocalPath = Destination + @"\Snow Inventory Agent\" + txtDeviceName.Text + @"\";
+                    if (Directory.Exists(LocalPath) == false)
+                    {
+                        Directory.CreateDirectory(LocalPath);
+                    }
 
-                if (cbUseCredentials.Checked)
-                {
-                    using (NetworkShareAccesser.Access(txtDeviceName.Text, txtUsername.Text, txtPassword.Text))
+                    if (cbUseCredentials.Checked)
+                    {
+                        using (NetworkShareAccesser.Access(txtDeviceName.Text, txtUsername.Text, txtPassword.Text))
+                        {
+                            NetworkFileCopier();
+                        }
+                    }
+                    else
                     {
                         NetworkFileCopier();
                     }
                 }
                 else
                 {
-                    NetworkFileCopier();
+                    MessageBox.Show("Inventory path is null", "Inventory Path", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
-            } else
+            } catch(Exception ex)
             {
-                MessageBox.Show("Inventory path is null", "Inventory Path", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show(ex.Message, "Uncaught Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         #endregion
@@ -103,9 +110,19 @@ namespace SLC.Forms
         #region Functions
         private void NetworkFileCopier()
         {
+            // data folder
             foreach (var i in Directory.GetFiles(Inventory.ConvertDirectory(InventoryAgentPath, txtDeviceName.Text) + @"\data\").Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).ToArray())
             {
                 if (i.Extension.ToLower().Contains("log") || i.Extension.ToLower().Contains("snowpack"))
+                {
+                    File.Copy(i.FullName, LocalPath + i.Name);
+                }
+            }
+
+            // main directory
+            foreach (var i in Directory.GetFiles(Inventory.ConvertDirectory(InventoryAgentPath, txtDeviceName.Text)).Select(x => new FileInfo(x)).OrderByDescending(x => x.LastWriteTime).ToArray())
+            {
+                if(i.Extension.ToLower().Contains("config"))
                 {
                     File.Copy(i.FullName, LocalPath + i.Name);
                 }

@@ -77,7 +77,6 @@
             this.txtSqlServerName = new System.Windows.Forms.TextBox();
             this.lblSqlServerName = new System.Windows.Forms.Label();
             this.tabAbout = new System.Windows.Forms.TabPage();
-            this.linkHelp = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtLibraryInformation = new System.Windows.Forms.TextBox();
             this.lbLibraries = new System.Windows.Forms.ListBox();
@@ -88,7 +87,8 @@
             this.toolStripMain = new System.Windows.Forms.ToolStrip();
             this.tsLblCollectorStatus = new System.Windows.Forms.ToolStripLabel();
             this.tsLblCollectorStatusValue = new System.Windows.Forms.ToolStripLabel();
-            this.lblDebug = new System.Windows.Forms.Label();
+            this.btnConfigTemplates = new System.Windows.Forms.Button();
+            this.linkLaimScot = new System.Windows.Forms.LinkLabel();
             this.tabControlMain.SuspendLayout();
             this.tabSLM.SuspendLayout();
             this.gbSLMServices.SuspendLayout();
@@ -140,14 +140,14 @@
             this.gbSLMServices.Controls.Add(this.btnSLMServicesLogs);
             this.gbSLMServices.Location = new System.Drawing.Point(10, 135);
             this.gbSLMServices.Name = "gbSLMServices";
-            this.gbSLMServices.Size = new System.Drawing.Size(200, 100);
+            this.gbSLMServices.Size = new System.Drawing.Size(442, 100);
             this.gbSLMServices.TabIndex = 3;
             this.gbSLMServices.TabStop = false;
             this.gbSLMServices.Text = "License Manager Services Logs";
             // 
             // btnSLMServicesLogsCustom
             // 
-            this.btnSLMServicesLogsCustom.Location = new System.Drawing.Point(10, 65);
+            this.btnSLMServicesLogsCustom.Location = new System.Drawing.Point(276, 65);
             this.btnSLMServicesLogsCustom.Name = "btnSLMServicesLogsCustom";
             this.btnSLMServicesLogsCustom.Size = new System.Drawing.Size(75, 23);
             this.btnSLMServicesLogsCustom.TabIndex = 2;
@@ -161,14 +161,14 @@
             this.lblSLMServicesNotice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSLMServicesNotice.Location = new System.Drawing.Point(10, 20);
             this.lblSLMServicesNotice.Name = "lblSLMServicesNotice";
-            this.lblSLMServicesNotice.Size = new System.Drawing.Size(180, 42);
+            this.lblSLMServicesNotice.Size = new System.Drawing.Size(422, 42);
             this.lblSLMServicesNotice.TabIndex = 1;
             this.lblSLMServicesNotice.Text = "Compatiable with Snow License Manager 8.x and 9.x.";
             this.lblSLMServicesNotice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnSLMServicesLogs
             // 
-            this.btnSLMServicesLogs.Location = new System.Drawing.Point(115, 65);
+            this.btnSLMServicesLogs.Location = new System.Drawing.Point(357, 65);
             this.btnSLMServicesLogs.Name = "btnSLMServicesLogs";
             this.btnSLMServicesLogs.Size = new System.Drawing.Size(75, 23);
             this.btnSLMServicesLogs.TabIndex = 0;
@@ -256,9 +256,9 @@
             // 
             this.gbSnowInventoryAgent.Controls.Add(this.lblInventoryAgentNotice);
             this.gbSnowInventoryAgent.Controls.Add(this.btnInventoryAgentGet);
-            this.gbSnowInventoryAgent.Location = new System.Drawing.Point(252, 10);
+            this.gbSnowInventoryAgent.Location = new System.Drawing.Point(10, 135);
             this.gbSnowInventoryAgent.Name = "gbSnowInventoryAgent";
-            this.gbSnowInventoryAgent.Size = new System.Drawing.Size(200, 100);
+            this.gbSnowInventoryAgent.Size = new System.Drawing.Size(442, 100);
             this.gbSnowInventoryAgent.TabIndex = 2;
             this.gbSnowInventoryAgent.TabStop = false;
             this.gbSnowInventoryAgent.Text = "Snow Inventory Agent";
@@ -269,14 +269,14 @@
             this.lblInventoryAgentNotice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblInventoryAgentNotice.Location = new System.Drawing.Point(10, 20);
             this.lblInventoryAgentNotice.Name = "lblInventoryAgentNotice";
-            this.lblInventoryAgentNotice.Size = new System.Drawing.Size(180, 42);
+            this.lblInventoryAgentNotice.Size = new System.Drawing.Size(422, 42);
             this.lblInventoryAgentNotice.TabIndex = 1;
             this.lblInventoryAgentNotice.Text = "Compatiable with Snow Inventory Agent 5.x and 6.x.";
             this.lblInventoryAgentNotice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnInventoryAgentGet
             // 
-            this.btnInventoryAgentGet.Location = new System.Drawing.Point(115, 65);
+            this.btnInventoryAgentGet.Location = new System.Drawing.Point(357, 65);
             this.btnInventoryAgentGet.Name = "btnInventoryAgentGet";
             this.btnInventoryAgentGet.Size = new System.Drawing.Size(75, 23);
             this.btnInventoryAgentGet.TabIndex = 0;
@@ -290,7 +290,7 @@
             this.gbSnowInventory.Controls.Add(this.btnSnowInventoryGet);
             this.gbSnowInventory.Location = new System.Drawing.Point(10, 10);
             this.gbSnowInventory.Name = "gbSnowInventory";
-            this.gbSnowInventory.Size = new System.Drawing.Size(200, 100);
+            this.gbSnowInventory.Size = new System.Drawing.Size(442, 100);
             this.gbSnowInventory.TabIndex = 1;
             this.gbSnowInventory.TabStop = false;
             this.gbSnowInventory.Text = "Snow Inventory Server";
@@ -301,14 +301,14 @@
             this.lblInventoryServerNotice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblInventoryServerNotice.Location = new System.Drawing.Point(10, 20);
             this.lblInventoryServerNotice.Name = "lblInventoryServerNotice";
-            this.lblInventoryServerNotice.Size = new System.Drawing.Size(180, 42);
+            this.lblInventoryServerNotice.Size = new System.Drawing.Size(422, 42);
             this.lblInventoryServerNotice.TabIndex = 1;
             this.lblInventoryServerNotice.Text = "Compatiable with Snow Inventory Server 5.x and 6.x.";
             this.lblInventoryServerNotice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnSnowInventoryGet
             // 
-            this.btnSnowInventoryGet.Location = new System.Drawing.Point(115, 65);
+            this.btnSnowInventoryGet.Location = new System.Drawing.Point(357, 65);
             this.btnSnowInventoryGet.Name = "btnSnowInventoryGet";
             this.btnSnowInventoryGet.Size = new System.Drawing.Size(75, 23);
             this.btnSnowInventoryGet.TabIndex = 0;
@@ -319,6 +319,7 @@
             // tabSettings
             // 
             this.tabSettings.AutoScroll = true;
+            this.tabSettings.Controls.Add(this.btnConfigTemplates);
             this.tabSettings.Controls.Add(this.gbGeneralPreferences);
             this.tabSettings.Controls.Add(this.btnSettingsSave);
             this.tabSettings.Controls.Add(this.gbSnowApplications);
@@ -438,9 +439,9 @@
             // 
             // txtGeneralSaveDirectory
             // 
-            this.txtGeneralSaveDirectory.Enabled = false;
             this.txtGeneralSaveDirectory.Location = new System.Drawing.Point(172, 17);
             this.txtGeneralSaveDirectory.Name = "txtGeneralSaveDirectory";
+            this.txtGeneralSaveDirectory.ReadOnly = true;
             this.txtGeneralSaveDirectory.Size = new System.Drawing.Size(201, 20);
             this.txtGeneralSaveDirectory.TabIndex = 1;
             // 
@@ -482,6 +483,7 @@
             // 
             // txtINVDrive
             // 
+            this.txtINVDrive.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtINVDrive.Location = new System.Drawing.Point(172, 95);
             this.txtINVDrive.Name = "txtINVDrive";
             this.txtINVDrive.Size = new System.Drawing.Size(246, 20);
@@ -514,6 +516,7 @@
             // 
             // txtSLMDrive
             // 
+            this.txtSLMDrive.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSLMDrive.Location = new System.Drawing.Point(172, 43);
             this.txtSLMDrive.Name = "txtSLMDrive";
             this.txtSLMDrive.Size = new System.Drawing.Size(246, 20);
@@ -651,7 +654,7 @@
             // 
             // tabAbout
             // 
-            this.tabAbout.Controls.Add(this.linkHelp);
+            this.tabAbout.Controls.Add(this.linkLaimScot);
             this.tabAbout.Controls.Add(this.label1);
             this.tabAbout.Controls.Add(this.txtLibraryInformation);
             this.tabAbout.Controls.Add(this.lbLibraries);
@@ -665,17 +668,6 @@
             this.tabAbout.TabIndex = 2;
             this.tabAbout.Text = "About";
             this.tabAbout.UseVisualStyleBackColor = true;
-            // 
-            // linkHelp
-            // 
-            this.linkHelp.AutoSize = true;
-            this.linkHelp.Location = new System.Drawing.Point(409, 20);
-            this.linkHelp.Name = "linkHelp";
-            this.linkHelp.Size = new System.Drawing.Size(29, 13);
-            this.linkHelp.TabIndex = 3;
-            this.linkHelp.TabStop = true;
-            this.linkHelp.Text = "Help";
-            this.linkHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkHelp_LinkClicked);
             // 
             // label1
             // 
@@ -779,17 +771,28 @@
             this.tsLblCollectorStatusValue.Size = new System.Drawing.Size(60, 22);
             this.tsLblCollectorStatusValue.Text = "Waiting....";
             // 
-            // lblDebug
+            // btnConfigTemplates
             // 
-            this.lblDebug.AutoSize = true;
-            this.lblDebug.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDebug.ForeColor = System.Drawing.Color.Red;
-            this.lblDebug.Location = new System.Drawing.Point(7, 9);
-            this.lblDebug.Name = "lblDebug";
-            this.lblDebug.Size = new System.Drawing.Size(87, 16);
-            this.lblDebug.TabIndex = 5;
-            this.lblDebug.Text = "DEBUG BUILD";
-            this.lblDebug.Visible = false;
+            this.btnConfigTemplates.Location = new System.Drawing.Point(10, 396);
+            this.btnConfigTemplates.Name = "btnConfigTemplates";
+            this.btnConfigTemplates.Size = new System.Drawing.Size(98, 23);
+            this.btnConfigTemplates.TabIndex = 9;
+            this.btnConfigTemplates.Text = "Config Templates";
+            this.btnConfigTemplates.UseVisualStyleBackColor = true;
+            this.btnConfigTemplates.Click += new System.EventHandler(this.btnConfigManager_Click);
+            // 
+            // linkLaimScot
+            // 
+            this.linkLaimScot.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linkLaimScot.AutoSize = true;
+            this.linkLaimScot.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(101)))), ((int)(((byte)(191)))));
+            this.linkLaimScot.Location = new System.Drawing.Point(390, 61);
+            this.linkLaimScot.Name = "linkLaimScot";
+            this.linkLaimScot.Size = new System.Drawing.Size(48, 13);
+            this.linkLaimScot.TabIndex = 6;
+            this.linkLaimScot.TabStop = true;
+            this.linkLaimScot.Text = "laim.scot";
+            this.linkLaimScot.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLaimScot_LinkClicked);
             // 
             // frmMain
             // 
@@ -797,13 +800,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(472, 423);
-            this.Controls.Add(this.lblDebug);
             this.Controls.Add(this.toolStripMain);
             this.Controls.Add(this.pictureBoxLogo);
             this.Controls.Add(this.tabControlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(488, 462);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Snow Log Collector";
@@ -876,7 +879,6 @@
         private System.Windows.Forms.GroupBox gbSLMWebLogs;
         private System.Windows.Forms.Label lblWebLogsNotice;
         private System.Windows.Forms.Button btnWebLogs;
-        private System.Windows.Forms.LinkLabel linkHelp;
         private System.Windows.Forms.GroupBox gbSLMServices;
         private System.Windows.Forms.Label lblSLMServicesNotice;
         private System.Windows.Forms.Button btnSLMServicesLogs;
@@ -894,7 +896,8 @@
         private System.Windows.Forms.ListBox lbLibraries;
         private System.Windows.Forms.TextBox txtLibraryInformation;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblDebug;
+        private System.Windows.Forms.Button btnConfigTemplates;
+        private System.Windows.Forms.LinkLabel linkLaimScot;
     }
 }
 

@@ -4,7 +4,6 @@ using System.Collections;
 using System.Data;
 using System.Globalization;
 using System.IO;
-using Microsoft.VisualBasic;
 using System.Resources;
 using System.Windows.Forms;
 using System.Reflection;
@@ -27,9 +26,11 @@ namespace SLC
         public frmMain()
         {
             InitializeComponent();
-            LoadSettings();
-            LoadSettingsFieldAppender();
-            AuthenticationMethod();
+
+            LoadSettings(); // load the app.config
+            LoadSettingsFieldAppender(); // applies settings to relevant fields
+            AuthenticationMethod(); // load this after the settings have loaded
+            ApplicationDirectories(); // create app directories if required
         }
         #endregion
 
@@ -157,12 +158,18 @@ namespace SLC
         {
             try
             {
-                Inventory.InventoryDirectoryCreator(LocalDestiniation + @"\Snow Inventory Server\");
+                string InventoryLogsDirectory = LocalDestiniation + @"\Snow Inventory Server\";
+                Inventory.InventoryDirectoryCreator(InventoryLogsDirectory);
+
+                Global.LogFileCopier(InvServerPath + Inventory.InventoryServerLog, limit, InventoryLogsDirectory + Inventory.SLCServerLogs + @"\");
+                Global.LogFileCopier(InvServerPath + Inventory.InventoryServerService, limit, InventoryLogsDirectory + Inventory.SLCServerManagerLogs + @"\");
+                Global.LogFileCopier(InvServerPath + Inventory.InventoryUpdateService, limit, InventoryLogsDirectory + Inventory.SLCInventoryUpdate + @"\");
+
                 tsLblCollectorStatusValue.Text = "Inventory Logs Copied";
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Uncaught Exception", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(ex.Message, "Uncaught Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         #endregion
@@ -204,9 +211,9 @@ namespace SLC
                         cblReportingTableDesign.Text
                     };
 
-                    Laim.XmlConfigurator.Write("app.config", NodeList, ValueList);
+                    Laim.XmlConfigurator.Write(Global.ConfigurationPath, NodeList, ValueList);
 
-                    if (File.Exists("app.config"))
+                    if (File.Exists(Global.ConfigurationPath))
                     {
                         MessageBox.Show("Configuration saved, the application will now restart.", "Configuration", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Application.Restart();
@@ -226,7 +233,7 @@ namespace SLC
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Uncaught Exception", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(ex.Message, "Uncaught Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -274,6 +281,30 @@ namespace SLC
                 txtGeneralSaveDirectory.Text = fbg.SelectedPath + @"\";
             }
         }
+
+        private void btnConfigManager_Click(object sender, EventArgs e)
+        {
+            using (Forms.frmConfigurationTemplates f = new Forms.frmConfigurationTemplates())
+            {
+                f.ShowDialog();
+            }
+        }
+        #endregion
+
+        #region About
+        private void lbLibraries_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (lbLibraries.SelectedItem.ToString())
+            {
+                case "EPPlus — 5.2":
+                    txtLibraryInformation.Text = "EPPlus is a .NET library that reads and writes Excel 2007/2010/2013 files using the Open Office Xml format (xlsx).";
+                    break;
+                case "Laim.Utility — 1.5":
+                    txtLibraryInformation.Text = "Closed-source utility used for most of my applications with pre-existing code modules.";
+                    break;
+            }
+        }
+        private void linkLaimScot_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => System.Diagnostics.Process.Start("https://laim.scot");
         #endregion
 
         #region Functions
@@ -313,38 +344,35 @@ namespace SLC
         {
             try
             {
-                if (File.Exists("app.config"))
+                if (File.Exists(Global.ConfigurationPath))
                 {
-                    txtSqlServerName.Text = Laim.XmlConfigurator.Read("app.config", "SqlName");
-                    txtSqlServerUsername.Text = Laim.XmlConfigurator.Read("app.config", "SqlUser");
+                    txtSqlServerName.Text = Laim.XmlConfigurator.Read(Global.ConfigurationPath, "SqlName");
+                    txtSqlServerUsername.Text = Laim.XmlConfigurator.Read(Global.ConfigurationPath, "SqlUser");
 
-                    string userPass = Laim.XmlConfigurator.Read("app.config", "SqlPass");
+                    string userPass = Laim.XmlConfigurator.Read(Global.ConfigurationPath, "SqlPass");
                     if (userPass.Length > 0)
                     {
                         txtSqlServerPassword.Text = Laim.Kryptos.Decrypt(userPass, Laim.Kryptos.GetHardwareID());
                     }
-                    txtSqlServerParameters.Text = Laim.XmlConfigurator.Read("app.config", "SqlAdditional");
-                    SqlConnection = Laim.Kryptos.Decrypt(Laim.XmlConfigurator.Read("app.config", "SqlStringFull"), Laim.Kryptos.GetHardwareID());
-                    txtSLMServer.Text = Laim.XmlConfigurator.Read("app.config", "SLMServer");
-                    txtSLMDrive.Text = Laim.XmlConfigurator.Read("app.config", "SLMDrive");
-                    txtINVServer.Text = Laim.XmlConfigurator.Read("app.config", "INVServer");
-                    txtINVDrive.Text = Laim.XmlConfigurator.Read("app.config", "INVDrive");
-                    txtGeneralSaveDirectory.Text = Laim.XmlConfigurator.Read("app.config", "SaveDirectory");
+                    txtSqlServerParameters.Text = Laim.XmlConfigurator.Read(Global.ConfigurationPath, "SqlAdditional");
+                    SqlConnection = Laim.Kryptos.Decrypt(Laim.XmlConfigurator.Read(Global.ConfigurationPath, "SqlStringFull"), Laim.Kryptos.GetHardwareID());
+                    txtSLMServer.Text = Laim.XmlConfigurator.Read(Global.ConfigurationPath, "SLMServer");
+                    txtSLMDrive.Text = Laim.XmlConfigurator.Read(Global.ConfigurationPath, "SLMDrive");
+                    txtINVServer.Text = Laim.XmlConfigurator.Read(Global.ConfigurationPath, "INVServer");
+                    txtINVDrive.Text = Laim.XmlConfigurator.Read(Global.ConfigurationPath, "INVDrive");
+                    txtGeneralSaveDirectory.Text = Laim.XmlConfigurator.Read(Global.ConfigurationPath, "SaveDirectory");
 
                     int etd = 0;
                     foreach (string c in cblReportingTableDesign.Items)
                     {
-                        if (c == Laim.XmlConfigurator.Read("app.config", "ExportTableDesign"))
+                        if (c == Laim.XmlConfigurator.Read(Global.ConfigurationPath, "ExportTableDesign"))
                         {
                             cblReportingTableDesign.SelectedIndex = etd;
-                        } else
-                        {
-                            cblReportingTableDesign.SelectedIndex = 0;
                         }
                         etd += 1;
                     }
 
-                    if(txtSqlServerUsername.TextLength < 1)
+                    if (txtSqlServerUsername.TextLength < 1)
                     {
                         cbSqlServerWindowsAuth.Checked = true;
                     }
@@ -354,7 +382,7 @@ namespace SLC
                 }
             } catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Uncaught Exception", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(ex.Message, "Uncaught Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -365,6 +393,14 @@ namespace SLC
             LocalDestiniation = txtGeneralSaveDirectory.Text;
         }
 
+        void ApplicationDirectories()
+        {
+            if(Directory.Exists(Global.ConfigurationTemplates) == false)
+            {
+                Directory.CreateDirectory(Global.ConfigurationTemplates);
+            }
+        }
+
         private string GetCopyright()
         {
             Assembly asm = Assembly.GetExecutingAssembly();
@@ -372,7 +408,7 @@ namespace SLC
             foreach (object o in obj)
             {
                 if (o.GetType() ==
-                    typeof(System.Reflection.AssemblyCopyrightAttribute))
+                    typeof(AssemblyCopyrightAttribute))
                 {
                     AssemblyCopyrightAttribute aca =
             (AssemblyCopyrightAttribute)o;
@@ -384,16 +420,11 @@ namespace SLC
 
         private string GetVersion()
         {
-            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            Assembly assembly = Assembly.GetExecutingAssembly();
             System.Diagnostics.FileVersionInfo fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
             return fvi.FileVersion;
         }
         #endregion
-
-        private void linkHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://github.com/goosetuv/snow-log-collector/wiki");
-        }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
@@ -402,22 +433,10 @@ namespace SLC
 
             #if DEBUG
 
-            lblDebug.Visible = true;
+            lblAppVersion.Text = string.Format("Version {0} - {1}", GetVersion(), "Development Build");
 
             #endif
         }
 
-        private void lbLibraries_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (lbLibraries.SelectedItem.ToString())
-            {
-                case "EPPlus — 5.2":
-                    txtLibraryInformation.Text = "EPPlus is a .NET library that reads and writes Excel 2007/2010/2013 files using the Open Office Xml format (xlsx).";
-                    break;
-                case "Laim.Utility — 1.5":
-                    txtLibraryInformation.Text = "Closed-source utility used for most of my applications with pre-existing code modules.";
-                    break;
-            }
-        }
     }
 }

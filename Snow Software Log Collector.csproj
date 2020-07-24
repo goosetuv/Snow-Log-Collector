@@ -79,6 +79,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
+    <AssemblyInfoVersionSemVerSettings>AssemblyVersion.NoneWithAutoReset.Alpha</AssemblyInfoVersionSemVerSettings>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>snw-con.ico</ApplicationIcon>
@@ -115,6 +116,12 @@
     <Compile Include="Classes\Global.cs" />
     <Compile Include="Classes\Inventory.cs" />
     <Compile Include="Classes\NetworkShareAccesser.cs" />
+    <Compile Include="Forms\frmConfigurationTemplates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmConfigurationTemplates.Designer.cs">
+      <DependentUpon>frmConfigurationTemplates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmInventoryAgent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +143,9 @@
     <Compile Include="Classes\LicenseManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\frmConfigurationTemplates.resx">
+      <DependentUpon>frmConfigurationTemplates.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmInventoryAgent.resx">
       <DependentUpon>frmInventoryAgent.cs</DependentUpon>
     </EmbeddedResource>

@@ -32,6 +32,8 @@
             this.lblDeviceName = new System.Windows.Forms.Label();
             this.txtDeviceName = new System.Windows.Forms.TextBox();
             this.gbDeviceInformation = new System.Windows.Forms.GroupBox();
+            this.lblAgentServiceValue = new System.Windows.Forms.Label();
+            this.lblAgentService = new System.Windows.Forms.Label();
             this.lblPackCountValue = new System.Windows.Forms.Label();
             this.lblPackCount = new System.Windows.Forms.Label();
             this.lblDeviceLogCountValue = new System.Windows.Forms.Label();
@@ -47,8 +49,6 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.lblPlsWait = new System.Windows.Forms.Label();
-            this.lblAgentService = new System.Windows.Forms.Label();
-            this.lblAgentServiceValue = new System.Windows.Forms.Label();
             this.gbDeviceInformation.SuspendLayout();
             this.gbLoginInformation.SuspendLayout();
             this.SuspendLayout();
@@ -86,6 +86,25 @@
             this.gbDeviceInformation.TabIndex = 2;
             this.gbDeviceInformation.TabStop = false;
             this.gbDeviceInformation.Text = "Information";
+            // 
+            // lblAgentServiceValue
+            // 
+            this.lblAgentServiceValue.AutoSize = true;
+            this.lblAgentServiceValue.Location = new System.Drawing.Point(130, 80);
+            this.lblAgentServiceValue.Name = "lblAgentServiceValue";
+            this.lblAgentServiceValue.Size = new System.Drawing.Size(16, 13);
+            this.lblAgentServiceValue.TabIndex = 7;
+            this.lblAgentServiceValue.Text = "...";
+            // 
+            // lblAgentService
+            // 
+            this.lblAgentService.AutoSize = true;
+            this.lblAgentService.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAgentService.Location = new System.Drawing.Point(36, 80);
+            this.lblAgentService.Name = "lblAgentService";
+            this.lblAgentService.Size = new System.Drawing.Size(81, 14);
+            this.lblAgentService.TabIndex = 6;
+            this.lblAgentService.Text = "Agent Service:";
             // 
             // lblPackCountValue
             // 
@@ -233,25 +252,6 @@
             this.lblPlsWait.TabIndex = 7;
             this.lblPlsWait.Text = "Please Wait...";
             this.lblPlsWait.Visible = false;
-            // 
-            // lblAgentService
-            // 
-            this.lblAgentService.AutoSize = true;
-            this.lblAgentService.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAgentService.Location = new System.Drawing.Point(36, 80);
-            this.lblAgentService.Name = "lblAgentService";
-            this.lblAgentService.Size = new System.Drawing.Size(81, 14);
-            this.lblAgentService.TabIndex = 6;
-            this.lblAgentService.Text = "Agent Service:";
-            // 
-            // lblAgentServiceValue
-            // 
-            this.lblAgentServiceValue.AutoSize = true;
-            this.lblAgentServiceValue.Location = new System.Drawing.Point(130, 80);
-            this.lblAgentServiceValue.Name = "lblAgentServiceValue";
-            this.lblAgentServiceValue.Size = new System.Drawing.Size(16, 13);
-            this.lblAgentServiceValue.TabIndex = 7;
-            this.lblAgentServiceValue.Text = "...";
             // 
             // frmInventoryAgent
             // 
