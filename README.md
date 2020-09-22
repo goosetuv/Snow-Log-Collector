@@ -42,6 +42,7 @@ Then off ya go!
 I used the following links for most of the paths, however this document isn't completely up to date so some of them were done manually.
 
 [How to: collect Snow License Manager logs and configurations](https://community.snowsoftware.com/s/article/HowtocollectSnowLicenseManagerlogsandconfigurations-v2)
+
 [How to: collect Snow Inventory logs and configurations](https://community.snowsoftware.com/s/article/HowtocollectSnowInventorylogsandconfigurations-v2)
 
 ## Contributing
