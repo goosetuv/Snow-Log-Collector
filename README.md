@@ -15,7 +15,10 @@ Download the latest release and run!
 
 ## Features
 
-// TODO
+- Collect logs for all aspects of Snow License Manager (incl. physical logs on server and from database)
+- Collect logs for all aspects of Snow Inventory Server (incl. physical logs on server and from database)
+- Collect logs for Snow Update Service
+- Collect logs for Snow Inventory Agent on local and remote machines (and on other domains!)
 
 ## Product Support
 
@@ -28,7 +31,11 @@ I have tried to create this in such a way that it supports installations of the 
 
 ## Usage
 
-// TODO
+Download the latest release and run the installer. 
+
+Once in the application, click on the settings tab and fill out your sql server and application server names then save. 
+
+Then off ya go!
 
 ## References
 
