@@ -49,4 +49,4 @@ I used the following links for most of the paths, however this document isn't co
 Happy for anyone to make a pull request to assist in making the application better.
 
 ## Legal Notice
-Any products related to Snow Software products are 3rd party and are no way officially endorsed or affiliated with Snow Software.  The Snow Software name and image are copyright Snow Software AB.
+This software is 3rd party and is no way officially endorsed or affiliated with Snow Software.  The Snow Software name and image are copyright Snow Software AB.
