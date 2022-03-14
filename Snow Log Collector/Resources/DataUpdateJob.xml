@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- do not rename the root node(s) as the program will break :) -->
+<Resource>
+    <dbversionhistory>SELECT * FROM [SnowInventory].[inv].[DbVersionHistory]</dbversionhistory>
+    <sysjobhistory>SELECT * FROM [msdb].[dbo].[sysjobhistory] WHERE sql_severity > 0</sysjobhistory>
+    <tblciddatasource>SELECT * FROM [SnowLicenseManager].[dbo].[tblCIDDataSource]</tblciddatasource>
+    <tblerrorlog>SELECT * FROM [SnowLicenseManager].[dbo].[tblErrorLog]</tblerrorlog>
+    <tblinventorydatabaselog>SELECT * FROM [SnowLicenseManager].[dbo].[tblInventoryDatabaseLog]</tblinventorydatabaselog>
+    <tbljoblog>SELECT * FROM [SnowLicenseManager].[dbo].[tblJobLog]</tbljoblog>
+    <tbljobloghistory>SELECT * FROM [SnowLicenseManager].[dbo].[tblJobLogHistory]</tbljobloghistory>
+    <tbljoblogmetrics>SELECT * FROM [SnowLicenseManager].[dbo].[tblJobLogMetrics]</tbljoblogmetrics>
+    <tbljobparallelstep>SELECT * FROM [SnowLicenseManager].[inv].[tblJobParallelStep]</tbljobparallelstep>
+  
+  <!-- 
+    You can add custom scripts to the export by adding them below, for example
+    
+    <scriptname>SELECT TOP 2 * FROM [SnowLicenseManager].[dbo].tblComputer</scriptname>
+    
+    You can also change the ones at the top if you want.  To reset any changes, delete this file
+    and it'll regenerate on next DUJ grab.
+    
+    Goes without saying, but don't add DELETE, UPDATE or TRUNCATE.  There is a check to stop them
+    being ran but, you know, I don't have code reviewers. 
+  -->
+  
+</Resource>
