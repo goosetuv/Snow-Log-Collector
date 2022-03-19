@@ -62,12 +62,13 @@ namespace SnowLogCollector.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-        ///&lt;DataUpdateJob&gt;
+        ///&lt;!-- do not rename the root node(s) as the program will break :) --&gt;
+        ///&lt;Resource&gt;
         ///    &lt;dbversionhistory&gt;SELECT * FROM [SnowInventory].[inv].[DbVersionHistory]&lt;/dbversionhistory&gt;
-        ///    &lt;sysjobhistory&gt;SELECT * FROM [msdb].[dbo].[sysjobhistory] WHERE sql_severity &gt; 0 order by [run_date desc], [run_time desc]&lt;/sysjobhistory&gt;
+        ///    &lt;sysjobhistory&gt;SELECT * FROM [msdb].[dbo].[sysjobhistory] WHERE sql_severity &gt; 0&lt;/sysjobhistory&gt;
         ///    &lt;tblciddatasource&gt;SELECT * FROM [SnowLicenseManager].[dbo].[tblCIDDataSource]&lt;/tblciddatasource&gt;
         ///    &lt;tblerrorlog&gt;SELECT * FROM [SnowLicenseManager].[dbo].[tblErrorLog]&lt;/tblerrorlog&gt;
-        ///    &lt;tblinventorydatabase [rest of string was truncated]&quot;;.
+        ///   [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string DataUpdateJob {
             get {

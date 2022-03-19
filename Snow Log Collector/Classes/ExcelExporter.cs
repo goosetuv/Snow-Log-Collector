@@ -7,6 +7,15 @@ namespace SnowLogCollector.Classes
 {
     public class ExcelExporter
     {
+
+        public enum DataType
+        {
+            DataUpdateJob,
+            Microsoft365,
+            AdobeCreativeCloud,
+            PlatformData
+        }
+
         /// <summary>
         /// Data Export function for DataTable to Excel, if a workbook exists it adds it as a new sheet
         /// </summary>
@@ -16,7 +25,7 @@ namespace SnowLogCollector.Classes
         /// <param name="dt">The datatable to populate the sheet</param>
         /// <param name="ReportingTableDesign">Custom Report Design</param>
         /// <param name="SheetName">The name of the worksheet</param>
-        public void Save(string FileName, string Path, string DataType, DataTable dt, OfficeOpenXml.Table.TableStyles ReportingTableDesign, string SheetName = "Report")
+        public void Save(Guid FileName, string Path, DataType DataType, DataTable dt, OfficeOpenXml.Table.TableStyles ReportingTableDesign, string SheetName = "Report")
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 

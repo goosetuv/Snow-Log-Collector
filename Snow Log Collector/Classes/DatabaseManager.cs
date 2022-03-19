@@ -6,9 +6,17 @@ namespace SnowLogCollector.Classes
     class DatabaseManager
     {
 
-        public DataTable ExecuteQuery(string conn, string query, int cmdTimeout = 30)
+        private static string _connectionString;
+        public static string ConnectionString
         {
-            using (SqlConnection sCon = new SqlConnection(conn)) // open connection
+            get { return _connectionString; }
+            set { _connectionString = value; }
+        }
+
+
+        public DataTable ExecuteQuery(string query, int cmdTimeout = 30)
+        {
+            using (SqlConnection sCon = new SqlConnection(_connectionString)) // open connection
             {
                 using (SqlCommand sCmd = new SqlCommand(query, sCon)) // set command details
                 {

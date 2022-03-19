@@ -2,22 +2,24 @@
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
-using System.Xml;
 using System.Xml.Linq;
 using SnowLogCollector.Classes;
+using OfficeOpenXml.Table;
 
 namespace SnowLogCollector
 {
     public partial class frmMain : Form
     {
 
-        private string conString = "Server=snow.int.laim.scot;User Id=sa;Password=cum";
         private string rootDirectory, dataDirectory, exportDirectory, resourceDirectory;
+        private DatabaseManager dbm = new DatabaseManager();
 
         public frmMain()
         {
             InitializeComponent();
             CreateDirectories();
+
+            DatabaseManager.ConnectionString = StaticHelpers.ConnectionGet();
         }
 
         #region Snow License Manager
@@ -62,12 +64,14 @@ namespace SnowLogCollector
 
         private void btnSLMDataUpdateJobExport_Click(object sender, EventArgs e)
         {
-
             string resourceFile = Path.Combine(resourceDirectory, "DataUpdateJob.xml");
+            Guid fileName = Guid.NewGuid();
 
             // Write sql scripts to file so they can be modified later by end user.
             // Create this when using the feature rather at on-load, in case the
             // end user never actually uses this option, no point having wasteful files
+            // Using the if statement so it doesn't overwrite the file if it exists
+            // as it'll remove any customization.
             if (!File.Exists(resourceFile))
             {
                 File.WriteAllText(resourceFile, Properties.Resources.DataUpdateJob);
@@ -79,7 +83,6 @@ namespace SnowLogCollector
 
             // Initiate the Excel Exporter and Database Manager
             ExcelExporter ee = new ExcelExporter();
-            DatabaseManager dbm = new DatabaseManager();
 
             // Loop through each node, we do this instead of hardcoding them
             // So that an end user can add custom scripts at a later date
@@ -94,11 +97,11 @@ namespace SnowLogCollector
                     if (!element.Value.ToString().Contains("DELETE") || !element.Value.ToString().Contains("TRUNCATE") || !element.Value.ToString().Contains("UPDATE"))
                     {
                         ee.Save(
-                            DateTime.Now.ToString("ddMMyyyy"),                      // Filename
-                            exportDirectory,                                       // Export Path
-                            "DataUpdateJob",                                        // Data Type
-                            dbm.ExecuteQuery(conString, element.Value.ToString()),  // Database Execution
-                            OfficeOpenXml.Table.TableStyles.None,                   // Table Style
+                            fileName,                                               // Filename
+                            exportDirectory,                                        // Export Path
+                            ExcelExporter.DataType.DataUpdateJob,                   // Data Type
+                            dbm.ExecuteQuery(element.Value.ToString()),             // Database Execution
+                            TableStyles.Light10,                                    // Table Style
                             element.Name.ToString()                                 // Name of Sql Script
                         );
 
@@ -109,6 +112,31 @@ namespace SnowLogCollector
 
         }
 
+        #endregion
+
+
+        #region Configuration 
+        private void btnConfigServersSave_Click(object sender, EventArgs e)
+        {
+            StaticHelpers.AppSettingsSet("SnowLicenseManagerServer", txtConfigLicenseManagerServer.Text);
+            StaticHelpers.AppSettingsSet("SnowInventoryServer", txtConfigSnowInventoryServer.Text);
+        }
+
+        #endregion
+
+        #region About Tab
+        private void btnAboutAppData_Click(object sender, EventArgs e)
+        {
+            Process.Start(dataDirectory);
+        }
+
+        private void lblAboutLibraries_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lblAboutLibraries.SelectedItem.ToString().Contains("EPP"))
+            {
+                txtAboutLibrariesLicense.Text = "https://github.com/EPPlusSoftware/EPPlus/blob/develop/license.md";
+            }
+        }
         #endregion
 
         private void CreateDirectories()

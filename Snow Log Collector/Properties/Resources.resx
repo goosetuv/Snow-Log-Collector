@@ -123,6 +123,6 @@
     <comment>Scripts for pulling Data Update Job data</comment>
   </data>
   <data name="snow_log_collector" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\snow_log_collector.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\snow_log_collector1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

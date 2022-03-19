@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Classes\DatabaseManager.cs" />
     <Compile Include="Classes\ExcelExporter.cs" />
+    <Compile Include="Classes\StaticHelpers.cs" />
     <Compile Include="frmDirectoryCustomize.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +112,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\DataUpdateJob.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\snow_log_collector1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
