@@ -7,6 +7,7 @@ namespace SnowLogCollector.Classes
 {
     public class ExcelExporter
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(ExcelExporter));
 
         public enum DataType
         {
@@ -27,19 +28,26 @@ namespace SnowLogCollector.Classes
         /// <param name="SheetName">The name of the worksheet</param>
         public void Save(Guid FileName, string Path, DataType DataType, DataTable dt, OfficeOpenXml.Table.TableStyles ReportingTableDesign, string SheetName = "Report")
         {
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-
-            using (var ep = new ExcelPackage(new FileInfo(Path + "\\" + FileName + ".xlsx")))
+            try
             {
-                ExcelWorksheet ew = ep.Workbook.Worksheets.Add(SheetName);
-                ew.Cells["A1"].LoadFromDataTable(dt, true, ReportingTableDesign);
-                ew.Cells.AutoFitColumns(40);
-                ep.Workbook.Properties.Application = "Snow Log Collector";
-                ep.Workbook.Properties.Author = Environment.UserName;
-                ep.Workbook.Properties.Title = DataType + " Export";
-                ep.Workbook.Properties.Company = "Goosetuv";
-                ep.Workbook.Properties.Comments = "https://github.com/goosetuv";
-                ep.Save();
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+                using (var ep = new ExcelPackage(new FileInfo(Path + "\\" + FileName + ".xlsx")))
+                {
+                    ExcelWorksheet ew = ep.Workbook.Worksheets.Add(SheetName);
+                    ew.Cells["A1"].LoadFromDataTable(dt, true, ReportingTableDesign);
+                    ew.Cells.AutoFitColumns(40);
+                    ep.Workbook.Properties.Application = "Snow Log Collector";
+                    ep.Workbook.Properties.Author = Environment.UserName;
+                    ep.Workbook.Properties.Title = DataType + " Export";
+                    ep.Workbook.Properties.Company = "Goosetuv";
+                    ep.Workbook.Properties.Comments = "https://github.com/goosetuv";
+                    ep.Save();
+                    log.Info(string.Format("DataUpdateJob export written to disk. File {0}, Sheet {1}", FileName, SheetName));
+                }
+            } catch (Exception ex)
+            {
+                log.Error(string.Format("{0} - Sheet {1}", ex.Message, SheetName));
             }
         }
     }

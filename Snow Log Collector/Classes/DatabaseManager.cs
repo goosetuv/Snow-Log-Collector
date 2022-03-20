@@ -1,10 +1,13 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace SnowLogCollector.Classes
 {
     class DatabaseManager
     {
+
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(DatabaseManager));
 
         private string _connectionString;
         public string ConnectionString
@@ -40,6 +43,8 @@ namespace SnowLogCollector.Classes
                     ["Application Name"] = "SnowLogCollector"
                 };
 
+                log.Debug(string.Format("Connection string built for server {0} using Windows Authentication", serverName));
+
                 return b.ConnectionString;
             } else
             {
@@ -51,6 +56,8 @@ namespace SnowLogCollector.Classes
                     ["Connect Timeout"] = 30,
                     ["Application Name"] = "SnowLogCollector"
                 };
+
+                log.Debug(string.Format("Connection string built for server {0} using SQL Authentication", serverName));
 
                 return b.ConnectionString;
             }
@@ -80,44 +87,58 @@ namespace SnowLogCollector.Classes
 
         public DataTable ExecuteQuery(string query, int cmdTimeout = 30)
         {
-            using (SqlConnection sCon = new SqlConnection(_connectionString)) // open connection
+            try
             {
-                using (SqlCommand sCmd = new SqlCommand(query, sCon)) // set command details
+                using (SqlConnection sCon = new SqlConnection(_connectionString)) // open connection
                 {
-                    sCmd.CommandTimeout = cmdTimeout;
-                    sCmd.CommandType = CommandType.Text;
-
-                    using (SqlDataAdapter sDa = new SqlDataAdapter(sCmd)) // open a sweet data adapter
+                    using (SqlCommand sCmd = new SqlCommand(query, sCon)) // set command details
                     {
-                        using (DataTable dt = new DataTable()) // create our datatable
-                        {
-                            sDa.Fill(dt); // fill it up baby
-                            return dt; // return it for use
-                        }
-                    }
+                        sCmd.CommandTimeout = cmdTimeout;
+                        sCmd.CommandType = CommandType.Text;
 
+                        using (SqlDataAdapter sDa = new SqlDataAdapter(sCmd)) // open a sweet data adapter
+                        {
+                            using (DataTable dt = new DataTable()) // create our datatable
+                            {
+                                sDa.Fill(dt); // fill it up baby
+                                return dt; // return it for use
+                            }
+                        }
+
+                    }
                 }
+            } catch (Exception ex)
+            {
+                log.Error(ex.Message);
+                return new DataTable();
             }
         }
 
         public string ExecuteQueryScalar(string query, string colName, int cmdTimeout = 30)
         {
-            using (SqlConnection sCon = new SqlConnection(_connectionString)) // open connection
+            try
             {
-                using (SqlCommand sCmd = new SqlCommand(query, sCon)) // set command details
+                using (SqlConnection sCon = new SqlConnection(_connectionString)) // open connection
                 {
-                    sCmd.CommandTimeout = cmdTimeout;
-                    sCmd.CommandType = CommandType.Text;
+                    using (SqlCommand sCmd = new SqlCommand(query, sCon)) // set command details
+                    {
+                        sCmd.CommandTimeout = cmdTimeout;
+                        sCmd.CommandType = CommandType.Text;
 
-                    sCon.Open();
+                        sCon.Open();
 
-                    string data = (string)sCmd.ExecuteScalar();
+                        string data = (string)sCmd.ExecuteScalar();
 
-                    sCon.Close();
+                        sCon.Close();
 
-                    return data;
+                        return data;
 
+                    }
                 }
+            } catch (Exception ex)
+            {
+                log.Error(ex.Message);
+                return "";
             }
         }
 

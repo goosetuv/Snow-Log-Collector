@@ -10,6 +10,8 @@ namespace SnowLogCollector.Classes
     class DirectoryManager
     {
 
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(DirectoryManager));
+
         private string _root;
 
         public string Root
@@ -33,6 +35,15 @@ namespace SnowLogCollector.Classes
             get { return _export; }
             set { _export = value; }
         }
+
+        private string _collectedLogs;
+
+        public string CollectedLogs
+        {
+            get { return _collectedLogs; }
+            set { _collectedLogs = value; }
+        }
+
 
         private string _resource;
 
@@ -64,6 +75,7 @@ namespace SnowLogCollector.Classes
             _resource = _root + @"Resources\";
             _logs = _root + @"Logs\";
             _export = _data + @"Exports\";
+            _collectedLogs = _data + @"CollectedLogs\";
 
             // Create our root directory first in
             // AppData (%AppData%\Goosetuv\Snow Log Collector\)
@@ -77,6 +89,9 @@ namespace SnowLogCollector.Classes
                 Directory.CreateDirectory(_resource);
                 Directory.CreateDirectory(_logs);
                 Directory.CreateDirectory(_export);
+                Directory.CreateDirectory(_collectedLogs);
+
+                log.Info("Required sub-directories created for Data, Resources, App Logs, Export and CollectedLogs");
             }
         }
 

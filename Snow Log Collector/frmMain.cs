@@ -6,6 +6,8 @@ using System.Xml.Linq;
 using SnowLogCollector.Classes;
 using OfficeOpenXml.Table;
 
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
+
 namespace SnowLogCollector
 {
     public partial class frmMain : Form
@@ -13,17 +15,23 @@ namespace SnowLogCollector
         private DatabaseManager dbm = new DatabaseManager();
         private DirectoryManager dir = new DirectoryManager(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Goosetuv\Snow Log Collector\");
         private bool isSqlValid = false; // only important when saving config
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(frmMain));
 
         public frmMain()
         {
             InitializeComponent();
+
+            log.Info("Application starting...");
 
             dir.CreateDirectories();
 
             try
             {
                 dbm.ConnectionString = ConfigManager.ConnectionGet();
-            } catch { }
+                log.Info("Connection string has been set via the app.config");
+            } catch {
+                log.Error("Connection string has not been set due to incorrect format.  If this appears during first run, you can safely ignore.");
+            }
 
             PopulateConfigurationData();
         }
@@ -52,31 +60,76 @@ namespace SnowLogCollector
 
         private void btnSLMLogsWebGrab_Click(object sender, EventArgs e)
         {
-            string unc = ConfigManager.AppSettingsGet("SnowLicenseManagerServerUNC");
-            string web = ConfigManager.AppSettingsGet("SnowLicenseManagerWebLogs");
+            GrabAllFiles("SnowLicenseManagerServerUNC", "SnowLicenseManagerWebLogs");
+        }
 
-            foreach (var i in Directory.GetDirectories(Path.Combine(unc, web)))
-            {
-                MessageBox.Show(i);
-            }
+        private void btnSLMLogsServicesGrab_Click(object sender, EventArgs e)
+        {
+            GrabAllFiles("SnowLicenseManagerServerUNC", "SnowSoftwareLogs");
         }
 
         private void btnSLMLogsWebCustomize_Click(object sender, EventArgs e)
         {
+            // Get our server UNC path and the Snow License Manager Web Logs
             string unc = ConfigManager.AppSettingsGet("SnowLicenseManagerServerUNC");
             string web = ConfigManager.AppSettingsGet("SnowLicenseManagerWebLogs");
 
-            frmDirectoryCustomize fdc = new frmDirectoryCustomize
+            // Check that the user has completed configuration
+            if(!string.IsNullOrWhiteSpace(unc))
             {
-                FormName = "License Manager Web Logs",
-                DirectoryPath = Path.Combine(unc, web)
-            };
+                // Initiate a new copy of the Directory Customization Form
+                frmDirectoryCustomize fdc = new frmDirectoryCustomize
+                {
+                    FormName = "License Manager Web Logs",
+                    DirectoryPath = Path.Combine(unc, web),
+                    ApplicationDataRoot = dir.Root,
+                    CollectedLogsRoot = dir.CollectedLogs
+                };
 
-            fdc.ShowDialog();
+                // Show the Directory Customization Form
+                fdc.ShowDialog();
+            } else
+            {
+                MessageBox.Show("Please complete application configuration.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnSLMLogsServicesCustomize_Click(object sender, EventArgs e)
+        {
+            // Get our server UNC path and the Snow License Manager Web Logs
+            string unc = ConfigManager.AppSettingsGet("SnowLicenseManagerServerUNC");
+            string service = ConfigManager.AppSettingsGet("SnowSoftwareLogs");
+
+            // Check that the user has completed configuration
+            if (!string.IsNullOrWhiteSpace(unc))
+            {
+                // Initiate a new copy of the Directory Customization Form
+                frmDirectoryCustomize fdc = new frmDirectoryCustomize
+                {
+                    FormName = "Snow Software Service Logs",
+                    DirectoryPath = Path.Combine(unc, service),
+                    ApplicationDataRoot = dir.Root,
+                    CollectedLogsRoot = dir.CollectedLogs
+                };
+
+                // Show the Directory Customization Form
+                fdc.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please complete application configuration.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnSLMDataUpdateJobExport_Click(object sender, EventArgs e)
         {
+
+            if(dbm.ConnectionString == null)
+            {
+                MessageBox.Show("Please complete application configuration.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             string resourceFile = Path.Combine(dir.Resource, "DataUpdateJob.xml");
             Guid fileName = Guid.NewGuid();
 
@@ -88,6 +141,7 @@ namespace SnowLogCollector
             if (!File.Exists(resourceFile))
             {
                 File.WriteAllText(resourceFile, Properties.Resources.DataUpdateJob);
+                log.Info(string.Format("DataUpdateJob resource written to {0}", resourceFile));
             }
 
             // Load up the file that contains our SQL Scripts for
@@ -117,7 +171,6 @@ namespace SnowLogCollector
                             TableStyles.Light10,                                    // Table Style
                             element.Name.ToString()                                 // Name of Sql Script
                         );
-
                     }
 
                 }
@@ -139,6 +192,8 @@ namespace SnowLogCollector
             txtConfigDatabaseUser.Text = dbm.DemolishConnectionString("User ID");
             txtConfigDatabasePass.Text = dbm.DemolishConnectionString("Password");
             cbxConfigDatabaseWinAuth.Checked = bool.Parse(dbm.DemolishConnectionString("Integrated Security"));
+
+            log.Info("Configuration data has been populated from app.config if it is present");
         }
 
         private void btnConfigServersSave_Click(object sender, EventArgs e)
@@ -177,6 +232,8 @@ namespace SnowLogCollector
                 ConfigManager.AppSettingsSet("SnowInventoryDrive", cbConfigSnowInventoryDrive.Text);
                 ConfigManager.AppSettingsSet("SnowLicenseManagerServerUNC", string.Format(@"\\{0}\{1}$\", txtConfigLicenseManagerServer.Text, cbConfigLicenseManagerDrive.Text));
                 ConfigManager.AppSettingsSet("SnowInventoryServerUNC", string.Format(@"\\{0}\{1}$\", txtConfigSnowInventoryServer.Text, cbConfigSnowInventoryDrive.Text));
+
+                log.Info("Configuration data for Servers has been saved");
 
                 MessageBox.Show("Server Configuration saved.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -217,8 +274,13 @@ namespace SnowLogCollector
 
                     if (dr == DialogResult.Yes)
                     {
+
+                        log.Info("Connection string with sysadmin permissions being saved at request of User");
+
                         // Save the new connection string using the SA account
                         ConfigManager.ConnectionSet(dbm.ConnectionString);
+
+                        log.Info("Configuration data for Database has been saved");
 
                         // Tell user we're saved
                         MessageBox.Show("Database Configuration saved.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -234,6 +296,8 @@ namespace SnowLogCollector
                 {
                     // Save the new connection string using a NON-SA account
                     ConfigManager.ConnectionSet(dbm.ConnectionString);
+
+                    log.Info("Configuration data for Database has been saved");
 
                     // Tell the user we're saved
                     MessageBox.Show("Database Configuration saved.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -279,8 +343,39 @@ namespace SnowLogCollector
                 txtAboutLibrariesLicense.Text = "https://github.com/EPPlusSoftware/EPPlus/blob/develop/license.md";
             }
         }
+
         #endregion
 
+        #region Functions 
 
+        /// <summary>
+        /// Runs the required things to grab all files from the location
+        /// </summary>
+        /// <param name="uncPath">Name of the UNC path key in app.config</param>
+        /// <param name="logPath">Name of the Log path key in app.config</param>
+        private void GrabAllFiles(string uncPath, string logPath)
+        {
+            // Get our server UNC path and the Snow License Manager Web Logs
+            string unc = ConfigManager.AppSettingsGet(uncPath);
+            string log = ConfigManager.AppSettingsGet(logPath);
+
+            if (!string.IsNullOrWhiteSpace(unc))
+            {
+                FileCopier fc = new FileCopier();
+
+                foreach (var i in Directory.GetDirectories(Path.Combine(unc, log)))
+                {
+                    DirectoryInfo di = new DirectoryInfo(i);
+                    fc.Copy(i, dir.CollectedLogs, di.Name);
+                }
+
+                MessageBox.Show("Collector finished", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Please complete application configuration.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        #endregion
     }
 }

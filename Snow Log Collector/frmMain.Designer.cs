@@ -170,7 +170,6 @@ namespace SnowLogCollector
             // 
             // btnSLMLogsServicesCustomize
             // 
-            this.btnSLMLogsServicesCustomize.Enabled = false;
             this.btnSLMLogsServicesCustomize.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.btnSLMLogsServicesCustomize.Location = new System.Drawing.Point(9, 71);
             this.btnSLMLogsServicesCustomize.Name = "btnSLMLogsServicesCustomize";
@@ -178,10 +177,10 @@ namespace SnowLogCollector
             this.btnSLMLogsServicesCustomize.TabIndex = 2;
             this.btnSLMLogsServicesCustomize.Text = "Customize";
             this.btnSLMLogsServicesCustomize.UseVisualStyleBackColor = true;
+            this.btnSLMLogsServicesCustomize.Click += new System.EventHandler(this.btnSLMLogsServicesCustomize_Click);
             // 
             // btnSLMLogsServicesGrab
             // 
-            this.btnSLMLogsServicesGrab.Enabled = false;
             this.btnSLMLogsServicesGrab.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.btnSLMLogsServicesGrab.Location = new System.Drawing.Point(118, 71);
             this.btnSLMLogsServicesGrab.Name = "btnSLMLogsServicesGrab";
@@ -189,6 +188,7 @@ namespace SnowLogCollector
             this.btnSLMLogsServicesGrab.TabIndex = 1;
             this.btnSLMLogsServicesGrab.Text = "Grab";
             this.btnSLMLogsServicesGrab.UseVisualStyleBackColor = true;
+            this.btnSLMLogsServicesGrab.Click += new System.EventHandler(this.btnSLMLogsServicesGrab_Click);
             // 
             // lblSLMLogsServices
             // 

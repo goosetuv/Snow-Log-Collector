@@ -8,6 +8,7 @@ namespace SnowLogCollector.Classes
     public static class ConfigManager
     {
         private static readonly byte[] additionalEntropy = { 127, 126, 125, 124, 123 };
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(ConfigManager));
 
         // https://stackoverflow.com/a/37952523/12954031
         public static void AppSettingsSet(string key, string value)
@@ -24,6 +25,8 @@ namespace SnowLogCollector.Classes
                 config.AppSettings.Settings[key].Value = value;
             }
 
+            log.Debug(string.Format("AppSetting {0} has been saved to app.config with the value {1}", key, value));
+
             config.Save(ConfigurationSaveMode.Minimal);
         }
 
@@ -32,6 +35,14 @@ namespace SnowLogCollector.Classes
             var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
             var entry = config.AppSettings.Settings[key].Value;
+
+            if(entry.Length > 0)
+            {
+                log.Debug(string.Format("AppSetting {0} has been retrieved from app.config with the value {1}", key, entry));
+            } else
+            {
+                log.Debug(string.Format("AppSetting {0} has been retrieved from app.config but is empty", key));
+            }
 
             return entry.ToString();
         }
@@ -55,6 +66,7 @@ namespace SnowLogCollector.Classes
 
             config.Save(ConfigurationSaveMode.Minimal);
 
+            log.Debug(string.Format("Connection string for {0} has been saved", key));
         }
 
     }

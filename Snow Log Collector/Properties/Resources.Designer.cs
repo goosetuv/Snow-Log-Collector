@@ -62,17 +62,37 @@ namespace SnowLogCollector.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-        ///&lt;!-- do not rename the root node(s) as the program will break :) --&gt;
-        ///&lt;Resource&gt;
-        ///    &lt;dbversionhistory&gt;SELECT * FROM [SnowInventory].[inv].[DbVersionHistory]&lt;/dbversionhistory&gt;
-        ///    &lt;sysjobhistory&gt;SELECT * FROM [msdb].[dbo].[sysjobhistory] WHERE sql_severity &gt; 0&lt;/sysjobhistory&gt;
-        ///    &lt;tblciddatasource&gt;SELECT * FROM [SnowLicenseManager].[dbo].[tblCIDDataSource]&lt;/tblciddatasource&gt;
-        ///    &lt;tblerrorlog&gt;SELECT * FROM [SnowLicenseManager].[dbo].[tblErrorLog]&lt;/tblerrorlog&gt;
-        ///   [rest of string was truncated]&quot;;.
+        ///&lt;Resource version=&quot;9.19.00&quot; defaultSize=&quot;9&quot; isCustom=&quot;false&quot;&gt;
+        ///  
+        ///    &lt;!-- 
+        ///    
+        ///      You can add custom scripts to the below and modify the existing ones if you want.  To format dates correctly in the Excel Export
+        ///      I recommend doing CONVERT(VARCHAR, DateColumn, 120) AS [DateColumn] - but it&apos;s up to you. :) 
+        ///      
+        ///      Ensure you change isCustom = false to isCustom = true on Line 2.  It&apos;s not currently used in Version 2.0, but it&apos;s to future proof
+        ///      [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string DataUpdateJob {
             get {
                 return ResourceManager.GetString("DataUpdateJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;Resource version=&quot;9.19.00&quot; defaultSize=&quot;33&quot; isCustom=&quot;false&quot;&gt;
+        ///  
+        ///    &lt;!-- 
+        ///    
+        ///      You can add custom scripts to the below and modify the existing ones if you want.  To format dates correctly in the Excel Export
+        ///      I recommend doing CONVERT(VARCHAR, DateColumn, 120) AS [DateColumn] - but it&apos;s up to you. :) 
+        ///      
+        ///      Ensure you change isCustom = false to isCustom = true on Line 2.  It&apos;s not currently used in Version 2.0, but it&apos;s to future proof
+        ///     [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Microsoft365 {
+            get {
+                return ResourceManager.GetString("Microsoft365", resourceCulture);
             }
         }
         
