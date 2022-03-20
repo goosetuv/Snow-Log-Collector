@@ -2,6 +2,8 @@
 
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
+**This program is currently being rewritten from the ground up.  Version 1 still works, however certain log locations that have been added in Snow updates do not exist.**
+
 Collecting Logs is boring, don't do it manually. Free Windows Tool for pulling logs for Snow License Manager and Snow Inventory!
 
 ---
