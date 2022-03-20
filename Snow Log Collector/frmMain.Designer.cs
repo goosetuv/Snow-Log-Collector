@@ -49,6 +49,26 @@ namespace SnowLogCollector
             this.lblSLMDataUpdateJob = new System.Windows.Forms.Label();
             this.tabSINV = new System.Windows.Forms.TabPage();
             this.tabConfig = new System.Windows.Forms.TabPage();
+            this.gbConfigDatabase = new System.Windows.Forms.GroupBox();
+            this.btnConfigDatabaseTest = new System.Windows.Forms.Button();
+            this.btnConfigDatabaseSave = new System.Windows.Forms.Button();
+            this.cbxConfigDatabaseWinAuth = new System.Windows.Forms.CheckBox();
+            this.lblConfigDatabasePass = new System.Windows.Forms.Label();
+            this.txtConfigDatabasePass = new System.Windows.Forms.TextBox();
+            this.lblConfigDatabaseUser = new System.Windows.Forms.Label();
+            this.txtConfigDatabaseUser = new System.Windows.Forms.TextBox();
+            this.lblConfigDatabaseServer = new System.Windows.Forms.Label();
+            this.txtConfigDatabaseServer = new System.Windows.Forms.TextBox();
+            this.gbConfigServers = new System.Windows.Forms.GroupBox();
+            this.cbConfigSnowInventoryDrive = new System.Windows.Forms.ComboBox();
+            this.cbConfigLicenseManagerDrive = new System.Windows.Forms.ComboBox();
+            this.lblConfigSnowInventoryDrive = new System.Windows.Forms.Label();
+            this.lblConfigLicenseManagerDrive = new System.Windows.Forms.Label();
+            this.btnConfigServersSave = new System.Windows.Forms.Button();
+            this.lblConfigSnowInventoryServer = new System.Windows.Forms.Label();
+            this.txtConfigSnowInventoryServer = new System.Windows.Forms.TextBox();
+            this.lblConfigLicenseManagerServer = new System.Windows.Forms.Label();
+            this.txtConfigLicenseManagerServer = new System.Windows.Forms.TextBox();
             this.tabAbout = new System.Windows.Forms.TabPage();
             this.btnAboutAppData = new System.Windows.Forms.Button();
             this.txtAboutLibrariesLicense = new System.Windows.Forms.TextBox();
@@ -59,13 +79,6 @@ namespace SnowLogCollector
             this.lblAboutLicense = new System.Windows.Forms.Label();
             this.lblAboutCopyright = new System.Windows.Forms.Label();
             this.pbGoosetuvLogo = new System.Windows.Forms.PictureBox();
-            this.gbConfigServers = new System.Windows.Forms.GroupBox();
-            this.gbConfigDatabase = new System.Windows.Forms.GroupBox();
-            this.txtConfigLicenseManagerServer = new System.Windows.Forms.TextBox();
-            this.lblConfigLicenseManagerServer = new System.Windows.Forms.Label();
-            this.lblConfigSnowInventoryServer = new System.Windows.Forms.Label();
-            this.txtConfigSnowInventoryServer = new System.Windows.Forms.TextBox();
-            this.btnConfigServersSave = new System.Windows.Forms.Button();
             this.tabControlMain.SuspendLayout();
             this.tabSLM.SuspendLayout();
             this.gbSLMPlatformData.SuspendLayout();
@@ -73,9 +86,10 @@ namespace SnowLogCollector
             this.gbSLMLogsWeb.SuspendLayout();
             this.gbSLMDataUpdateJob.SuspendLayout();
             this.tabConfig.SuspendLayout();
+            this.gbConfigDatabase.SuspendLayout();
+            this.gbConfigServers.SuspendLayout();
             this.tabAbout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbGoosetuvLogo)).BeginInit();
-            this.gbConfigServers.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -301,6 +315,290 @@ namespace SnowLogCollector
             this.tabConfig.Text = "Configuration";
             this.tabConfig.UseVisualStyleBackColor = true;
             // 
+            // gbConfigDatabase
+            // 
+            this.gbConfigDatabase.Controls.Add(this.btnConfigDatabaseTest);
+            this.gbConfigDatabase.Controls.Add(this.btnConfigDatabaseSave);
+            this.gbConfigDatabase.Controls.Add(this.cbxConfigDatabaseWinAuth);
+            this.gbConfigDatabase.Controls.Add(this.lblConfigDatabasePass);
+            this.gbConfigDatabase.Controls.Add(this.txtConfigDatabasePass);
+            this.gbConfigDatabase.Controls.Add(this.lblConfigDatabaseUser);
+            this.gbConfigDatabase.Controls.Add(this.txtConfigDatabaseUser);
+            this.gbConfigDatabase.Controls.Add(this.lblConfigDatabaseServer);
+            this.gbConfigDatabase.Controls.Add(this.txtConfigDatabaseServer);
+            this.gbConfigDatabase.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gbConfigDatabase.Location = new System.Drawing.Point(255, 10);
+            this.gbConfigDatabase.Name = "gbConfigDatabase";
+            this.gbConfigDatabase.Size = new System.Drawing.Size(230, 221);
+            this.gbConfigDatabase.TabIndex = 1;
+            this.gbConfigDatabase.TabStop = false;
+            this.gbConfigDatabase.Text = "Database Configuration";
+            // 
+            // btnConfigDatabaseTest
+            // 
+            this.btnConfigDatabaseTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btnConfigDatabaseTest.Location = new System.Drawing.Point(9, 192);
+            this.btnConfigDatabaseTest.Name = "btnConfigDatabaseTest";
+            this.btnConfigDatabaseTest.Size = new System.Drawing.Size(75, 23);
+            this.btnConfigDatabaseTest.TabIndex = 4;
+            this.btnConfigDatabaseTest.Text = "Test";
+            this.btnConfigDatabaseTest.UseVisualStyleBackColor = true;
+            this.btnConfigDatabaseTest.Click += new System.EventHandler(this.btnConfigDatabaseTest_Click);
+            // 
+            // btnConfigDatabaseSave
+            // 
+            this.btnConfigDatabaseSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btnConfigDatabaseSave.Location = new System.Drawing.Point(146, 192);
+            this.btnConfigDatabaseSave.Name = "btnConfigDatabaseSave";
+            this.btnConfigDatabaseSave.Size = new System.Drawing.Size(75, 23);
+            this.btnConfigDatabaseSave.TabIndex = 5;
+            this.btnConfigDatabaseSave.Text = "Save";
+            this.btnConfigDatabaseSave.UseVisualStyleBackColor = true;
+            this.btnConfigDatabaseSave.Click += new System.EventHandler(this.btnConfigDatabaseSave_Click);
+            // 
+            // cbxConfigDatabaseWinAuth
+            // 
+            this.cbxConfigDatabaseWinAuth.AutoSize = true;
+            this.cbxConfigDatabaseWinAuth.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.cbxConfigDatabaseWinAuth.Location = new System.Drawing.Point(9, 165);
+            this.cbxConfigDatabaseWinAuth.Name = "cbxConfigDatabaseWinAuth";
+            this.cbxConfigDatabaseWinAuth.Size = new System.Drawing.Size(163, 17);
+            this.cbxConfigDatabaseWinAuth.TabIndex = 3;
+            this.cbxConfigDatabaseWinAuth.Text = "Use Windows Authentication";
+            this.cbxConfigDatabaseWinAuth.UseVisualStyleBackColor = true;
+            this.cbxConfigDatabaseWinAuth.CheckedChanged += new System.EventHandler(this.cbxConfigDatabaseWinAuth_CheckedChanged);
+            // 
+            // lblConfigDatabasePass
+            // 
+            this.lblConfigDatabasePass.AutoSize = true;
+            this.lblConfigDatabasePass.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConfigDatabasePass.Location = new System.Drawing.Point(6, 107);
+            this.lblConfigDatabasePass.Name = "lblConfigDatabasePass";
+            this.lblConfigDatabasePass.Size = new System.Drawing.Size(105, 13);
+            this.lblConfigDatabasePass.TabIndex = 11;
+            this.lblConfigDatabasePass.Text = "Database Password:";
+            // 
+            // txtConfigDatabasePass
+            // 
+            this.txtConfigDatabasePass.AutoCompleteCustomSource.AddRange(new string[] {
+            "localhost"});
+            this.txtConfigDatabasePass.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtConfigDatabasePass.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtConfigDatabasePass.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtConfigDatabasePass.Location = new System.Drawing.Point(9, 123);
+            this.txtConfigDatabasePass.Name = "txtConfigDatabasePass";
+            this.txtConfigDatabasePass.Size = new System.Drawing.Size(212, 20);
+            this.txtConfigDatabasePass.TabIndex = 2;
+            this.txtConfigDatabasePass.UseSystemPasswordChar = true;
+            // 
+            // lblConfigDatabaseUser
+            // 
+            this.lblConfigDatabaseUser.AutoSize = true;
+            this.lblConfigDatabaseUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConfigDatabaseUser.Location = new System.Drawing.Point(6, 63);
+            this.lblConfigDatabaseUser.Name = "lblConfigDatabaseUser";
+            this.lblConfigDatabaseUser.Size = new System.Drawing.Size(81, 13);
+            this.lblConfigDatabaseUser.TabIndex = 11;
+            this.lblConfigDatabaseUser.Text = "Database User:";
+            // 
+            // txtConfigDatabaseUser
+            // 
+            this.txtConfigDatabaseUser.AutoCompleteCustomSource.AddRange(new string[] {
+            "localhost"});
+            this.txtConfigDatabaseUser.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtConfigDatabaseUser.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtConfigDatabaseUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtConfigDatabaseUser.Location = new System.Drawing.Point(9, 79);
+            this.txtConfigDatabaseUser.Name = "txtConfigDatabaseUser";
+            this.txtConfigDatabaseUser.Size = new System.Drawing.Size(212, 20);
+            this.txtConfigDatabaseUser.TabIndex = 1;
+            // 
+            // lblConfigDatabaseServer
+            // 
+            this.lblConfigDatabaseServer.AutoSize = true;
+            this.lblConfigDatabaseServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConfigDatabaseServer.Location = new System.Drawing.Point(6, 20);
+            this.lblConfigDatabaseServer.Name = "lblConfigDatabaseServer";
+            this.lblConfigDatabaseServer.Size = new System.Drawing.Size(90, 13);
+            this.lblConfigDatabaseServer.TabIndex = 12;
+            this.lblConfigDatabaseServer.Text = "Database Server:";
+            // 
+            // txtConfigDatabaseServer
+            // 
+            this.txtConfigDatabaseServer.AutoCompleteCustomSource.AddRange(new string[] {
+            "localhost"});
+            this.txtConfigDatabaseServer.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtConfigDatabaseServer.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtConfigDatabaseServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtConfigDatabaseServer.Location = new System.Drawing.Point(9, 36);
+            this.txtConfigDatabaseServer.Name = "txtConfigDatabaseServer";
+            this.txtConfigDatabaseServer.Size = new System.Drawing.Size(212, 20);
+            this.txtConfigDatabaseServer.TabIndex = 0;
+            // 
+            // gbConfigServers
+            // 
+            this.gbConfigServers.Controls.Add(this.cbConfigSnowInventoryDrive);
+            this.gbConfigServers.Controls.Add(this.cbConfigLicenseManagerDrive);
+            this.gbConfigServers.Controls.Add(this.lblConfigSnowInventoryDrive);
+            this.gbConfigServers.Controls.Add(this.lblConfigLicenseManagerDrive);
+            this.gbConfigServers.Controls.Add(this.btnConfigServersSave);
+            this.gbConfigServers.Controls.Add(this.lblConfigSnowInventoryServer);
+            this.gbConfigServers.Controls.Add(this.txtConfigSnowInventoryServer);
+            this.gbConfigServers.Controls.Add(this.lblConfigLicenseManagerServer);
+            this.gbConfigServers.Controls.Add(this.txtConfigLicenseManagerServer);
+            this.gbConfigServers.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbConfigServers.Location = new System.Drawing.Point(10, 10);
+            this.gbConfigServers.Name = "gbConfigServers";
+            this.gbConfigServers.Size = new System.Drawing.Size(230, 221);
+            this.gbConfigServers.TabIndex = 0;
+            this.gbConfigServers.TabStop = false;
+            this.gbConfigServers.Text = "Server Configuration";
+            // 
+            // cbConfigSnowInventoryDrive
+            // 
+            this.cbConfigSnowInventoryDrive.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbConfigSnowInventoryDrive.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.cbConfigSnowInventoryDrive.FormattingEnabled = true;
+            this.cbConfigSnowInventoryDrive.Items.AddRange(new object[] {
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N",
+            "O",
+            "P",
+            "Q",
+            "R",
+            "S",
+            "T",
+            "U",
+            "V",
+            "W",
+            "X",
+            "Y",
+            "Z"});
+            this.cbConfigSnowInventoryDrive.Location = new System.Drawing.Point(9, 165);
+            this.cbConfigSnowInventoryDrive.Name = "cbConfigSnowInventoryDrive";
+            this.cbConfigSnowInventoryDrive.Size = new System.Drawing.Size(212, 21);
+            this.cbConfigSnowInventoryDrive.TabIndex = 4;
+            // 
+            // cbConfigLicenseManagerDrive
+            // 
+            this.cbConfigLicenseManagerDrive.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbConfigLicenseManagerDrive.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.cbConfigLicenseManagerDrive.FormattingEnabled = true;
+            this.cbConfigLicenseManagerDrive.Items.AddRange(new object[] {
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N",
+            "O",
+            "P",
+            "Q",
+            "R",
+            "S",
+            "T",
+            "U",
+            "V",
+            "W",
+            "X",
+            "Y",
+            "Z"});
+            this.cbConfigLicenseManagerDrive.Location = new System.Drawing.Point(9, 123);
+            this.cbConfigLicenseManagerDrive.Name = "cbConfigLicenseManagerDrive";
+            this.cbConfigLicenseManagerDrive.Size = new System.Drawing.Size(212, 21);
+            this.cbConfigLicenseManagerDrive.TabIndex = 3;
+            // 
+            // lblConfigSnowInventoryDrive
+            // 
+            this.lblConfigSnowInventoryDrive.AutoSize = true;
+            this.lblConfigSnowInventoryDrive.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConfigSnowInventoryDrive.Location = new System.Drawing.Point(6, 150);
+            this.lblConfigSnowInventoryDrive.Name = "lblConfigSnowInventoryDrive";
+            this.lblConfigSnowInventoryDrive.Size = new System.Drawing.Size(112, 13);
+            this.lblConfigSnowInventoryDrive.TabIndex = 8;
+            this.lblConfigSnowInventoryDrive.Text = "Snow Inventory Drive:";
+            // 
+            // lblConfigLicenseManagerDrive
+            // 
+            this.lblConfigLicenseManagerDrive.AutoSize = true;
+            this.lblConfigLicenseManagerDrive.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConfigLicenseManagerDrive.Location = new System.Drawing.Point(6, 107);
+            this.lblConfigLicenseManagerDrive.Name = "lblConfigLicenseManagerDrive";
+            this.lblConfigLicenseManagerDrive.Size = new System.Drawing.Size(150, 13);
+            this.lblConfigLicenseManagerDrive.TabIndex = 6;
+            this.lblConfigLicenseManagerDrive.Text = "Snow License Manager Drive:";
+            // 
+            // btnConfigServersSave
+            // 
+            this.btnConfigServersSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btnConfigServersSave.Location = new System.Drawing.Point(146, 192);
+            this.btnConfigServersSave.Name = "btnConfigServersSave";
+            this.btnConfigServersSave.Size = new System.Drawing.Size(75, 23);
+            this.btnConfigServersSave.TabIndex = 5;
+            this.btnConfigServersSave.Text = "Save";
+            this.btnConfigServersSave.UseVisualStyleBackColor = true;
+            this.btnConfigServersSave.Click += new System.EventHandler(this.btnConfigServersSave_Click);
+            // 
+            // lblConfigSnowInventoryServer
+            // 
+            this.lblConfigSnowInventoryServer.AutoSize = true;
+            this.lblConfigSnowInventoryServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConfigSnowInventoryServer.Location = new System.Drawing.Point(6, 63);
+            this.lblConfigSnowInventoryServer.Name = "lblConfigSnowInventoryServer";
+            this.lblConfigSnowInventoryServer.Size = new System.Drawing.Size(118, 13);
+            this.lblConfigSnowInventoryServer.TabIndex = 3;
+            this.lblConfigSnowInventoryServer.Text = "Snow Inventory Server:";
+            // 
+            // txtConfigSnowInventoryServer
+            // 
+            this.txtConfigSnowInventoryServer.AutoCompleteCustomSource.AddRange(new string[] {
+            "localhost"});
+            this.txtConfigSnowInventoryServer.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtConfigSnowInventoryServer.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtConfigSnowInventoryServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtConfigSnowInventoryServer.Location = new System.Drawing.Point(9, 79);
+            this.txtConfigSnowInventoryServer.Name = "txtConfigSnowInventoryServer";
+            this.txtConfigSnowInventoryServer.Size = new System.Drawing.Size(212, 20);
+            this.txtConfigSnowInventoryServer.TabIndex = 2;
+            // 
+            // lblConfigLicenseManagerServer
+            // 
+            this.lblConfigLicenseManagerServer.AutoSize = true;
+            this.lblConfigLicenseManagerServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConfigLicenseManagerServer.Location = new System.Drawing.Point(6, 20);
+            this.lblConfigLicenseManagerServer.Name = "lblConfigLicenseManagerServer";
+            this.lblConfigLicenseManagerServer.Size = new System.Drawing.Size(156, 13);
+            this.lblConfigLicenseManagerServer.TabIndex = 1;
+            this.lblConfigLicenseManagerServer.Text = "Snow License Manager Server:";
+            // 
+            // txtConfigLicenseManagerServer
+            // 
+            this.txtConfigLicenseManagerServer.AutoCompleteCustomSource.AddRange(new string[] {
+            "localhost"});
+            this.txtConfigLicenseManagerServer.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtConfigLicenseManagerServer.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtConfigLicenseManagerServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtConfigLicenseManagerServer.Location = new System.Drawing.Point(9, 36);
+            this.txtConfigLicenseManagerServer.Name = "txtConfigLicenseManagerServer";
+            this.txtConfigLicenseManagerServer.Size = new System.Drawing.Size(212, 20);
+            this.txtConfigLicenseManagerServer.TabIndex = 0;
+            // 
             // tabAbout
             // 
             this.tabAbout.Controls.Add(this.btnAboutAppData);
@@ -325,7 +623,7 @@ namespace SnowLogCollector
             this.btnAboutAppData.Name = "btnAboutAppData";
             this.btnAboutAppData.Size = new System.Drawing.Size(75, 23);
             this.btnAboutAppData.TabIndex = 7;
-            this.btnAboutAppData.Text = "App. Data";
+            this.btnAboutAppData.Text = "Data";
             this.btnAboutAppData.UseVisualStyleBackColor = true;
             this.btnAboutAppData.Click += new System.EventHandler(this.btnAboutAppData_Click);
             // 
@@ -408,76 +706,6 @@ namespace SnowLogCollector
             this.pbGoosetuvLogo.TabIndex = 0;
             this.pbGoosetuvLogo.TabStop = false;
             // 
-            // gbConfigServers
-            // 
-            this.gbConfigServers.Controls.Add(this.btnConfigServersSave);
-            this.gbConfigServers.Controls.Add(this.lblConfigSnowInventoryServer);
-            this.gbConfigServers.Controls.Add(this.txtConfigSnowInventoryServer);
-            this.gbConfigServers.Controls.Add(this.lblConfigLicenseManagerServer);
-            this.gbConfigServers.Controls.Add(this.txtConfigLicenseManagerServer);
-            this.gbConfigServers.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbConfigServers.Location = new System.Drawing.Point(10, 10);
-            this.gbConfigServers.Name = "gbConfigServers";
-            this.gbConfigServers.Size = new System.Drawing.Size(230, 221);
-            this.gbConfigServers.TabIndex = 0;
-            this.gbConfigServers.TabStop = false;
-            this.gbConfigServers.Text = "Server Configuration";
-            // 
-            // gbConfigDatabase
-            // 
-            this.gbConfigDatabase.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gbConfigDatabase.Location = new System.Drawing.Point(255, 10);
-            this.gbConfigDatabase.Name = "gbConfigDatabase";
-            this.gbConfigDatabase.Size = new System.Drawing.Size(230, 221);
-            this.gbConfigDatabase.TabIndex = 1;
-            this.gbConfigDatabase.TabStop = false;
-            this.gbConfigDatabase.Text = "Database Configuration";
-            // 
-            // txtConfigLicenseManagerServer
-            // 
-            this.txtConfigLicenseManagerServer.Location = new System.Drawing.Point(9, 36);
-            this.txtConfigLicenseManagerServer.Name = "txtConfigLicenseManagerServer";
-            this.txtConfigLicenseManagerServer.Size = new System.Drawing.Size(212, 20);
-            this.txtConfigLicenseManagerServer.TabIndex = 0;
-            // 
-            // lblConfigLicenseManagerServer
-            // 
-            this.lblConfigLicenseManagerServer.AutoSize = true;
-            this.lblConfigLicenseManagerServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConfigLicenseManagerServer.Location = new System.Drawing.Point(6, 20);
-            this.lblConfigLicenseManagerServer.Name = "lblConfigLicenseManagerServer";
-            this.lblConfigLicenseManagerServer.Size = new System.Drawing.Size(156, 13);
-            this.lblConfigLicenseManagerServer.TabIndex = 1;
-            this.lblConfigLicenseManagerServer.Text = "Snow License Manager Server:";
-            // 
-            // lblConfigSnowInventoryServer
-            // 
-            this.lblConfigSnowInventoryServer.AutoSize = true;
-            this.lblConfigSnowInventoryServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConfigSnowInventoryServer.Location = new System.Drawing.Point(6, 66);
-            this.lblConfigSnowInventoryServer.Name = "lblConfigSnowInventoryServer";
-            this.lblConfigSnowInventoryServer.Size = new System.Drawing.Size(118, 13);
-            this.lblConfigSnowInventoryServer.TabIndex = 3;
-            this.lblConfigSnowInventoryServer.Text = "Snow Inventory Server:";
-            // 
-            // txtConfigSnowInventoryServer
-            // 
-            this.txtConfigSnowInventoryServer.Location = new System.Drawing.Point(9, 82);
-            this.txtConfigSnowInventoryServer.Name = "txtConfigSnowInventoryServer";
-            this.txtConfigSnowInventoryServer.Size = new System.Drawing.Size(212, 20);
-            this.txtConfigSnowInventoryServer.TabIndex = 2;
-            // 
-            // btnConfigServersSave
-            // 
-            this.btnConfigServersSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnConfigServersSave.Location = new System.Drawing.Point(146, 192);
-            this.btnConfigServersSave.Name = "btnConfigServersSave";
-            this.btnConfigServersSave.Size = new System.Drawing.Size(75, 23);
-            this.btnConfigServersSave.TabIndex = 4;
-            this.btnConfigServersSave.Text = "Save";
-            this.btnConfigServersSave.UseVisualStyleBackColor = true;
-            this.btnConfigServersSave.Click += new System.EventHandler(this.btnConfigServersSave_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -499,11 +727,13 @@ namespace SnowLogCollector
             this.gbSLMLogsWeb.ResumeLayout(false);
             this.gbSLMDataUpdateJob.ResumeLayout(false);
             this.tabConfig.ResumeLayout(false);
+            this.gbConfigDatabase.ResumeLayout(false);
+            this.gbConfigDatabase.PerformLayout();
+            this.gbConfigServers.ResumeLayout(false);
+            this.gbConfigServers.PerformLayout();
             this.tabAbout.ResumeLayout(false);
             this.tabAbout.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbGoosetuvLogo)).EndInit();
-            this.gbConfigServers.ResumeLayout(false);
-            this.gbConfigServers.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -546,6 +776,19 @@ namespace SnowLogCollector
         private System.Windows.Forms.Label lblConfigSnowInventoryServer;
         private System.Windows.Forms.TextBox txtConfigSnowInventoryServer;
         private System.Windows.Forms.Button btnConfigServersSave;
+        private System.Windows.Forms.Label lblConfigLicenseManagerDrive;
+        private System.Windows.Forms.Label lblConfigSnowInventoryDrive;
+        private System.Windows.Forms.ComboBox cbConfigSnowInventoryDrive;
+        private System.Windows.Forms.ComboBox cbConfigLicenseManagerDrive;
+        private System.Windows.Forms.Label lblConfigDatabaseServer;
+        private System.Windows.Forms.TextBox txtConfigDatabaseServer;
+        private System.Windows.Forms.Label lblConfigDatabaseUser;
+        private System.Windows.Forms.TextBox txtConfigDatabaseUser;
+        private System.Windows.Forms.Label lblConfigDatabasePass;
+        private System.Windows.Forms.TextBox txtConfigDatabasePass;
+        private System.Windows.Forms.CheckBox cbxConfigDatabaseWinAuth;
+        private System.Windows.Forms.Button btnConfigDatabaseSave;
+        private System.Windows.Forms.Button btnConfigDatabaseTest;
     }
 }
 

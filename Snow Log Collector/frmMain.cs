@@ -10,16 +10,22 @@ namespace SnowLogCollector
 {
     public partial class frmMain : Form
     {
-
-        private string rootDirectory, dataDirectory, exportDirectory, resourceDirectory;
         private DatabaseManager dbm = new DatabaseManager();
+        private DirectoryManager dir = new DirectoryManager(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Goosetuv\Snow Log Collector\");
+        private bool isSqlValid = false; // only important when saving config
 
         public frmMain()
         {
             InitializeComponent();
-            CreateDirectories();
 
-            DatabaseManager.ConnectionString = StaticHelpers.ConnectionGet();
+            dir.CreateDirectories();
+
+            try
+            {
+                dbm.ConnectionString = ConfigManager.ConnectionGet();
+            } catch { }
+
+            PopulateConfigurationData();
         }
 
         #region Snow License Manager
@@ -28,9 +34,9 @@ namespace SnowLogCollector
             try
             {
 
-                if (File.Exists(Path.Combine(resourceDirectory, "DataUpdateJob.xml")))
+                if (File.Exists(Path.Combine(dir.Resource, "DataUpdateJob.xml")))
                 {
-                    Process.Start(Path.Combine(resourceDirectory, "DataUpdateJob.xml"));
+                    Process.Start(Path.Combine(dir.Resource, "DataUpdateJob.xml"));
                 }
                 else
                 {
@@ -46,7 +52,10 @@ namespace SnowLogCollector
 
         private void btnSLMLogsWebGrab_Click(object sender, EventArgs e)
         {
-            foreach (var i in Directory.GetDirectories(@"C:\"))
+            string unc = ConfigManager.AppSettingsGet("SnowLicenseManagerServerUNC");
+            string web = ConfigManager.AppSettingsGet("SnowLicenseManagerWebLogs");
+
+            foreach (var i in Directory.GetDirectories(Path.Combine(unc, web)))
             {
                 MessageBox.Show(i);
             }
@@ -54,17 +63,21 @@ namespace SnowLogCollector
 
         private void btnSLMLogsWebCustomize_Click(object sender, EventArgs e)
         {
+            string unc = ConfigManager.AppSettingsGet("SnowLicenseManagerServerUNC");
+            string web = ConfigManager.AppSettingsGet("SnowLicenseManagerWebLogs");
+
             frmDirectoryCustomize fdc = new frmDirectoryCustomize
             {
                 FormName = "License Manager Web Logs",
-                DirectoryPath = @"C:\Users\"
+                DirectoryPath = Path.Combine(unc, web)
             };
+
             fdc.ShowDialog();
         }
 
         private void btnSLMDataUpdateJobExport_Click(object sender, EventArgs e)
         {
-            string resourceFile = Path.Combine(resourceDirectory, "DataUpdateJob.xml");
+            string resourceFile = Path.Combine(dir.Resource, "DataUpdateJob.xml");
             Guid fileName = Guid.NewGuid();
 
             // Write sql scripts to file so they can be modified later by end user.
@@ -98,7 +111,7 @@ namespace SnowLogCollector
                     {
                         ee.Save(
                             fileName,                                               // Filename
-                            exportDirectory,                                        // Export Path
+                            dir.Export,                                              // Export Path
                             ExcelExporter.DataType.DataUpdateJob,                   // Data Type
                             dbm.ExecuteQuery(element.Value.ToString()),             // Database Execution
                             TableStyles.Light10,                                    // Table Style
@@ -114,20 +127,149 @@ namespace SnowLogCollector
 
         #endregion
 
-
         #region Configuration 
-        private void btnConfigServersSave_Click(object sender, EventArgs e)
+        private void PopulateConfigurationData()
         {
-            StaticHelpers.AppSettingsSet("SnowLicenseManagerServer", txtConfigLicenseManagerServer.Text);
-            StaticHelpers.AppSettingsSet("SnowInventoryServer", txtConfigSnowInventoryServer.Text);
+            txtConfigLicenseManagerServer.Text = ConfigManager.AppSettingsGet("SnowLicenseManagerServer");
+            txtConfigSnowInventoryServer.Text = ConfigManager.AppSettingsGet("SnowInventoryServer");
+            cbConfigLicenseManagerDrive.Text = ConfigManager.AppSettingsGet("SnowLicenseManagerDrive");
+            cbConfigSnowInventoryDrive.Text = ConfigManager.AppSettingsGet("SnowInventoryDrive");
+
+            txtConfigDatabaseServer.Text = dbm.DemolishConnectionString("Server");
+            txtConfigDatabaseUser.Text = dbm.DemolishConnectionString("User ID");
+            txtConfigDatabasePass.Text = dbm.DemolishConnectionString("Password");
+            cbxConfigDatabaseWinAuth.Checked = bool.Parse(dbm.DemolishConnectionString("Integrated Security"));
         }
 
+        private void btnConfigServersSave_Click(object sender, EventArgs e)
+        {
+            bool isValid = true;
+
+            if (string.IsNullOrWhiteSpace(txtConfigLicenseManagerServer.Text))
+            {
+                MessageBox.Show("Snow License Manager Server hostname is required.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                isValid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtConfigSnowInventoryServer.Text) && isValid)
+            {
+                MessageBox.Show("Snow Inventory Server hostname is required.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                isValid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(cbConfigLicenseManagerDrive.Text) && isValid)
+            {
+                MessageBox.Show("Snow License Manager Server installation drive letter is required.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                isValid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(cbConfigSnowInventoryDrive.Text) && isValid)
+            {
+                MessageBox.Show("Snow Inventory Server installation drive letter is required.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                isValid = false;
+            }
+
+            if (isValid)
+            {
+                ConfigManager.AppSettingsSet("SnowLicenseManagerServer", txtConfigLicenseManagerServer.Text);
+                ConfigManager.AppSettingsSet("SnowInventoryServer", txtConfigSnowInventoryServer.Text);
+                ConfigManager.AppSettingsSet("SnowLicenseManagerDrive", cbConfigLicenseManagerDrive.Text);
+                ConfigManager.AppSettingsSet("SnowInventoryDrive", cbConfigSnowInventoryDrive.Text);
+                ConfigManager.AppSettingsSet("SnowLicenseManagerServerUNC", string.Format(@"\\{0}\{1}$\", txtConfigLicenseManagerServer.Text, cbConfigLicenseManagerDrive.Text));
+                ConfigManager.AppSettingsSet("SnowInventoryServerUNC", string.Format(@"\\{0}\{1}$\", txtConfigSnowInventoryServer.Text, cbConfigSnowInventoryDrive.Text));
+
+                MessageBox.Show("Server Configuration saved.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+        }
+
+        private void cbxConfigDatabaseWinAuth_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxConfigDatabaseWinAuth.Checked)
+            {
+                txtConfigDatabaseUser.Enabled = false;
+                txtConfigDatabasePass.Enabled = false;
+            }
+            else
+            {
+                txtConfigDatabaseUser.Enabled = true;
+                txtConfigDatabasePass.Enabled = true;
+            }
+        }
+
+        private void btnConfigDatabaseSave_Click(object sender, EventArgs e)
+        {
+            string oldConnectionString = dbm.ConnectionString;
+
+            if (isSqlValid)
+            {
+                dbm.ConnectionString = dbm.BuildConnectionString(txtConfigDatabaseServer.Text, txtConfigDatabaseUser.Text, txtConfigDatabasePass.Text, cbxConfigDatabaseWinAuth.Checked);
+
+                // Check if the account we're using is in the SYSADMIN group
+                bool isSysAdmin = bool.Parse(dbm.ExecuteQueryScalar("SELECT CASE WHEN IS_SRVROLEMEMBER('sysadmin') = 1 THEN 'True' ELSE 'False' END", ""));
+                DialogResult dr;
+
+                if (isSysAdmin)
+                {
+                    // Show warning message because we don't need SA rights and I'm not being blamed for
+                    // a password being unhashed, I ain't a security guy
+                    dr = MessageBox.Show("As this application is open source, there is only so much I can do for hashing connection strings.  A user on the same machine cannot unhash your password, but anyone that gains access to your account can.  It is recommended NOT to use a full-access account with this tool and to give it read permissions only.  Do you wish to continue with an SA account?", Text, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (dr == DialogResult.Yes)
+                    {
+                        // Save the new connection string using the SA account
+                        ConfigManager.ConnectionSet(dbm.ConnectionString);
+
+                        // Tell user we're saved
+                        MessageBox.Show("Database Configuration saved.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        // Set our connection string back to the old one
+                        dbm.ConnectionString = oldConnectionString;
+                    }
+
+                }
+                else
+                {
+                    // Save the new connection string using a NON-SA account
+                    ConfigManager.ConnectionSet(dbm.ConnectionString);
+
+                    // Tell the user we're saved
+                    MessageBox.Show("Database Configuration saved.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please test the connection before saving.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnConfigDatabaseTest_Click(object sender, EventArgs e)
+        {
+            // build our connection string and then pass it to testconnectionstring to confirm we good
+            if (dbm.TestConnectionString(dbm.BuildConnectionString(txtConfigDatabaseServer.Text, txtConfigDatabaseUser.Text, txtConfigDatabasePass.Text, cbxConfigDatabaseWinAuth.Checked)))
+            {
+                // Show user a successful message
+                MessageBox.Show("Connection to database is valid.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                isSqlValid = true;
+
+            }
+            else
+            {
+                // It didn't work lol
+                MessageBox.Show("Connection to database failed.  Please check and confirm details and that this server is able to access the database server.", Text, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+
+                isSqlValid = false;
+            }
+        }
         #endregion
 
         #region About Tab
         private void btnAboutAppData_Click(object sender, EventArgs e)
         {
-            Process.Start(dataDirectory);
+            Process.Start(dir.Data);
         }
 
         private void lblAboutLibraries_SelectedIndexChanged(object sender, EventArgs e)
@@ -139,33 +281,6 @@ namespace SnowLogCollector
         }
         #endregion
 
-        private void CreateDirectories()
-        {
 
-            // Define our paths, probably not the best way
-            // of doing this but, i don't have code reviewers lol
-            rootDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Goosetuv\Snow Log Collector\";
-            dataDirectory = rootDirectory + @"Data\";
-            exportDirectory = dataDirectory + @"Exports\";
-            resourceDirectory = dataDirectory + @"Resources\";
-
-            // Create our root directory first in
-            // AppData (%AppData%\Goosetuv\Snow Log Collector\)
-            // Check if it doesn't exist first
-            if (!Directory.Exists(rootDirectory))
-            {
-                // Doesn't exist, create it
-                Directory.CreateDirectory(rootDirectory);
-            }
-
-            // Make sure the root directory exists
-            // then create the child directories
-            if (Directory.Exists(rootDirectory))
-            {
-                Directory.CreateDirectory(dataDirectory);
-                Directory.CreateDirectory(exportDirectory);
-                Directory.CreateDirectory(resourceDirectory);
-            }
-        }
     }
 }
