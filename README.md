@@ -23,7 +23,7 @@ For the installer version just download the .zip and run the .msi installer, run
 ### Updating from v1.x
 I re-wrote Snow Log Collector entirely from the ground up.  Although it looks the same the code behind it is entirely different and using a different type of installer package, as a result installing v2.0 is seen by Windows as a brand new application. 
 
-To update from v1.x I recommend uninstalling your current installation and then installing v2.0.  No configuration data is from v1 is supported in v2 and will need to be set up again.
+To update from v1.x you will need to uninstall your current installation and then install v2.0.  Configuration data for v1.x is not compatible with version 2.0 so all configuration will need to be re-done.
 
 ## Features
 
