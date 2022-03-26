@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource version="9.19.00" defaultSize="0" isCustom="false" fileVersion="1.0.0">
+  
+    <!-- 
+    
+      You can add custom scripts to the below and modify the existing ones if you want.  To format dates correctly in the Excel Export
+      I recommend doing CONVERT(VARCHAR, DateColumn, 120) AS [DateColumn] - but it's up to you. :) 
+      
+      Ensure you change isCustom = false to isCustom = true on Line 2.  It's not currently used in Version 2.0, but it's to future proof
+      your custom scripts not being overwritten in the future.
+    
+      To reset any changes, delete the file in the Data\Resources directory and it will be generated on the next data grab.
+    
+      Custom Script Examples:
+    
+      <tblComputerSize>
+        SELECT COUNT(*) FROM [SnowLicenseManager].[dbo].tblComputer
+      </tblComputerSize>
+      <tblCustomerCount>
+        SELECT 
+          ci.Name AS [Customer]
+          ,COUNT(co.CID) AS [Device Count] 
+          ,cau.Units AS [Agreed Units] 
+        FROM [SnowLicenseManager].[dbo].[tblCID] ci
+        JOIN [SnowLicenseManager].[dbo].[tblComputer] co ON ci.CID = co.CID
+        JOIN [SnowLicenseManager].[dbo].[tblCIDAgreementUnits] cau ON ci.CID = cau.CID
+        GROUP BY ci.Name, cau.Units
+      </tblCustomerCount>
+    
+    -->
+  
+    <tblCID>
+      SELECT 
+        CID 
+        ,Name 
+        ,TenantID 
+      FROM [SnowLicenseManager].[dbo].[tblCID]
+    </tblCID>
+
+    <tblAccountInstance>
+      SELECT * FROM [SnowLicenseManager].[gsd].[tblAccountInstance]
+    </tblAccountInstance>
+
+    <tblAccountInstanceImport>
+      SELECT * FROM [SnowLicenseManager].[gsd].[tblAccountInstanceImport]
+    </tblAccountInstanceImport>
+
+    <tblAccountInstanceUsersHistoricData>
+      SELECT * FROM [SnowLicenseManager].[gsd].[tblAccountInstanceUsersHistoricData]
+    </tblAccountInstanceUsersHistoricData>
+
+    <tblAccountType>
+      SELECT * FROM [SnowLicenseManager].[gsd].[tblAccountType]
+    </tblAccountType>
+
+    <tblAccountTypeKeyValueBinaryStore>
+      SELECT * FROM [SnowLicenseManager].[gsd].[tblAccountTypeKeyValueBinaryStore]
+    </tblAccountTypeKeyValueBinaryStore>
+
+    <tblAccountUsersDetailsData>
+      SELECT * FROM [SnowLicenseManager].[gsd].[tblAccountUsersDetailsData]
+    </tblAccountUsersDetailsData>
+
+    <tblImportSubscriptionInstanceHistory>
+      SELECT * FROM [SnowLicenseManager].[gsd].[tblImportSubscriptionInstanceHistory]
+    </tblImportSubscriptionInstanceHistory>
+
+    <tblImportSubscriptionInstanceUserHistory>
+      SELECT * FROM [SnowLicenseManager].[gsd].[tblImportSubscriptionInstanceUserHistory]
+    </tblImportSubscriptionInstanceUserHistory>
+
+    <tblImportUserHistory>
+      SELECT * FROM [SnowLicenseManager].[gsd].[tblImportUserHistory]
+    </tblImportUserHistory>
+
+    <tblMonthlySubscriptionUserListData>
+      SELECT * FROM [SnowLicenseManager].[gsd].[tblMonthlySubscriptionUserListData]
+    </tblMonthlySubscriptionUserListData>
+
+    <tblSubscriptionCurrentUserDetailsData>
+      SELECT * FROM [SnowLicenseManager].[gsd].[tblSubscriptionCurrentUserDetailsData]
+    </tblSubscriptionCurrentUserDetailsData>
+
+    <tblSubscriptionInstance>
+      SELECT * FROM [SnowLicenseManager].[gsd].[tblSubscriptionInstance]
+    </tblSubscriptionInstance>
+
+    <tblSubscriptionInstanceCostPeriod>
+      SELECT * FROM [SnowLicenseManager].[gsd].[tblSubscriptionInstanceCostPeriod]
+    </tblSubscriptionInstanceCostPeriod>
+
+    <tblSubscriptionMeteringType>
+      SELECT * FROM [SnowLicenseManager].[gsd].[tblSubscriptionMeteringType]
+    </tblSubscriptionMeteringType>
+
+    <tblSubscriptionType>
+      SELECT * FROM [SnowLicenseManager].[gsd].[tblSubscriptionType]
+    </tblSubscriptionType>
+
+    <tblTaskExecutionAudit>
+      SELECT * FROM [SnowLicenseManager].[gsd].[tblTaskExecutionAudit]
+    </tblTaskExecutionAudit>
+
+    <tblUser>
+      SELECT * FROM [SnowLicenseManager].[gsd].[tblUser]
+    </tblUser>
+
+    <tblUserStatus>
+      SELECT * FROM [SnowLicenseManager].[gsd].[tblUserStatus]
+    </tblUserStatus>
+  
+</Resource>
