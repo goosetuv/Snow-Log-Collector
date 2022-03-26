@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource version="9.19.00" defaultSize="11" isCustom="false" fileVersion="1.0.0">
+  
+    <!-- 
+    
+      You can add custom scripts to the below and modify the existing ones if you want.  To format dates correctly in the Excel Export
+      I recommend doing CONVERT(VARCHAR, DateColumn, 120) AS [DateColumn] - but it's up to you. :) 
+      
+      Ensure you change isCustom = false to isCustom = true on Line 2.  It's not currently used in Version 2.0, but it's to future proof
+      your custom scripts not being overwritten in the future.
+    
+      To reset any changes, delete the file in the Data\Resources directory and it will be generated on the next data grab.
+    
+      Custom Script Examples:
+    
+      <tblComputerSize>
+        SELECT COUNT(*) FROM [SnowLicenseManager].[dbo].tblComputer
+      </tblComputerSize>
+      <tblCustomerCount>
+        SELECT 
+          ci.Name AS [Customer]
+          ,COUNT(co.CID) AS [Device Count] 
+          ,cau.Units AS [Agreed Units] 
+        FROM [SnowLicenseManager].[dbo].[tblCID] ci
+        JOIN [SnowLicenseManager].[dbo].[tblComputer] co ON ci.CID = co.CID
+        JOIN [SnowLicenseManager].[dbo].[tblCIDAgreementUnits] cau ON ci.CID = cau.CID
+        GROUP BY ci.Name, cau.Units
+      </tblCustomerCount>
+    
+    -->
+  
+    <DbVersionHistory>
+      SELECT 
+        Version 
+        ,ServerVersion 
+        ,CONVERT(VARCHAR, LastUpdated, 120) AS [LastUpdated] 
+        ,Comment 
+      FROM [SnowInventory].[inv].[DbVersionHistory]
+    </DbVersionHistory>
+
+    <tblSystemInfo>
+      SELECT
+        LicenseKey
+        ,CompanyName
+        ,ApplicationVersion
+        ,RequiredAdminToolVersion
+        ,DBVersion
+        ,CONVERT(VARCHAR, LastJobDate, 120) AS [LastJobDate]
+        ,LastJobStatus
+        ,CONVERT(VARCHAR, LastJobDuration, 120) AS [LastJobDuration]
+        ,CONVERT(VARCHAR, LastJobResetRulesDate, 120) AS [LastJobResetRulesDate]
+        ,ConversionDate
+        ,ConversionInfo
+        ,LicenseManagerUser
+        ,LicenseManagerPassword
+        ,SRSLicenseKey
+        ,WebServiceInfo
+        ,ActivationKey
+        ,CoreValidation
+        ,UpdateRevisionInstalled
+        ,ReportDate
+      FROM [SnowLicenseManager].[dbo].[tblSystemInfo]
+    </tblSystemInfo>
+  
+    <SysJobHistory>
+      SELECT * FROM [msdb].[dbo].[sysjobhistory] WHERE sql_severity > 0
+    </SysJobHistory>
+  
+    <tblCIDDataSource>
+      SELECT * FROM [SnowLicenseManager].[dbo].[tblCIDDataSource]
+    </tblCIDDataSource>
+  
+    <tblErrorLog>
+      SELECT
+        CONVERT(VARCHAR, LogDate, 120) AS [LogDate]
+        ,ErrorType
+        ,ErrorText
+      FROM [SnowLicenseManager].[dbo].[tblErrorLog]
+    </tblErrorLog>
+  
+    <tblInventoryDatabaseLog>
+      SELECT
+        CONVERT(VARCHAR, LogDate, 120) AS [LogDate]
+        ,InventoryDBID
+        ,InventoryServerName
+        ,InventoryDBName
+        ,OldSequenceNumber
+        ,NewSequenceNumber
+        ,OldRowVersion
+        ,NewRowVersion
+        ,CONVERT(VARCHAR, CreatedDate, 120) AS [CreatedDate]
+        ,CONVERT(VARCHAR, DeletedDate, 120) AS [DeletedDate]
+        ,InventoryDBGUID
+      FROM [SnowLicenseManager].[dbo].[tblInventoryDatabaseLog]
+    </tblInventoryDatabaseLog>
+  
+    <tblJobLog>
+      SELECT
+        Action
+        ,JobStep
+        ,JobType
+        ,ParentID
+        ,ActionType
+        ,CONVERT(VARCHAR, ActionStart, 120) AS [ActionStart]
+        ,CONVERT(VARCHAR, ActionStop, 120) AS [ActionStop]
+        ,ExecutionTime
+        ,CID
+        ,SourceDatabase
+        ,ActionInfo
+        ,Message
+        ,LOG_TotalSize
+        ,LOG_UsedSize
+        ,LOG_FreeSize
+        ,TEMPDB_TotalSize
+        ,TEMPDB_UsedSize
+        ,TEMPDB_FreeSize
+      FROM [SnowLicenseManager].[dbo].[tblJobLog]
+    </tblJobLog>
+  
+    <tblJobLogHistory>
+      SELECT
+        Action
+        ,JobStep
+        ,JobType
+        ,ParentID
+        ,ActionType
+        ,CONVERT(VARCHAR, ActionStart, 120) AS [ActionStart]
+        ,CONVERT(VARCHAR, ActionStop, 120) AS [ActionStop]
+        ,ExecutionTime
+        ,CID
+        ,SourceDatabase
+        ,ActionInfo
+        ,Message
+        ,LOG_TotalSize
+        ,LOG_UsedSize
+        ,LOG_FreeSize
+        ,TEMPDB_TotalSize
+        ,TEMPDB_UsedSize
+        ,TEMPDB_FreeSize
+      FROM [SnowLicenseManager].[dbo].[tblJobLogHistory]
+    </tblJobLogHistory>
+  
+    <tblJobLogMetrics>
+      SELECT
+        Id
+        ,CONVERT(VARCHAR, JobDate, 120) AS [JobDate]
+        ,CONVERT(VARCHAR, StartTime, 120) AS [StartTime]
+        ,CONVERT(VARCHAR, EndTime, 120) AS [EndTime]
+        ,Duration
+        ,JobStatus
+        ,DatabaseSizeMB
+        ,LogSizeMB
+        ,CountComputers
+        ,CountComputersUpdated
+        ,CountComputerSoftware
+        ,CountComputerApplications
+        ,CountComputerApplicationBundles
+        ,CountComputerApplicationGroups
+        ,CountComputerUsers
+        ,CountComputerApplicationUsers
+        ,CountComputerPrinters
+        ,CountComputerRegistry
+        ,CountComputerEnvironment
+        ,CountDevices
+        ,CountDeviceApplications
+        ,CountAppliedRules
+        ,CountSoftware
+        ,CountAssignedSoftware
+        ,CountUnassignedSoftware
+        ,CountOracleDatabases
+        ,CountOracleInstances
+        ,CountUsers
+      FROM [SnowLicenseManager].[dbo].[tblJobLogMetrics]
+    </tblJobLogMetrics>
+  
+    <tblJobParallelStep>
+      SELECT * FROM [SnowLicenseManager].[inv].[tblJobParallelStep]
+    </tblJobParallelStep>
+
+    <tblSystemCustomProcedures>
+      SELECT * FROM [SnowLicenseManager].[dbo].[tblSystemCustomProcedures]
+    </tblSystemCustomProcedures>
+  
+</Resource>

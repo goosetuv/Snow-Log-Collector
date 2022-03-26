@@ -33,7 +33,8 @@ namespace SnowLogCollector
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabSLM = new System.Windows.Forms.TabPage();
             this.gbSLMPlatformData = new System.Windows.Forms.GroupBox();
-            this.gbSLMPlatformDataGrab = new System.Windows.Forms.Button();
+            this.btnSLMPlatformDataCustomize = new System.Windows.Forms.Button();
+            this.btnSLMPlatformDataExport = new System.Windows.Forms.Button();
             this.lblSLMPlatformData = new System.Windows.Forms.Label();
             this.gbSLMLogsServices = new System.Windows.Forms.GroupBox();
             this.btnSLMLogsServicesCustomize = new System.Windows.Forms.Button();
@@ -48,6 +49,32 @@ namespace SnowLogCollector
             this.btnSLMDataUpdateJobExport = new System.Windows.Forms.Button();
             this.lblSLMDataUpdateJob = new System.Windows.Forms.Label();
             this.tabSINV = new System.Windows.Forms.TabPage();
+            this.gbINVServerLogs = new System.Windows.Forms.GroupBox();
+            this.btnINVServerLogsGrab = new System.Windows.Forms.Button();
+            this.lblINVServerLogs = new System.Windows.Forms.Label();
+            this.gbINVServerManagerLogs = new System.Windows.Forms.GroupBox();
+            this.btnINVServerManagerLogsGrab = new System.Windows.Forms.Button();
+            this.lblINVServerManagerLogs = new System.Windows.Forms.Label();
+            this.gbINVAdminConsoleLogs = new System.Windows.Forms.GroupBox();
+            this.btnINVAdminConsoleLogsGrab = new System.Windows.Forms.Button();
+            this.lblINVAdminConsoleLogs = new System.Windows.Forms.Label();
+            this.gbINVPlatformData = new System.Windows.Forms.GroupBox();
+            this.btnINVPlatformDataCustomize = new System.Windows.Forms.Button();
+            this.btnINVPlatformDataExport = new System.Windows.Forms.Button();
+            this.lblINVPlatformData = new System.Windows.Forms.Label();
+            this.tabConnectors = new System.Windows.Forms.TabPage();
+            this.gbConnectorsGeneric = new System.Windows.Forms.GroupBox();
+            this.btnConnectorsGenericCustomize = new System.Windows.Forms.Button();
+            this.btnConnectorsGenericExport = new System.Windows.Forms.Button();
+            this.lblConnectorsGeneric = new System.Windows.Forms.Label();
+            this.gbConnectorsAdobe = new System.Windows.Forms.GroupBox();
+            this.btnConnectorsAdobeCustomize = new System.Windows.Forms.Button();
+            this.btnConnectorsAdobeExport = new System.Windows.Forms.Button();
+            this.lblConnectorsAdobe = new System.Windows.Forms.Label();
+            this.gbConnectorsM365 = new System.Windows.Forms.GroupBox();
+            this.btnConnectorsM365Customize = new System.Windows.Forms.Button();
+            this.btnConnectorsM365Export = new System.Windows.Forms.Button();
+            this.lblConnectorsM365 = new System.Windows.Forms.Label();
             this.tabConfig = new System.Windows.Forms.TabPage();
             this.gbConfigDatabase = new System.Windows.Forms.GroupBox();
             this.btnConfigDatabaseTest = new System.Windows.Forms.Button();
@@ -85,6 +112,15 @@ namespace SnowLogCollector
             this.gbSLMLogsServices.SuspendLayout();
             this.gbSLMLogsWeb.SuspendLayout();
             this.gbSLMDataUpdateJob.SuspendLayout();
+            this.tabSINV.SuspendLayout();
+            this.gbINVServerLogs.SuspendLayout();
+            this.gbINVServerManagerLogs.SuspendLayout();
+            this.gbINVAdminConsoleLogs.SuspendLayout();
+            this.gbINVPlatformData.SuspendLayout();
+            this.tabConnectors.SuspendLayout();
+            this.gbConnectorsGeneric.SuspendLayout();
+            this.gbConnectorsAdobe.SuspendLayout();
+            this.gbConnectorsM365.SuspendLayout();
             this.tabConfig.SuspendLayout();
             this.gbConfigDatabase.SuspendLayout();
             this.gbConfigServers.SuspendLayout();
@@ -99,6 +135,7 @@ namespace SnowLogCollector
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlMain.Controls.Add(this.tabSLM);
             this.tabControlMain.Controls.Add(this.tabSINV);
+            this.tabControlMain.Controls.Add(this.tabConnectors);
             this.tabControlMain.Controls.Add(this.tabConfig);
             this.tabControlMain.Controls.Add(this.tabAbout);
             this.tabControlMain.Location = new System.Drawing.Point(0, 112);
@@ -118,14 +155,15 @@ namespace SnowLogCollector
             this.tabSLM.Padding = new System.Windows.Forms.Padding(3);
             this.tabSLM.Size = new System.Drawing.Size(495, 239);
             this.tabSLM.TabIndex = 0;
-            this.tabSLM.Text = "Snow License Manager";
+            this.tabSLM.Text = "License Manager";
             this.tabSLM.UseVisualStyleBackColor = true;
             // 
             // gbSLMPlatformData
             // 
-            this.gbSLMPlatformData.Controls.Add(this.gbSLMPlatformDataGrab);
+            this.gbSLMPlatformData.Controls.Add(this.btnSLMPlatformDataCustomize);
+            this.gbSLMPlatformData.Controls.Add(this.btnSLMPlatformDataExport);
             this.gbSLMPlatformData.Controls.Add(this.lblSLMPlatformData);
-            this.gbSLMPlatformData.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gbSLMPlatformData.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
             this.gbSLMPlatformData.Location = new System.Drawing.Point(10, 122);
             this.gbSLMPlatformData.Name = "gbSLMPlatformData";
             this.gbSLMPlatformData.Size = new System.Drawing.Size(200, 105);
@@ -133,16 +171,27 @@ namespace SnowLogCollector
             this.gbSLMPlatformData.TabStop = false;
             this.gbSLMPlatformData.Text = "Platform Data";
             // 
-            // gbSLMPlatformDataGrab
+            // btnSLMPlatformDataCustomize
             // 
-            this.gbSLMPlatformDataGrab.Enabled = false;
-            this.gbSLMPlatformDataGrab.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.gbSLMPlatformDataGrab.Location = new System.Drawing.Point(118, 71);
-            this.gbSLMPlatformDataGrab.Name = "gbSLMPlatformDataGrab";
-            this.gbSLMPlatformDataGrab.Size = new System.Drawing.Size(75, 23);
-            this.gbSLMPlatformDataGrab.TabIndex = 1;
-            this.gbSLMPlatformDataGrab.Text = "Grab";
-            this.gbSLMPlatformDataGrab.UseVisualStyleBackColor = true;
+            this.btnSLMPlatformDataCustomize.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSLMPlatformDataCustomize.Location = new System.Drawing.Point(9, 71);
+            this.btnSLMPlatformDataCustomize.Name = "btnSLMPlatformDataCustomize";
+            this.btnSLMPlatformDataCustomize.Size = new System.Drawing.Size(75, 23);
+            this.btnSLMPlatformDataCustomize.TabIndex = 3;
+            this.btnSLMPlatformDataCustomize.Text = "Customize";
+            this.btnSLMPlatformDataCustomize.UseVisualStyleBackColor = true;
+            this.btnSLMPlatformDataCustomize.Click += new System.EventHandler(this.btnSLMPlatformDataCustomize_Click);
+            // 
+            // btnSLMPlatformDataExport
+            // 
+            this.btnSLMPlatformDataExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btnSLMPlatformDataExport.Location = new System.Drawing.Point(118, 71);
+            this.btnSLMPlatformDataExport.Name = "btnSLMPlatformDataExport";
+            this.btnSLMPlatformDataExport.Size = new System.Drawing.Size(75, 23);
+            this.btnSLMPlatformDataExport.TabIndex = 1;
+            this.btnSLMPlatformDataExport.Text = "Export";
+            this.btnSLMPlatformDataExport.UseVisualStyleBackColor = true;
+            this.btnSLMPlatformDataExport.Click += new System.EventHandler(this.btnSLMPlatformDataExport_Click);
             // 
             // lblSLMPlatformData
             // 
@@ -152,7 +201,7 @@ namespace SnowLogCollector
             this.lblSLMPlatformData.Name = "lblSLMPlatformData";
             this.lblSLMPlatformData.Size = new System.Drawing.Size(184, 48);
             this.lblSLMPlatformData.TabIndex = 0;
-            this.lblSLMPlatformData.Text = "Tested with Snow License Manager 9.17";
+            this.lblSLMPlatformData.Text = "Tested with Snow License Manager 9.19.0";
             this.lblSLMPlatformData.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // gbSLMLogsServices
@@ -160,7 +209,7 @@ namespace SnowLogCollector
             this.gbSLMLogsServices.Controls.Add(this.btnSLMLogsServicesCustomize);
             this.gbSLMLogsServices.Controls.Add(this.btnSLMLogsServicesGrab);
             this.gbSLMLogsServices.Controls.Add(this.lblSLMLogsServices);
-            this.gbSLMLogsServices.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gbSLMLogsServices.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
             this.gbSLMLogsServices.Location = new System.Drawing.Point(285, 122);
             this.gbSLMLogsServices.Name = "gbSLMLogsServices";
             this.gbSLMLogsServices.Size = new System.Drawing.Size(200, 105);
@@ -198,7 +247,7 @@ namespace SnowLogCollector
             this.lblSLMLogsServices.Name = "lblSLMLogsServices";
             this.lblSLMLogsServices.Size = new System.Drawing.Size(184, 48);
             this.lblSLMLogsServices.TabIndex = 0;
-            this.lblSLMLogsServices.Text = "Compatible with Snow License Manager 7.x, 8.x, 9.x";
+            this.lblSLMLogsServices.Text = "Compatible with all Snow License Manager versions";
             this.lblSLMLogsServices.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // gbSLMLogsWeb
@@ -206,7 +255,7 @@ namespace SnowLogCollector
             this.gbSLMLogsWeb.Controls.Add(this.btnSLMLogsWebCustomize);
             this.gbSLMLogsWeb.Controls.Add(this.btnSLMLogsWebGrab);
             this.gbSLMLogsWeb.Controls.Add(this.lblSLMLogsWeb);
-            this.gbSLMLogsWeb.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gbSLMLogsWeb.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
             this.gbSLMLogsWeb.Location = new System.Drawing.Point(285, 10);
             this.gbSLMLogsWeb.Name = "gbSLMLogsWeb";
             this.gbSLMLogsWeb.Size = new System.Drawing.Size(200, 105);
@@ -244,7 +293,7 @@ namespace SnowLogCollector
             this.lblSLMLogsWeb.Name = "lblSLMLogsWeb";
             this.lblSLMLogsWeb.Size = new System.Drawing.Size(184, 48);
             this.lblSLMLogsWeb.TabIndex = 0;
-            this.lblSLMLogsWeb.Text = "Compatible with Snow License Manager 7.x, 8.x, 9.x";
+            this.lblSLMLogsWeb.Text = "Compatible with all Snow License Manager versions";
             this.lblSLMLogsWeb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // gbSLMDataUpdateJob
@@ -252,7 +301,7 @@ namespace SnowLogCollector
             this.gbSLMDataUpdateJob.Controls.Add(this.btnSLMDataUpdateJobCustomize);
             this.gbSLMDataUpdateJob.Controls.Add(this.btnSLMDataUpdateJobExport);
             this.gbSLMDataUpdateJob.Controls.Add(this.lblSLMDataUpdateJob);
-            this.gbSLMDataUpdateJob.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gbSLMDataUpdateJob.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
             this.gbSLMDataUpdateJob.Location = new System.Drawing.Point(10, 10);
             this.gbSLMDataUpdateJob.Name = "gbSLMDataUpdateJob";
             this.gbSLMDataUpdateJob.Size = new System.Drawing.Size(200, 105);
@@ -290,18 +339,320 @@ namespace SnowLogCollector
             this.lblSLMDataUpdateJob.Name = "lblSLMDataUpdateJob";
             this.lblSLMDataUpdateJob.Size = new System.Drawing.Size(184, 48);
             this.lblSLMDataUpdateJob.TabIndex = 0;
-            this.lblSLMDataUpdateJob.Text = "Compatible with Snow License Manager 9.x";
+            this.lblSLMDataUpdateJob.Text = "Compatible with Snow License Manager 9.x.x";
             this.lblSLMDataUpdateJob.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tabSINV
             // 
+            this.tabSINV.Controls.Add(this.gbINVServerLogs);
+            this.tabSINV.Controls.Add(this.gbINVServerManagerLogs);
+            this.tabSINV.Controls.Add(this.gbINVAdminConsoleLogs);
+            this.tabSINV.Controls.Add(this.gbINVPlatformData);
             this.tabSINV.Location = new System.Drawing.Point(4, 22);
             this.tabSINV.Name = "tabSINV";
             this.tabSINV.Padding = new System.Windows.Forms.Padding(3);
             this.tabSINV.Size = new System.Drawing.Size(495, 239);
             this.tabSINV.TabIndex = 1;
-            this.tabSINV.Text = "Snow Inventory Server";
+            this.tabSINV.Text = "Inventory Server";
             this.tabSINV.UseVisualStyleBackColor = true;
+            // 
+            // gbINVServerLogs
+            // 
+            this.gbINVServerLogs.Controls.Add(this.btnINVServerLogsGrab);
+            this.gbINVServerLogs.Controls.Add(this.lblINVServerLogs);
+            this.gbINVServerLogs.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gbINVServerLogs.Location = new System.Drawing.Point(10, 122);
+            this.gbINVServerLogs.Name = "gbINVServerLogs";
+            this.gbINVServerLogs.Size = new System.Drawing.Size(200, 105);
+            this.gbINVServerLogs.TabIndex = 9;
+            this.gbINVServerLogs.TabStop = false;
+            this.gbINVServerLogs.Text = "Server Logs";
+            // 
+            // btnINVServerLogsGrab
+            // 
+            this.btnINVServerLogsGrab.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btnINVServerLogsGrab.Location = new System.Drawing.Point(118, 71);
+            this.btnINVServerLogsGrab.Name = "btnINVServerLogsGrab";
+            this.btnINVServerLogsGrab.Size = new System.Drawing.Size(75, 23);
+            this.btnINVServerLogsGrab.TabIndex = 1;
+            this.btnINVServerLogsGrab.Text = "Grab";
+            this.btnINVServerLogsGrab.UseVisualStyleBackColor = true;
+            this.btnINVServerLogsGrab.Click += new System.EventHandler(this.btnINVServerLogsGrab_Click);
+            // 
+            // lblINVServerLogs
+            // 
+            this.lblINVServerLogs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblINVServerLogs.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblINVServerLogs.Location = new System.Drawing.Point(9, 20);
+            this.lblINVServerLogs.Name = "lblINVServerLogs";
+            this.lblINVServerLogs.Size = new System.Drawing.Size(184, 48);
+            this.lblINVServerLogs.TabIndex = 0;
+            this.lblINVServerLogs.Text = "Compatible with all Snow Inventory Server versions";
+            this.lblINVServerLogs.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // gbINVServerManagerLogs
+            // 
+            this.gbINVServerManagerLogs.Controls.Add(this.btnINVServerManagerLogsGrab);
+            this.gbINVServerManagerLogs.Controls.Add(this.lblINVServerManagerLogs);
+            this.gbINVServerManagerLogs.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gbINVServerManagerLogs.Location = new System.Drawing.Point(285, 122);
+            this.gbINVServerManagerLogs.Name = "gbINVServerManagerLogs";
+            this.gbINVServerManagerLogs.Size = new System.Drawing.Size(200, 105);
+            this.gbINVServerManagerLogs.TabIndex = 8;
+            this.gbINVServerManagerLogs.TabStop = false;
+            this.gbINVServerManagerLogs.Text = "Server Manager Logs";
+            // 
+            // btnINVServerManagerLogsGrab
+            // 
+            this.btnINVServerManagerLogsGrab.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btnINVServerManagerLogsGrab.Location = new System.Drawing.Point(118, 71);
+            this.btnINVServerManagerLogsGrab.Name = "btnINVServerManagerLogsGrab";
+            this.btnINVServerManagerLogsGrab.Size = new System.Drawing.Size(75, 23);
+            this.btnINVServerManagerLogsGrab.TabIndex = 1;
+            this.btnINVServerManagerLogsGrab.Text = "Grab";
+            this.btnINVServerManagerLogsGrab.UseVisualStyleBackColor = true;
+            this.btnINVServerManagerLogsGrab.Click += new System.EventHandler(this.btnINVServerManagerLogsGrab_Click);
+            // 
+            // lblINVServerManagerLogs
+            // 
+            this.lblINVServerManagerLogs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblINVServerManagerLogs.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblINVServerManagerLogs.Location = new System.Drawing.Point(9, 20);
+            this.lblINVServerManagerLogs.Name = "lblINVServerManagerLogs";
+            this.lblINVServerManagerLogs.Size = new System.Drawing.Size(184, 48);
+            this.lblINVServerManagerLogs.TabIndex = 0;
+            this.lblINVServerManagerLogs.Text = "Compatible with all Snow Inventory Server versions";
+            this.lblINVServerManagerLogs.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // gbINVAdminConsoleLogs
+            // 
+            this.gbINVAdminConsoleLogs.Controls.Add(this.btnINVAdminConsoleLogsGrab);
+            this.gbINVAdminConsoleLogs.Controls.Add(this.lblINVAdminConsoleLogs);
+            this.gbINVAdminConsoleLogs.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gbINVAdminConsoleLogs.Location = new System.Drawing.Point(285, 10);
+            this.gbINVAdminConsoleLogs.Name = "gbINVAdminConsoleLogs";
+            this.gbINVAdminConsoleLogs.Size = new System.Drawing.Size(200, 105);
+            this.gbINVAdminConsoleLogs.TabIndex = 7;
+            this.gbINVAdminConsoleLogs.TabStop = false;
+            this.gbINVAdminConsoleLogs.Text = "Admin Console Logs";
+            // 
+            // btnINVAdminConsoleLogsGrab
+            // 
+            this.btnINVAdminConsoleLogsGrab.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btnINVAdminConsoleLogsGrab.Location = new System.Drawing.Point(118, 71);
+            this.btnINVAdminConsoleLogsGrab.Name = "btnINVAdminConsoleLogsGrab";
+            this.btnINVAdminConsoleLogsGrab.Size = new System.Drawing.Size(75, 23);
+            this.btnINVAdminConsoleLogsGrab.TabIndex = 1;
+            this.btnINVAdminConsoleLogsGrab.Text = "Grab";
+            this.btnINVAdminConsoleLogsGrab.UseVisualStyleBackColor = true;
+            this.btnINVAdminConsoleLogsGrab.Click += new System.EventHandler(this.btnINVAdminConsoleLogsGrab_Click);
+            // 
+            // lblINVAdminConsoleLogs
+            // 
+            this.lblINVAdminConsoleLogs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblINVAdminConsoleLogs.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblINVAdminConsoleLogs.Location = new System.Drawing.Point(9, 20);
+            this.lblINVAdminConsoleLogs.Name = "lblINVAdminConsoleLogs";
+            this.lblINVAdminConsoleLogs.Size = new System.Drawing.Size(184, 48);
+            this.lblINVAdminConsoleLogs.TabIndex = 0;
+            this.lblINVAdminConsoleLogs.Text = "Compatible with all Snow Inventory Server versions";
+            this.lblINVAdminConsoleLogs.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // gbINVPlatformData
+            // 
+            this.gbINVPlatformData.Controls.Add(this.btnINVPlatformDataCustomize);
+            this.gbINVPlatformData.Controls.Add(this.btnINVPlatformDataExport);
+            this.gbINVPlatformData.Controls.Add(this.lblINVPlatformData);
+            this.gbINVPlatformData.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gbINVPlatformData.Location = new System.Drawing.Point(10, 10);
+            this.gbINVPlatformData.Name = "gbINVPlatformData";
+            this.gbINVPlatformData.Size = new System.Drawing.Size(200, 105);
+            this.gbINVPlatformData.TabIndex = 6;
+            this.gbINVPlatformData.TabStop = false;
+            this.gbINVPlatformData.Text = "Platform Data";
+            // 
+            // btnINVPlatformDataCustomize
+            // 
+            this.btnINVPlatformDataCustomize.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnINVPlatformDataCustomize.Location = new System.Drawing.Point(9, 71);
+            this.btnINVPlatformDataCustomize.Name = "btnINVPlatformDataCustomize";
+            this.btnINVPlatformDataCustomize.Size = new System.Drawing.Size(75, 23);
+            this.btnINVPlatformDataCustomize.TabIndex = 3;
+            this.btnINVPlatformDataCustomize.Text = "Customize";
+            this.btnINVPlatformDataCustomize.UseVisualStyleBackColor = true;
+            this.btnINVPlatformDataCustomize.Click += new System.EventHandler(this.btnINVPlatformDataCustomize_Click);
+            // 
+            // btnINVPlatformDataExport
+            // 
+            this.btnINVPlatformDataExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btnINVPlatformDataExport.Location = new System.Drawing.Point(118, 71);
+            this.btnINVPlatformDataExport.Name = "btnINVPlatformDataExport";
+            this.btnINVPlatformDataExport.Size = new System.Drawing.Size(75, 23);
+            this.btnINVPlatformDataExport.TabIndex = 1;
+            this.btnINVPlatformDataExport.Text = "Export";
+            this.btnINVPlatformDataExport.UseVisualStyleBackColor = true;
+            this.btnINVPlatformDataExport.Click += new System.EventHandler(this.btnINVPlatformDataExport_Click);
+            // 
+            // lblINVPlatformData
+            // 
+            this.lblINVPlatformData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblINVPlatformData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblINVPlatformData.Location = new System.Drawing.Point(9, 20);
+            this.lblINVPlatformData.Name = "lblINVPlatformData";
+            this.lblINVPlatformData.Size = new System.Drawing.Size(184, 48);
+            this.lblINVPlatformData.TabIndex = 0;
+            this.lblINVPlatformData.Text = "Tested with Snow Inventory Server 6.7.0\r\n";
+            this.lblINVPlatformData.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tabConnectors
+            // 
+            this.tabConnectors.Controls.Add(this.gbConnectorsGeneric);
+            this.tabConnectors.Controls.Add(this.gbConnectorsAdobe);
+            this.tabConnectors.Controls.Add(this.gbConnectorsM365);
+            this.tabConnectors.Location = new System.Drawing.Point(4, 22);
+            this.tabConnectors.Name = "tabConnectors";
+            this.tabConnectors.Size = new System.Drawing.Size(495, 239);
+            this.tabConnectors.TabIndex = 4;
+            this.tabConnectors.Text = "SaaS";
+            this.tabConnectors.UseVisualStyleBackColor = true;
+            // 
+            // gbConnectorsGeneric
+            // 
+            this.gbConnectorsGeneric.Controls.Add(this.btnConnectorsGenericCustomize);
+            this.gbConnectorsGeneric.Controls.Add(this.btnConnectorsGenericExport);
+            this.gbConnectorsGeneric.Controls.Add(this.lblConnectorsGeneric);
+            this.gbConnectorsGeneric.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gbConnectorsGeneric.Location = new System.Drawing.Point(10, 122);
+            this.gbConnectorsGeneric.Name = "gbConnectorsGeneric";
+            this.gbConnectorsGeneric.Size = new System.Drawing.Size(200, 105);
+            this.gbConnectorsGeneric.TabIndex = 3;
+            this.gbConnectorsGeneric.TabStop = false;
+            this.gbConnectorsGeneric.Text = "Generic SaaS";
+            // 
+            // btnConnectorsGenericCustomize
+            // 
+            this.btnConnectorsGenericCustomize.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConnectorsGenericCustomize.Location = new System.Drawing.Point(9, 71);
+            this.btnConnectorsGenericCustomize.Name = "btnConnectorsGenericCustomize";
+            this.btnConnectorsGenericCustomize.Size = new System.Drawing.Size(75, 23);
+            this.btnConnectorsGenericCustomize.TabIndex = 2;
+            this.btnConnectorsGenericCustomize.Text = "Customize";
+            this.btnConnectorsGenericCustomize.UseVisualStyleBackColor = true;
+            this.btnConnectorsGenericCustomize.Click += new System.EventHandler(this.btnConnectorsGenericCustomize_Click);
+            // 
+            // btnConnectorsGenericExport
+            // 
+            this.btnConnectorsGenericExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConnectorsGenericExport.Location = new System.Drawing.Point(118, 71);
+            this.btnConnectorsGenericExport.Name = "btnConnectorsGenericExport";
+            this.btnConnectorsGenericExport.Size = new System.Drawing.Size(75, 23);
+            this.btnConnectorsGenericExport.TabIndex = 1;
+            this.btnConnectorsGenericExport.Text = "Export";
+            this.btnConnectorsGenericExport.UseVisualStyleBackColor = true;
+            this.btnConnectorsGenericExport.Click += new System.EventHandler(this.btnConnectorsGenericExport_Click);
+            // 
+            // lblConnectorsGeneric
+            // 
+            this.lblConnectorsGeneric.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblConnectorsGeneric.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConnectorsGeneric.Location = new System.Drawing.Point(9, 20);
+            this.lblConnectorsGeneric.Name = "lblConnectorsGeneric";
+            this.lblConnectorsGeneric.Size = new System.Drawing.Size(184, 48);
+            this.lblConnectorsGeneric.TabIndex = 0;
+            this.lblConnectorsGeneric.Text = "Tested with Snow License Manager 9.19.0";
+            this.lblConnectorsGeneric.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // gbConnectorsAdobe
+            // 
+            this.gbConnectorsAdobe.Controls.Add(this.btnConnectorsAdobeCustomize);
+            this.gbConnectorsAdobe.Controls.Add(this.btnConnectorsAdobeExport);
+            this.gbConnectorsAdobe.Controls.Add(this.lblConnectorsAdobe);
+            this.gbConnectorsAdobe.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gbConnectorsAdobe.Location = new System.Drawing.Point(285, 10);
+            this.gbConnectorsAdobe.Name = "gbConnectorsAdobe";
+            this.gbConnectorsAdobe.Size = new System.Drawing.Size(200, 105);
+            this.gbConnectorsAdobe.TabIndex = 3;
+            this.gbConnectorsAdobe.TabStop = false;
+            this.gbConnectorsAdobe.Text = "Adobe Cloud Connector";
+            // 
+            // btnConnectorsAdobeCustomize
+            // 
+            this.btnConnectorsAdobeCustomize.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConnectorsAdobeCustomize.Location = new System.Drawing.Point(9, 71);
+            this.btnConnectorsAdobeCustomize.Name = "btnConnectorsAdobeCustomize";
+            this.btnConnectorsAdobeCustomize.Size = new System.Drawing.Size(75, 23);
+            this.btnConnectorsAdobeCustomize.TabIndex = 2;
+            this.btnConnectorsAdobeCustomize.Text = "Customize";
+            this.btnConnectorsAdobeCustomize.UseVisualStyleBackColor = true;
+            this.btnConnectorsAdobeCustomize.Click += new System.EventHandler(this.btnConnectorsAdobeCustomize_Click);
+            // 
+            // btnConnectorsAdobeExport
+            // 
+            this.btnConnectorsAdobeExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConnectorsAdobeExport.Location = new System.Drawing.Point(118, 71);
+            this.btnConnectorsAdobeExport.Name = "btnConnectorsAdobeExport";
+            this.btnConnectorsAdobeExport.Size = new System.Drawing.Size(75, 23);
+            this.btnConnectorsAdobeExport.TabIndex = 1;
+            this.btnConnectorsAdobeExport.Text = "Export";
+            this.btnConnectorsAdobeExport.UseVisualStyleBackColor = true;
+            this.btnConnectorsAdobeExport.Click += new System.EventHandler(this.btnConnectorsAdobeExport_Click);
+            // 
+            // lblConnectorsAdobe
+            // 
+            this.lblConnectorsAdobe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblConnectorsAdobe.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConnectorsAdobe.Location = new System.Drawing.Point(9, 20);
+            this.lblConnectorsAdobe.Name = "lblConnectorsAdobe";
+            this.lblConnectorsAdobe.Size = new System.Drawing.Size(184, 48);
+            this.lblConnectorsAdobe.TabIndex = 0;
+            this.lblConnectorsAdobe.Text = "Tested with Snow License Manager 9.19.0";
+            this.lblConnectorsAdobe.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // gbConnectorsM365
+            // 
+            this.gbConnectorsM365.Controls.Add(this.btnConnectorsM365Customize);
+            this.gbConnectorsM365.Controls.Add(this.btnConnectorsM365Export);
+            this.gbConnectorsM365.Controls.Add(this.lblConnectorsM365);
+            this.gbConnectorsM365.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gbConnectorsM365.Location = new System.Drawing.Point(10, 10);
+            this.gbConnectorsM365.Name = "gbConnectorsM365";
+            this.gbConnectorsM365.Size = new System.Drawing.Size(200, 105);
+            this.gbConnectorsM365.TabIndex = 1;
+            this.gbConnectorsM365.TabStop = false;
+            this.gbConnectorsM365.Text = "Microsoft 365";
+            // 
+            // btnConnectorsM365Customize
+            // 
+            this.btnConnectorsM365Customize.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConnectorsM365Customize.Location = new System.Drawing.Point(9, 71);
+            this.btnConnectorsM365Customize.Name = "btnConnectorsM365Customize";
+            this.btnConnectorsM365Customize.Size = new System.Drawing.Size(75, 23);
+            this.btnConnectorsM365Customize.TabIndex = 2;
+            this.btnConnectorsM365Customize.Text = "Customize";
+            this.btnConnectorsM365Customize.UseVisualStyleBackColor = true;
+            this.btnConnectorsM365Customize.Click += new System.EventHandler(this.btnConnectorsM365Customize_Click);
+            // 
+            // btnConnectorsM365Export
+            // 
+            this.btnConnectorsM365Export.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConnectorsM365Export.Location = new System.Drawing.Point(118, 71);
+            this.btnConnectorsM365Export.Name = "btnConnectorsM365Export";
+            this.btnConnectorsM365Export.Size = new System.Drawing.Size(75, 23);
+            this.btnConnectorsM365Export.TabIndex = 1;
+            this.btnConnectorsM365Export.Text = "Export";
+            this.btnConnectorsM365Export.UseVisualStyleBackColor = true;
+            this.btnConnectorsM365Export.Click += new System.EventHandler(this.btnConnectorsM365Export_Click);
+            // 
+            // lblConnectorsM365
+            // 
+            this.lblConnectorsM365.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblConnectorsM365.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConnectorsM365.Location = new System.Drawing.Point(9, 20);
+            this.lblConnectorsM365.Name = "lblConnectorsM365";
+            this.lblConnectorsM365.Size = new System.Drawing.Size(184, 48);
+            this.lblConnectorsM365.TabIndex = 0;
+            this.lblConnectorsM365.Text = "Tested with Snow License Manager 9.19.0";
+            this.lblConnectorsM365.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tabConfig
             // 
@@ -326,7 +677,7 @@ namespace SnowLogCollector
             this.gbConfigDatabase.Controls.Add(this.txtConfigDatabaseUser);
             this.gbConfigDatabase.Controls.Add(this.lblConfigDatabaseServer);
             this.gbConfigDatabase.Controls.Add(this.txtConfigDatabaseServer);
-            this.gbConfigDatabase.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gbConfigDatabase.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
             this.gbConfigDatabase.Location = new System.Drawing.Point(255, 10);
             this.gbConfigDatabase.Name = "gbConfigDatabase";
             this.gbConfigDatabase.Size = new System.Drawing.Size(230, 221);
@@ -382,7 +733,6 @@ namespace SnowLogCollector
             // 
             this.txtConfigDatabasePass.AutoCompleteCustomSource.AddRange(new string[] {
             "localhost"});
-            this.txtConfigDatabasePass.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtConfigDatabasePass.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtConfigDatabasePass.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtConfigDatabasePass.Location = new System.Drawing.Point(9, 123);
@@ -405,7 +755,6 @@ namespace SnowLogCollector
             // 
             this.txtConfigDatabaseUser.AutoCompleteCustomSource.AddRange(new string[] {
             "localhost"});
-            this.txtConfigDatabaseUser.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtConfigDatabaseUser.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtConfigDatabaseUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtConfigDatabaseUser.Location = new System.Drawing.Point(9, 79);
@@ -427,7 +776,6 @@ namespace SnowLogCollector
             // 
             this.txtConfigDatabaseServer.AutoCompleteCustomSource.AddRange(new string[] {
             "localhost"});
-            this.txtConfigDatabaseServer.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtConfigDatabaseServer.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtConfigDatabaseServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtConfigDatabaseServer.Location = new System.Drawing.Point(9, 36);
@@ -446,7 +794,7 @@ namespace SnowLogCollector
             this.gbConfigServers.Controls.Add(this.txtConfigSnowInventoryServer);
             this.gbConfigServers.Controls.Add(this.lblConfigLicenseManagerServer);
             this.gbConfigServers.Controls.Add(this.txtConfigLicenseManagerServer);
-            this.gbConfigServers.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbConfigServers.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold);
             this.gbConfigServers.Location = new System.Drawing.Point(10, 10);
             this.gbConfigServers.Name = "gbConfigServers";
             this.gbConfigServers.Size = new System.Drawing.Size(230, 221);
@@ -641,7 +989,8 @@ namespace SnowLogCollector
             // 
             this.lblAboutLibraries.FormattingEnabled = true;
             this.lblAboutLibraries.Items.AddRange(new object[] {
-            "EPPlus - Version 5.0"});
+            "EPPlus",
+            "log4net"});
             this.lblAboutLibraries.Location = new System.Drawing.Point(23, 73);
             this.lblAboutLibraries.Name = "lblAboutLibraries";
             this.lblAboutLibraries.Size = new System.Drawing.Size(452, 56);
@@ -657,6 +1006,7 @@ namespace SnowLogCollector
             this.linkAboutLaim.TabIndex = 4;
             this.linkAboutLaim.TabStop = true;
             this.linkAboutLaim.Text = "laim.scot";
+            this.linkAboutLaim.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkAboutLaim_LinkClicked);
             // 
             // linkAboutGithub
             // 
@@ -667,6 +1017,7 @@ namespace SnowLogCollector
             this.linkAboutGithub.TabIndex = 3;
             this.linkAboutGithub.TabStop = true;
             this.linkAboutGithub.Text = "github";
+            this.linkAboutGithub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkAboutGithub_LinkClicked);
             // 
             // lblAboutVersion
             // 
@@ -726,6 +1077,15 @@ namespace SnowLogCollector
             this.gbSLMLogsServices.ResumeLayout(false);
             this.gbSLMLogsWeb.ResumeLayout(false);
             this.gbSLMDataUpdateJob.ResumeLayout(false);
+            this.tabSINV.ResumeLayout(false);
+            this.gbINVServerLogs.ResumeLayout(false);
+            this.gbINVServerManagerLogs.ResumeLayout(false);
+            this.gbINVAdminConsoleLogs.ResumeLayout(false);
+            this.gbINVPlatformData.ResumeLayout(false);
+            this.tabConnectors.ResumeLayout(false);
+            this.gbConnectorsGeneric.ResumeLayout(false);
+            this.gbConnectorsAdobe.ResumeLayout(false);
+            this.gbConnectorsM365.ResumeLayout(false);
             this.tabConfig.ResumeLayout(false);
             this.gbConfigDatabase.ResumeLayout(false);
             this.gbConfigDatabase.PerformLayout();
@@ -758,7 +1118,7 @@ namespace SnowLogCollector
         private System.Windows.Forms.Button btnSLMLogsServicesGrab;
         private System.Windows.Forms.Label lblSLMLogsServices;
         private System.Windows.Forms.GroupBox gbSLMPlatformData;
-        private System.Windows.Forms.Button gbSLMPlatformDataGrab;
+        private System.Windows.Forms.Button btnSLMPlatformDataExport;
         private System.Windows.Forms.Label lblSLMPlatformData;
         private System.Windows.Forms.TabPage tabConfig;
         private System.Windows.Forms.Label lblAboutCopyright;
@@ -789,6 +1149,33 @@ namespace SnowLogCollector
         private System.Windows.Forms.CheckBox cbxConfigDatabaseWinAuth;
         private System.Windows.Forms.Button btnConfigDatabaseSave;
         private System.Windows.Forms.Button btnConfigDatabaseTest;
+        private System.Windows.Forms.Button btnSLMPlatformDataCustomize;
+        private System.Windows.Forms.TabPage tabConnectors;
+        private System.Windows.Forms.GroupBox gbConnectorsM365;
+        private System.Windows.Forms.Button btnConnectorsM365Customize;
+        private System.Windows.Forms.Button btnConnectorsM365Export;
+        private System.Windows.Forms.Label lblConnectorsM365;
+        private System.Windows.Forms.GroupBox gbConnectorsAdobe;
+        private System.Windows.Forms.Button btnConnectorsAdobeCustomize;
+        private System.Windows.Forms.Button btnConnectorsAdobeExport;
+        private System.Windows.Forms.Label lblConnectorsAdobe;
+        private System.Windows.Forms.GroupBox gbINVPlatformData;
+        private System.Windows.Forms.Button btnINVPlatformDataCustomize;
+        private System.Windows.Forms.Button btnINVPlatformDataExport;
+        private System.Windows.Forms.Label lblINVPlatformData;
+        private System.Windows.Forms.GroupBox gbINVAdminConsoleLogs;
+        private System.Windows.Forms.Button btnINVAdminConsoleLogsGrab;
+        private System.Windows.Forms.Label lblINVAdminConsoleLogs;
+        private System.Windows.Forms.GroupBox gbINVServerManagerLogs;
+        private System.Windows.Forms.Button btnINVServerManagerLogsGrab;
+        private System.Windows.Forms.Label lblINVServerManagerLogs;
+        private System.Windows.Forms.GroupBox gbINVServerLogs;
+        private System.Windows.Forms.Button btnINVServerLogsGrab;
+        private System.Windows.Forms.Label lblINVServerLogs;
+        private System.Windows.Forms.GroupBox gbConnectorsGeneric;
+        private System.Windows.Forms.Button btnConnectorsGenericCustomize;
+        private System.Windows.Forms.Button btnConnectorsGenericExport;
+        private System.Windows.Forms.Label lblConnectorsGeneric;
     }
 }
 

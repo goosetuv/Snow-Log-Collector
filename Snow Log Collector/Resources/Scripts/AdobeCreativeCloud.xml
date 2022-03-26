@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource version="9.19.00" defaultSize="14" isCustom="false" fileVersion="1.0.0">
+  
+    <!-- 
+    
+      You can add custom scripts to the below and modify the existing ones if you want.  To format dates correctly in the Excel Export
+      I recommend doing CONVERT(VARCHAR, DateColumn, 120) AS [DateColumn] - but it's up to you. :) 
+      
+      Ensure you change isCustom = false to isCustom = true on Line 2.  It's not currently used in Version 2.0, but it's to future proof
+      your custom scripts not being overwritten in the future.
+    
+      To reset any changes, delete the file in the Data\Resources directory and it will be generated on the next data grab.
+    
+      Custom Script Examples:
+    
+      <tblComputerSize>
+        SELECT COUNT(*) FROM [SnowLicenseManager].[dbo].tblComputer
+      </tblComputerSize>
+      <tblCustomerCount>
+        SELECT 
+          ci.Name AS [Customer]
+          ,COUNT(co.CID) AS [Device Count] 
+          ,cau.Units AS [Agreed Units] 
+        FROM [SnowLicenseManager].[dbo].[tblCID] ci
+        JOIN [SnowLicenseManager].[dbo].[tblComputer] co ON ci.CID = co.CID
+        JOIN [SnowLicenseManager].[dbo].[tblCIDAgreementUnits] cau ON ci.CID = cau.CID
+        GROUP BY ci.Name, cau.Units
+      </tblCustomerCount>
+    
+    -->
+  
+    <tblCID>
+      SELECT 
+        CID 
+        ,Name 
+        ,TenantID 
+      FROM [SnowLicenseManager].[dbo].[tblCID]
+    </tblCID>
+
+    <Import>
+      SELECT * FROM [SnowLicenseManager].[adobecc].[Import]
+    </Import>
+
+    <Insights>
+      SELECT * FROM [SnowLicenseManager].[adobecc].[Insights]
+    </Insights>
+
+    <Portal>
+      SELECT * FROM [SnowLicenseManager].[adobecc].[Portal]
+    </Portal>
+
+    <ReadModelCost>
+      SELECT * FROM [SnowLicenseManager].[adobecc].[ReadModelCost]
+    </ReadModelCost>
+
+    <ReadModelManagedUsers>
+      SELECT * FROM [SnowLicenseManager].[adobecc].[ReadModelManagedUsers]
+    </ReadModelManagedUsers>
+
+    <ReadModelOverview>
+      SELECT * FROM [SnowLicenseManager].[adobecc].[ReadModelOverview]
+    </ReadModelOverview>
+
+    <ReadModelOverviewSummary>
+      SELECT * FROM [SnowLicenseManager].[adobecc].[ReadModelOverviewSummary]
+    </ReadModelOverviewSummary>
+
+    <ReportAllAdobeCCUsers>
+      SELECT * FROM [SnowLicenseManager].[adobecc].[ReportAllAdobeCCUsers]
+    </ReportAllAdobeCCUsers>
+
+    <ReportAllAppsUsersWithLowUsage>
+      SELECT * FROM [SnowLicenseManager].[adobecc].[ReportAllAppsUsersWithLowUsage]
+    </ReportAllAppsUsersWithLowUsage>
+
+    <ReportUnlinkedUsers>
+      SELECT * FROM [SnowLicenseManager].[adobecc].[ReportUnlinkedUsers]
+    </ReportUnlinkedUsers>
+
+    <ReportUnusedLicenses>
+      SELECT * FROM [SnowLicenseManager].[adobecc].[ReportUnusedLicenses]
+    </ReportUnusedLicenses>
+
+    <SubscriptionPlan>
+      SELECT * FROM [SnowLicenseManager].[adobecc].[SubscriptionPlan]
+    </SubscriptionPlan>
+
+    <User>
+      SELECT * FROM [SnowLicenseManager].[adobecc].[User]
+    </User>
+  
+</Resource>

@@ -118,13 +118,31 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="AdobeCreativeCloud" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Scripts\AdobeCreativeCloud.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
   <data name="DataUpdateJob" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DataUpdateJob.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\Scripts\DataUpdateJob.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     <comment>Scripts for pulling Data Update Job data</comment>
   </data>
+  <data name="EPPlusLicense" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Licenses\EPPlusLicense.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="GenericSaaS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Scripts\GenericSaaS.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="log4netLicense" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Licenses\log4netLicense.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
   <data name="Microsoft365" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Microsoft365.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\Scripts\Microsoft365.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     <comment>Scripts for pulling Microsoft 365 data</comment>
+  </data>
+  <data name="PlatformDataINV" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Scripts\PlatformDataINV.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="PlatformDataSLM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Scripts\PlatformDataSLM.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="snow_log_collector" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\snow_log_collector1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

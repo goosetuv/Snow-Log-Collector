@@ -50,6 +50,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Security" />
     <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Web" />
@@ -117,7 +118,7 @@
     <None Include="Resources\snow_log_collector.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\DataUpdateJob.xml" />
+    <None Include="Resources\Scripts\DataUpdateJob.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\snow_log_collector1.png" />
@@ -126,7 +127,25 @@
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Microsoft365.xml" />
+    <None Include="Resources\Scripts\Microsoft365.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Scripts\PlatformDataSLM.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Scripts\AdobeCreativeCloud.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Licenses\EPPlusLicense.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Licenses\log4netLicense.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Scripts\PlatformDataINV.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Scripts\GenericSaaS.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

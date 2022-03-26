@@ -53,7 +53,7 @@ namespace SnowLogCollector
                 fc.Copy(Path.Combine(DirectoryPath, i), CollectedLogsRoot, i);
             }
 
-            MessageBox.Show("Collector finished", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Data grab finished", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Resource version="9.19.00" defaultSize="33" isCustom="false">
+<Resource version="9.19.00" defaultSize="33" isCustom="false" fileVersion="1.0.0">
   
     <!-- 
     
@@ -18,9 +18,9 @@
       </tblComputerSize>
       <tblCustomerCount>
         SELECT 
-          ci.Name AS [Customer], 
-          COUNT(co.CID) AS [Device Count], 
-          cau.Units AS [Agreed Units] 
+          ci.Name AS [Customer]
+          ,COUNT(co.CID) AS [Device Count] 
+          ,cau.Units AS [Agreed Units] 
         FROM [SnowLicenseManager].[dbo].[tblCID] ci
         JOIN [SnowLicenseManager].[dbo].[tblComputer] co ON ci.CID = co.CID
         JOIN [SnowLicenseManager].[dbo].[tblCIDAgreementUnits] cau ON ci.CID = cau.CID
@@ -31,9 +31,9 @@
   
     <tblCID>
       SELECT 
-        CID, 
-        Name, 
-        TenantID 
+        CID 
+        ,Name
+        ,TenantID 
       FROM [SnowLicenseManager].[dbo].[tblCID]
     </tblCID>
   
@@ -59,10 +59,10 @@
 
     <ReadModelOverviewUsersUserHistory>
       SELECT
-        TenantId,
-        PortalID,
-        CONVERT(VARCHAR, [Month], 120) AS [Month],
-        TotalUsers
+        TenantId
+        ,PortalID
+        ,CONVERT(VARCHAR, [Month], 120) AS [Month]
+        ,TotalUsers
       FROM [SnowLicenseManager].[o365].[ReadModelOverviewUsersUserHistory]
     </ReadModelOverviewUsersUserHistory>
 

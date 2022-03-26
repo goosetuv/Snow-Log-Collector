@@ -14,6 +14,7 @@ namespace SnowLogCollector.Classes
             DataUpdateJob,
             Microsoft365,
             AdobeCreativeCloud,
+            GenericSaaS,
             PlatformData
         }
 
@@ -26,7 +27,7 @@ namespace SnowLogCollector.Classes
         /// <param name="dt">The datatable to populate the sheet</param>
         /// <param name="ReportingTableDesign">Custom Report Design</param>
         /// <param name="SheetName">The name of the worksheet</param>
-        public void Save(Guid FileName, string Path, DataType DataType, DataTable dt, OfficeOpenXml.Table.TableStyles ReportingTableDesign, string SheetName = "Report")
+        public void Save(Guid FileName, string Path, DataType DataType, DataTable dt, OfficeOpenXml.Table.TableStyles ReportingTableDesign, string appVersion, string SheetName = "Report")
         {
             try
             {
@@ -37,13 +38,13 @@ namespace SnowLogCollector.Classes
                     ExcelWorksheet ew = ep.Workbook.Worksheets.Add(SheetName);
                     ew.Cells["A1"].LoadFromDataTable(dt, true, ReportingTableDesign);
                     ew.Cells.AutoFitColumns(40);
-                    ep.Workbook.Properties.Application = "Snow Log Collector";
+                    ep.Workbook.Properties.Application = string.Format("{0} - {1}", "Snow Log Collector", appVersion);
                     ep.Workbook.Properties.Author = Environment.UserName;
                     ep.Workbook.Properties.Title = DataType + " Export";
                     ep.Workbook.Properties.Company = "Goosetuv";
                     ep.Workbook.Properties.Comments = "https://github.com/goosetuv";
                     ep.Save();
-                    log.Info(string.Format("DataUpdateJob export written to disk. File {0}, Sheet {1}", FileName, SheetName));
+                    log.Info(string.Format("{0} export written to disk. File {1}, Sheet {2}", DataType.ToString(), FileName, SheetName));
                 }
             } catch (Exception ex)
             {

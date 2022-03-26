@@ -29,6 +29,7 @@ namespace SnowLogCollector
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDirectoryCustomize));
             this.clbDirectoryList = new System.Windows.Forms.CheckedListBox();
             this.btnGrabData = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -63,6 +64,7 @@ namespace SnowLogCollector
             this.Controls.Add(this.btnGrabData);
             this.Controls.Add(this.clbDirectoryList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDirectoryCustomize";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DirectoryCustomize";

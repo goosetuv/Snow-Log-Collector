@@ -6,7 +6,7 @@ namespace SnowLogCollector.Classes
     public class FileCopier
     {
 
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(frmDirectoryCustomize));
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(FileCopier));
 
         /// <summary>
         /// Copy files from one location to another

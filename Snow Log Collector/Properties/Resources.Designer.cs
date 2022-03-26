@@ -62,15 +62,31 @@ namespace SnowLogCollector.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-        ///&lt;Resource version=&quot;9.19.00&quot; defaultSize=&quot;9&quot; isCustom=&quot;false&quot;&gt;
+        ///&lt;Resource version=&quot;9.19.00&quot; defaultSize=&quot;14&quot; isCustom=&quot;false&quot; fileVersion=&quot;1.0.0&quot;&gt;
         ///  
         ///    &lt;!-- 
         ///    
         ///      You can add custom scripts to the below and modify the existing ones if you want.  To format dates correctly in the Excel Export
         ///      I recommend doing CONVERT(VARCHAR, DateColumn, 120) AS [DateColumn] - but it&apos;s up to you. :) 
         ///      
-        ///      Ensure you change isCustom = false to isCustom = true on Line 2.  It&apos;s not currently used in Version 2.0, but it&apos;s to future proof
-        ///      [rest of string was truncated]&quot;;.
+        ///      Ensure you change isCustom = false to isCustom = true on Line 2.  It&apos;s not currently used in Version 2.0, but it&apos;s t [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string AdobeCreativeCloud {
+            get {
+                return ResourceManager.GetString("AdobeCreativeCloud", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;Resource version=&quot;9.19.00&quot; defaultSize=&quot;11&quot; isCustom=&quot;false&quot; fileVersion=&quot;1.0.0&quot;&gt;
+        ///  
+        ///    &lt;!-- 
+        ///    
+        ///      You can add custom scripts to the below and modify the existing ones if you want.  To format dates correctly in the Excel Export
+        ///      I recommend doing CONVERT(VARCHAR, DateColumn, 120) AS [DateColumn] - but it&apos;s up to you. :) 
+        ///      
+        ///      Ensure you change isCustom = false to isCustom = true on Line 2.  It&apos;s not currently used in Version 2.0, but it&apos;s t [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string DataUpdateJob {
             get {
@@ -79,20 +95,116 @@ namespace SnowLogCollector.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to -- Application Version 5.8.7, License taken from GitHub Repo on 25-03-2022.
+        ///-- https://github.com/EPPlusSoftware/EPPlus/blob/develop/license.md
+        ///
+        ///# Polyform Noncommercial License 1.0.0
+        ///
+        ///&lt;https://polyformproject.org/licenses/noncommercial/1.0.0&gt;
+        ///
+        ///## Acceptance
+        ///
+        ///In order to get any license under these terms, you must agree
+        ///to them as both strict obligations and conditions to all
+        ///your licenses.
+        ///
+        ///## Copyright License
+        ///
+        ///The licensor grants you a copyright license for the
+        ///software to do everything y [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string EPPlusLicense {
+            get {
+                return ResourceManager.GetString("EPPlusLicense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-        ///&lt;Resource version=&quot;9.19.00&quot; defaultSize=&quot;33&quot; isCustom=&quot;false&quot;&gt;
+        ///&lt;Resource version=&quot;9.19.00&quot; defaultSize=&quot;0&quot; isCustom=&quot;false&quot; fileVersion=&quot;1.0.0&quot;&gt;
         ///  
         ///    &lt;!-- 
         ///    
         ///      You can add custom scripts to the below and modify the existing ones if you want.  To format dates correctly in the Excel Export
         ///      I recommend doing CONVERT(VARCHAR, DateColumn, 120) AS [DateColumn] - but it&apos;s up to you. :) 
         ///      
-        ///      Ensure you change isCustom = false to isCustom = true on Line 2.  It&apos;s not currently used in Version 2.0, but it&apos;s to future proof
-        ///     [rest of string was truncated]&quot;;.
+        ///      Ensure you change isCustom = false to isCustom = true on Line 2.  It&apos;s not currently used in Version 2.0, but it&apos;s to [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string GenericSaaS {
+            get {
+                return ResourceManager.GetString("GenericSaaS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to -- Application Version 2.0.14.0-NET 4.5, License taken from GitHub Repo on 25-03-2022.
+        ///-- https://github.com/apache/logging-log4net/blob/master/LICENSE
+        ///
+        ///                                 Apache License
+        ///                           Version 2.0, January 2004
+        ///                        http://www.apache.org/licenses/
+        ///
+        ///   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+        ///
+        ///   1. Definitions.
+        ///
+        ///      &quot;License&quot; shall mean the terms and conditions for use, reproduction,
+        ///      and distribution as def [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string log4netLicense {
+            get {
+                return ResourceManager.GetString("log4netLicense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;Resource version=&quot;9.19.00&quot; defaultSize=&quot;33&quot; isCustom=&quot;false&quot; fileVersion=&quot;1.0.0&quot;&gt;
+        ///  
+        ///    &lt;!-- 
+        ///    
+        ///      You can add custom scripts to the below and modify the existing ones if you want.  To format dates correctly in the Excel Export
+        ///      I recommend doing CONVERT(VARCHAR, DateColumn, 120) AS [DateColumn] - but it&apos;s up to you. :) 
+        ///      
+        ///      Ensure you change isCustom = false to isCustom = true on Line 2.  It&apos;s not currently used in Version 2.0, but it&apos;s t [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Microsoft365 {
             get {
                 return ResourceManager.GetString("Microsoft365", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;Resource version=&quot;9.19.00&quot; defaultSize=&quot;9&quot; isCustom=&quot;false&quot; fileVersion=&quot;1.0.0&quot;&gt;
+        ///  
+        ///    &lt;!-- 
+        ///    
+        ///      You can add custom scripts to the below and modify the existing ones if you want.  To format dates correctly in the Excel Export
+        ///      I recommend doing CONVERT(VARCHAR, DateColumn, 120) AS [DateColumn] - but it&apos;s up to you. :) 
+        ///      
+        ///      Ensure you change isCustom = false to isCustom = true on Line 2.  It&apos;s not currently used in Version 2.0, but it&apos;s to [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string PlatformDataINV {
+            get {
+                return ResourceManager.GetString("PlatformDataINV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;Resource version=&quot;9.19.00&quot; defaultSize=&quot;6&quot; isCustom=&quot;false&quot; fileVersion=&quot;1.0.0&quot;&gt;
+        ///  
+        ///    &lt;!-- 
+        ///    
+        ///      You can add custom scripts to the below and modify the existing ones if you want.  To format dates correctly in the Excel Export
+        ///      I recommend doing CONVERT(VARCHAR, DateColumn, 120) AS [DateColumn] - but it&apos;s up to you. :) 
+        ///      
+        ///      Ensure you change isCustom = false to isCustom = true on Line 2.  It&apos;s not currently used in Version 2.0, but it&apos;s to [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string PlatformDataSLM {
+            get {
+                return ResourceManager.GetString("PlatformDataSLM", resourceCulture);
             }
         }
         
