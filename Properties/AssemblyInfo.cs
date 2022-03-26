@@ -1,17 +1,17 @@
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Snow Software Log Collector")]
-[assembly: AssemblyDescription("Log Collector for Snow Software Products")]
-[assembly: AssemblyConfiguration("retail")]
-[assembly: AssemblyCompany("Laim McKenzie")]
-[assembly: AssemblyProduct("Snow Software Log Collector")]
-[assembly: AssemblyCopyright("© 2020 Laim McKenzie.")]
-[assembly: AssemblyTrademark("Laim McKenzie")]
+[assembly: AssemblyTitle("Snow Log Collector")]
+[assembly: AssemblyDescription("Collecting Logs is boring. Don't do it manually, let something do it for you. Snow Log Collector allows you to pull logs for Snow License Manager and Snow Inventory in mass within seconds as well as database exports for the Data Update Job, Microsoft 365 and more.")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("Goosetuv / Laim McKenzie")]
+[assembly: AssemblyProduct("Snow Log Collector")]
+[assembly: AssemblyCopyright("Copyright © Goosetuv / Laim McKenzie 2022")]
+[assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("4139d78d-ba6d-4b40-8e69-0d35dc6c2a5b")]
+[assembly: Guid("55da5c48-c52d-4384-92c2-0b91fef324cd")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -32,6 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.7510.23968")]
-[assembly: AssemblyFileVersion("1.0.7510.23968")]
-[assembly: AssemblyInformationalVersion("1.0.37")]
+[assembly: AssemblyVersion("2.0.0.0")]
+[assembly: AssemblyFileVersion("2.0.0.0")]

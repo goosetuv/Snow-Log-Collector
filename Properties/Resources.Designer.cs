@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SLC.Properties {
+namespace SnowLogCollector.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace SLC.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SLC.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SnowLogCollector.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,92 +61,159 @@ namespace SLC.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT * FROM SnowInventory.inv.DbVersionHistory.
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;Resource version=&quot;9.19.00&quot; defaultSize=&quot;14&quot; isCustom=&quot;false&quot; fileVersion=&quot;1.0.0&quot;&gt;
+        ///  
+        ///    &lt;!-- 
+        ///    
+        ///      You can add custom scripts to the below and modify the existing ones if you want.  To format dates correctly in the Excel Export
+        ///      I recommend doing CONVERT(VARCHAR, DateColumn, 120) AS [DateColumn] - but it&apos;s up to you. :) 
+        ///      
+        ///      Ensure you change isCustom = false to isCustom = true on Line 2.  It&apos;s not currently used in Version 2.0, but it&apos;s t [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string DUJDbVersionHistory {
+        internal static string AdobeCreativeCloud {
             get {
-                return ResourceManager.GetString("DUJDbVersionHistory", resourceCulture);
+                return ResourceManager.GetString("AdobeCreativeCloud", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT * FROM msdb.dbo.sysjobhistory where sql_severity &gt; 0 order by run_date desc, run_time desc.
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;Resource version=&quot;9.19.00&quot; defaultSize=&quot;11&quot; isCustom=&quot;false&quot; fileVersion=&quot;1.0.0&quot;&gt;
+        ///  
+        ///    &lt;!-- 
+        ///    
+        ///      You can add custom scripts to the below and modify the existing ones if you want.  To format dates correctly in the Excel Export
+        ///      I recommend doing CONVERT(VARCHAR, DateColumn, 120) AS [DateColumn] - but it&apos;s up to you. :) 
+        ///      
+        ///      Ensure you change isCustom = false to isCustom = true on Line 2.  It&apos;s not currently used in Version 2.0, but it&apos;s t [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string DUJsysjobhistory {
+        internal static string DataUpdateJob {
             get {
-                return ResourceManager.GetString("DUJsysjobhistory", resourceCulture);
+                return ResourceManager.GetString("DataUpdateJob", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT * FROM SnowLicenseManager.dbo.tblCIDDataSource.
+        ///   Looks up a localized string similar to -- Application Version 5.8.7, License taken from GitHub Repo on 25-03-2022.
+        ///-- https://github.com/EPPlusSoftware/EPPlus/blob/develop/license.md
+        ///
+        ///# Polyform Noncommercial License 1.0.0
+        ///
+        ///&lt;https://polyformproject.org/licenses/noncommercial/1.0.0&gt;
+        ///
+        ///## Acceptance
+        ///
+        ///In order to get any license under these terms, you must agree
+        ///to them as both strict obligations and conditions to all
+        ///your licenses.
+        ///
+        ///## Copyright License
+        ///
+        ///The licensor grants you a copyright license for the
+        ///software to do everything y [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string DUJtblCIDDataSource {
+        internal static string EPPlusLicense {
             get {
-                return ResourceManager.GetString("DUJtblCIDDataSource", resourceCulture);
+                return ResourceManager.GetString("EPPlusLicense", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT * FROM SnowLicenseManager.dbo.tblErrorLog.
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;Resource version=&quot;9.19.00&quot; defaultSize=&quot;0&quot; isCustom=&quot;false&quot; fileVersion=&quot;1.0.0&quot;&gt;
+        ///  
+        ///    &lt;!-- 
+        ///    
+        ///      You can add custom scripts to the below and modify the existing ones if you want.  To format dates correctly in the Excel Export
+        ///      I recommend doing CONVERT(VARCHAR, DateColumn, 120) AS [DateColumn] - but it&apos;s up to you. :) 
+        ///      
+        ///      Ensure you change isCustom = false to isCustom = true on Line 2.  It&apos;s not currently used in Version 2.0, but it&apos;s to [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string DUJtblErrorLog {
+        internal static string GenericSaaS {
             get {
-                return ResourceManager.GetString("DUJtblErrorLog", resourceCulture);
+                return ResourceManager.GetString("GenericSaaS", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT * FROM SnowLicenseManager.dbo.tblInventoryDatabaseLog.
+        ///   Looks up a localized string similar to -- Application Version 2.0.14.0-NET 4.5, License taken from GitHub Repo on 25-03-2022.
+        ///-- https://github.com/apache/logging-log4net/blob/master/LICENSE
+        ///
+        ///                                 Apache License
+        ///                           Version 2.0, January 2004
+        ///                        http://www.apache.org/licenses/
+        ///
+        ///   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+        ///
+        ///   1. Definitions.
+        ///
+        ///      &quot;License&quot; shall mean the terms and conditions for use, reproduction,
+        ///      and distribution as def [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string DUJtblInventoryDatabaseLog {
+        internal static string log4netLicense {
             get {
-                return ResourceManager.GetString("DUJtblInventoryDatabaseLog", resourceCulture);
+                return ResourceManager.GetString("log4netLicense", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT * FROM SnowLicenseManager.dbo.tblJobLog.
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;Resource version=&quot;9.19.00&quot; defaultSize=&quot;33&quot; isCustom=&quot;false&quot; fileVersion=&quot;1.0.0&quot;&gt;
+        ///  
+        ///    &lt;!-- 
+        ///    
+        ///      You can add custom scripts to the below and modify the existing ones if you want.  To format dates correctly in the Excel Export
+        ///      I recommend doing CONVERT(VARCHAR, DateColumn, 120) AS [DateColumn] - but it&apos;s up to you. :) 
+        ///      
+        ///      Ensure you change isCustom = false to isCustom = true on Line 2.  It&apos;s not currently used in Version 2.0, but it&apos;s t [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string DUJtblJobLog {
+        internal static string Microsoft365 {
             get {
-                return ResourceManager.GetString("DUJtblJobLog", resourceCulture);
+                return ResourceManager.GetString("Microsoft365", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT * FROM SnowLicenseManager.dbo.tblJobLogHistory.
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;Resource version=&quot;9.19.00&quot; defaultSize=&quot;9&quot; isCustom=&quot;false&quot; fileVersion=&quot;1.0.0&quot;&gt;
+        ///  
+        ///    &lt;!-- 
+        ///    
+        ///      You can add custom scripts to the below and modify the existing ones if you want.  To format dates correctly in the Excel Export
+        ///      I recommend doing CONVERT(VARCHAR, DateColumn, 120) AS [DateColumn] - but it&apos;s up to you. :) 
+        ///      
+        ///      Ensure you change isCustom = false to isCustom = true on Line 2.  It&apos;s not currently used in Version 2.0, but it&apos;s to [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string DUJtblJobLogHistory {
+        internal static string PlatformDataINV {
             get {
-                return ResourceManager.GetString("DUJtblJobLogHistory", resourceCulture);
+                return ResourceManager.GetString("PlatformDataINV", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT * FROM SnowLicenseManager.dbo.tblJobLogMetrics.
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;Resource version=&quot;9.19.00&quot; defaultSize=&quot;6&quot; isCustom=&quot;false&quot; fileVersion=&quot;1.0.0&quot;&gt;
+        ///  
+        ///    &lt;!-- 
+        ///    
+        ///      You can add custom scripts to the below and modify the existing ones if you want.  To format dates correctly in the Excel Export
+        ///      I recommend doing CONVERT(VARCHAR, DateColumn, 120) AS [DateColumn] - but it&apos;s up to you. :) 
+        ///      
+        ///      Ensure you change isCustom = false to isCustom = true on Line 2.  It&apos;s not currently used in Version 2.0, but it&apos;s to [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string DUJtblJobLogMetrics {
+        internal static string PlatformDataSLM {
             get {
-                return ResourceManager.GetString("DUJtblJobLogMetrics", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SELECT * FROM SnowLicenseManager.inv.tblJobParallelStep.
-        /// </summary>
-        internal static string DUJtblJobParallelStep {
-            get {
-                return ResourceManager.GetString("DUJtblJobParallelStep", resourceCulture);
+                return ResourceManager.GetString("PlatformDataSLM", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap slc_logo1 {
+        internal static System.Drawing.Bitmap snow_log_collector {
             get {
-                object obj = ResourceManager.GetObject("slc-logo1", resourceCulture);
+                object obj = ResourceManager.GetObject("snow_log_collector", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

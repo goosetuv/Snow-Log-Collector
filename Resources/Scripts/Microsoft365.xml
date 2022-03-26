@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Resource version="9.19.00" defaultSize="33" isCustom="false" fileVersion="1.0.0">
+  
+    <!-- 
+    
+      You can add custom scripts to the below and modify the existing ones if you want.  To format dates correctly in the Excel Export
+      I recommend doing CONVERT(VARCHAR, DateColumn, 120) AS [DateColumn] - but it's up to you. :) 
+      
+      Ensure you change isCustom = false to isCustom = true on Line 2.  It's not currently used in Version 2.0, but it's to future proof
+      your custom scripts not being overwritten in the future.
+    
+      To reset any changes, delete the file in the Data\Resources directory and it will be generated on the next data grab.
+    
+      Custom Script Examples:
+    
+      <tblComputerSize>
+        SELECT COUNT(*) FROM [SnowLicenseManager].[dbo].tblComputer
+      </tblComputerSize>
+      <tblCustomerCount>
+        SELECT 
+          ci.Name AS [Customer]
+          ,COUNT(co.CID) AS [Device Count] 
+          ,cau.Units AS [Agreed Units] 
+        FROM [SnowLicenseManager].[dbo].[tblCID] ci
+        JOIN [SnowLicenseManager].[dbo].[tblComputer] co ON ci.CID = co.CID
+        JOIN [SnowLicenseManager].[dbo].[tblCIDAgreementUnits] cau ON ci.CID = cau.CID
+        GROUP BY ci.Name, cau.Units
+      </tblCustomerCount>
+    
+    -->
+  
+    <tblCID>
+      SELECT 
+        CID 
+        ,Name
+        ,TenantID 
+      FROM [SnowLicenseManager].[dbo].[tblCID]
+    </tblCID>
+  
+    <Import>
+      SELECT * FROM [SnowLicenseManager].[o365].[Import]
+    </Import>
+
+    <Portal>
+      SELECT * FROM [SnowLicenseManager].[o365].[Portal]
+    </Portal>
+
+    <User>
+      SELECT * FROM [SnowLicenseManager].[o365].[User]
+    </User>
+
+    <ReadModelOverview>
+      SELECT * FROM [SnowLicenseManager].[o365].[ReadModelOverview]
+    </ReadModelOverview>
+
+    <ReadModelOverviewSubscriptionPlan>
+      SELECT * FROM [SnowLicenseManager].[o365].[ReadModelOverviewSubscriptionPlan]
+    </ReadModelOverviewSubscriptionPlan>
+
+    <ReadModelOverviewUsersUserHistory>
+      SELECT
+        TenantId
+        ,PortalID
+        ,CONVERT(VARCHAR, [Month], 120) AS [Month]
+        ,TotalUsers
+      FROM [SnowLicenseManager].[o365].[ReadModelOverviewUsersUserHistory]
+    </ReadModelOverviewUsersUserHistory>
+
+    <ReadModelUserLinkingSuggestion>
+      SELECT * FROM [SnowLicenseManager].[o365].[ReadModelUserLinkingSuggestion]
+    </ReadModelUserLinkingSuggestion>
+
+    <ReadModelUsersPerSubscriptionPlan>
+      SELECT * FROM [SnowLicenseManager].[o365].[ReadModelUsersPerSubscriptionPlan]
+    </ReadModelUsersPerSubscriptionPlan>
+
+    <ReadModelActivityPerService>
+      SELECT * FROM [SnowLicenseManager].[o365].[ReadModelActivityPerService]
+    </ReadModelActivityPerService>
+    
+    <ReadModelCost>
+      SELECT * FROM [SnowLicenseManager].[o365].[ReadModelCost]
+    </ReadModelCost>
+
+    <ReadModelCurrentPrices>
+      SELECT * FROM [SnowLicenseManager].[o365].[ReadModelCurrentPrices]
+    </ReadModelCurrentPrices>
+
+    <ReadModelMonthlyUserBreakdown>
+      SELECT * FROM [SnowLicenseManager].[o365].[ReadModelMonthlyUserBreakdown]
+    </ReadModelMonthlyUserBreakdown>
+  
+    <B_ReadModelMonthlySubscriptionPlanBreakdown>
+      SELECT * FROM [SnowLicenseManager].[o365].[ReadModelMonthlySubscriptionPlanBreakdown]
+    </B_ReadModelMonthlySubscriptionPlanBreakdown>
+
+    <AB_ReadModelMonthlySubscriptionPlanActivityBreakdown>
+      SELECT * FROM [SnowLicenseManager].[o365].[ReadModelMonthlySubscriptionPlanActivityBreakdown]
+    </AB_ReadModelMonthlySubscriptionPlanActivityBreakdown>
+
+    <ReadModelMonthlyServiceActivityBreakdown>
+      SELECT * FROM [SnowLicenseManager].[o365].[ReadModelMonthlyServiceActivityBreakdown]
+    </ReadModelMonthlyServiceActivityBreakdown>
+
+    <RelevantApplications>
+      SELECT * FROM [SnowLicenseManager].[o365].[RelevantApplications]
+    </RelevantApplications>
+
+    <ReportSubscriptionPlanCost>
+      SELECT * FROM [SnowLicenseManager].[o365].[ReportSubscriptionPlanCost]
+    </ReportSubscriptionPlanCost>
+
+    <ReportUnlinkedUser>
+      SELECT * FROM [SnowLicenseManager].[o365].[ReportUnlinkedUser]
+    </ReportUnlinkedUser>
+
+    <SubscriptionPlan>
+      SELECT * FROM [SnowLicenseManager].[o365].[SubscriptionPlan]
+    </SubscriptionPlan>
+
+    <UserApplicationDoubleLicensing>
+      SELECT * FROM [SnowLicenseManager].[o365].[UserApplicationDoubleLicensing]
+    </UserApplicationDoubleLicensing>
+
+    <UserFilterConfiguration>
+      SELECT * FROM [SnowLicenseManager].[o365].[UserFilterConfiguration]
+    </UserFilterConfiguration>
+
+    <AutomationQueue>
+      SELECT * FROM [SnowLicenseManager].[o365].[AutomationQueue]
+    </AutomationQueue>
+
+    <AutomationStatus>
+      SELECT * FROM [SnowLicenseManager].[o365].[AutomationStatus]
+    </AutomationStatus>
+
+    <Country>
+      SELECT * FROM [SnowLicenseManager].[o365].[Country]
+    </Country>
+
+    <CountryList>
+      SELECT * FROM [SnowLicenseManager].[o365].[CountryList]
+    </CountryList>
+
+    <CountryMap>
+      SELECT * FROM [SnowLicenseManager].[o365].[CountryMap]
+    </CountryMap>
+
+    <Department>
+      SELECT * FROM [SnowLicenseManager].[o365].[Department]
+    </Department>
+
+    <PlansWithMonitoring>
+      SELECT * FROM [SnowLicenseManager].[o365].[PlansWithMonitoring]
+    </PlansWithMonitoring>
+
+    <MigrationHistoricalActivitiesProgress>
+      SELECT * FROM [SnowLicenseManager].[o365].[MigrationHistoricalActivitiesProgress]
+    </MigrationHistoricalActivitiesProgress>
+
+    <MigrationHistoricalActivitiesServiceActivity>
+      SELECT * FROM [SnowLicenseManager].[o365].[MigrationHistoricalActivitiesServiceActivity]
+    </MigrationHistoricalActivitiesServiceActivity>
+
+    <MigrationHistoricalActivitiesSubscriptionPlanActivity>
+      SELECT * FROM [SnowLicenseManager].[o365].[MigrationHistoricalActivitiesSubscriptionPlanActivity]
+    </MigrationHistoricalActivitiesSubscriptionPlanActivity>
+
+    <MigrationHistoricalActivitiesUserActivity>
+      SELECT * FROM [SnowLicenseManager].[o365].[MigrationHistoricalActivitiesUserActivity]
+    </MigrationHistoricalActivitiesUserActivity>
+
+</Resource>
