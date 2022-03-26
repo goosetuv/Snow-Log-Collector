@@ -44,6 +44,9 @@ In theory the flat file log collection should support all versions of Snow Licen
 
 For database exports such as Data Update Job, Microsoft 365 and Adobe Creative Cloud are only officially supported for Snow License Manager 9.19 and above, and Snow Inventory Server 6.7.0 and above.  This is purely because of how many changes in database structure there are in the various versions, however if you are on an older version feel free to customize the `.xml` files in `%AppData%\Goosetuv\Snow Log Collector\Resources\`.
 
+### Installation Paths
+If for some reason you have not installed Snow on the `C` drive or within `Program Files`, you can chose any drive letter during the configuration within the tool.  For application paths you'll need to modify the `Snow Log Collector.exe.config` configuration file that is alongside the executable where you can change the paths under the `<!-- Snow Paths (Default) -->` section.
+
 ## Contributing
 Happy for anyone to make a pull request to assist in making the application better.
 
